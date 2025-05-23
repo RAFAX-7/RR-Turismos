@@ -1,0 +1,853 @@
+:root {
+    --azul: rgba(3, 61, 155, 0.822);
+    --azul-c: rgb(10, 65, 231);
+    --azul-c-2: rgba(122, 173, 255, 0.822);
+    --azul-c-3: rgb(0, 110, 255);
+    --azul-e: rgb(0, 17, 70);
+    --preto: rgba(0, 0, 0, 0.2);
+    --amarelo: #c5b912;
+    --vermelho: rgb(200, 0, 0);
+    --verde: rgb(0, 138, 0);
+    --cinza-c: #ccc;
+    --cinza90: rgb(90, 90, 90);
+    --cinza100: rgb(100, 100, 100);
+    --cinza200: rgb(200, 200, 200);
+    --cinza220: rgb(220, 220, 220);
+    --cinza228: rgb(228, 228, 228);
+    --cinza225: rgb(225, 225, 225);
+    --cinza230: rgb(230, 230, 230);
+    --cinza245: rgb(245, 245, 245);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.obrigatorio {
+    color: red;
+}
+
+/* Cor do Body */
+
+.corFundo {
+    background-color: var(--cinza225);
+}
+
+/* Cabeçalho */
+
+a {
+    text-decoration: none;
+}
+
+.risco {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.risco::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    animation: animarisco 1s ease-out 1 forwards;
+}
+
+@keyframes animarisco {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+
+header {
+    height: 10rem;
+    background-image: linear-gradient(var(--azul), var(--azul-c));
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+header .logo {
+    height: 200%;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 155%;
+}
+
+header a {
+    color: white;
+    transition: color 0.5s;
+}
+
+header a:hover {
+    color: var(--amarelo);
+}
+
+/* Risco */
+
+nav a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: white;
+    transition: width 0.5s ease-in-out;
+}
+
+nav a.pre-ativo::after {
+    width: 0;
+}
+
+nav a.ativo::after {
+    width: 100%;
+}
+
+nav a::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--azul-c-2);
+    transition: 0.3s;
+}
+
+nav a:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+/* Menu dropdown login */
+
+.menulogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#cadastro {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+#cadastro a {
+    margin: 0;
+    margin-right: 0.5rem;
+    font-size: 125%;
+    background-color: transparent;
+    transition: color 0.3s;
+}
+
+.dropdown-entrar {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    top: 8%;
+    background-color: var(--cinza245);
+    box-shadow: 0 0.2rem 0.5rem var(--preto);
+    border-radius: 0.4rem;
+    padding: 1rem 0;
+    min-width: 4rem;
+}
+
+.dropdown-entrar a {
+    font-size: 100%;
+    display: block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: var(--cinza100);
+    transition: background 0.3s;
+}
+
+.dropdown-entrar a:hover {
+    background-color: var(--azul-c-2);
+    color: black;
+}
+
+.dropdown-entrar.show {
+    display: block;
+}
+
+.Cadastre-se,
+.Acessar {
+    display: none;
+}
+
+/* Menu hamburguer */
+
+header .topoMenu {
+    display: none;
+}
+
+header .botaoMenu {
+    height: 2.5rem;
+    width: 4rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+header .botaoMenu div {
+    height: 4px;
+    width: 60%;
+    background-color: white;
+    border-radius: 50px;
+    transition: background 0.5s, transform 0.5s;
+}
+
+header .botaoMenu:hover div {
+    background-color: black;
+}
+
+header .creditos {
+    display: none;
+}
+
+header .botaoMenu:hover .ret1 {
+    transform: translateX(-0.2rem);
+}
+
+header .botaoMenu:hover .ret2 {
+    transform: translateX(0.2rem);
+}
+
+header .botaoMenu:hover .ret3 {
+    transform: translateX(-0.2rem);
+}
+
+/* Slogan */
+
+.slogan {
+    background-color: var(--cinza230);
+    text-align: center;
+    height: 3rem;
+    padding: 0 5%;
+    color: var(--azul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 150%;
+}
+
+.slogan::after {
+    content: "🌍";
+}
+
+/* Banner */
+
+/* Imagens do slide */
+
+.banner {
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+    display: block;
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Setas dos slides */
+
+.arrow {
+    position: absolute;
+    top: 45%;
+    transform: translate(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 3rem;
+    padding: 1rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: 0.7s;
+}
+
+.prev {
+    left: 4rem;
+}
+
+.next {
+    right: 1rem;
+}
+
+.dots {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+.dot {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+/* Main index */
+
+.indexPrincipal {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 5%;
+    margin-top: 10rem;
+}
+
+.indexPrincipal .viagens {
+    width: 100%;
+}
+
+.indexPrincipal .viagens h1 {
+    font-size: 2.5rem;
+    padding: 2rem;
+}
+
+/* Card viagens */
+
+.containerViagens {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4rem;
+    margin: 1.5rem 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.containerViagens .card {
+    width: 90%;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: box-Shadow 0.5s, transform 0.3s, z-index;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerViagens .card:hover {
+    /* transform: scale(1.1); */
+    box-shadow: 0 20px 25px rgba(40, 40, 40, 0.5);
+}
+
+.containerViagens .card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.containerViagens .card .tituloViagem {
+    padding: 0.5rem;
+    color: var(--cinza100);
+    font-size: 1.5rem;
+}
+
+.containerViagens .card p {
+    font-size: 1.5rem;
+    margin: 0.5rem 0 0.5rem 1rem;
+    color: var(--verde);
+}
+
+.containerViagens .card .btnagenda {
+    color: white;
+    background-color: var(--azul-c-3);
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    padding: 1rem;
+    margin: 2rem auto;
+    display: block;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.containerViagens .card .btnagenda:hover {
+    background-color: var(--azul-c);
+    transition: 0.7s;
+}
+
+/* Quem Somos */
+
+.logo2 {
+    background-color: var(--cinza225);
+    display: flex;
+    justify-content: center;
+    height: 20rem;
+}
+
+.indexquemsomos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem 5%;
+    gap: 5rem;
+}
+
+.ladoEsquerdo {
+    flex: 1;
+    min-width: 30rem;
+    max-width: 60rem;
+}
+
+.ladoEsquerdo h1 {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 4rem;
+    color: var(--cinza90);
+    margin-bottom: 0.5rem;
+    align-items: center;
+}
+
+.ladoEsquerdo h1::before {
+    content: "";
+    display: inline-block;
+    width: 0.5rem;
+    height: 4rem;
+    background-color: var(--azul);
+}
+
+.ladoEsquerdo .textos p {
+    font-size: 2rem;
+    line-height: 1.8;
+    color: var(--cinza100);
+}
+
+.ladoDireito {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    min-width: 280px;
+
+}
+
+.imagem-fundadores img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+}
+
+/* Cadastro */
+
+.containerCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    flex-wrap: wrap;
+    padding: 2rem;
+    min-height: calc(100vh - 15rem);
+}
+
+.cardCadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    width: 35rem;
+    height: 38rem;
+    box-sizing: border-box;
+}
+
+.cardCadastro:hover {
+    box-shadow: 0 20px 25px rgba(40, 40, 40, 0.5);
+}
+
+.cardCadastro h1 {
+    font-size: 2.5rem;
+}
+
+.cardCadastro h2 {
+    font-size: 1.8rem;
+}
+
+.cardCadastro h3 {
+    font-size: 1.5rem;
+}
+
+.cardCadastro a {
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin-top: auto;
+    margin: 1rem;
+    border-radius: 10px;
+    width: 80%;
+    color: white;
+    background-color: var(--azul-c-3);
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.cardCadastro a:hover {
+    background-color: var(--azul-c);
+}
+
+.icone {
+    font-size: 6rem;
+}
+
+/* Cadastro Pessoa Física */
+
+.maincadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.form-container {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--cinza90);
+    font-size: 2.5rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--cinza100);
+    font-size: 1.5rem;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--cinza-c);
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+form input:focus {
+    border-color: var(--azul);
+    outline: none;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--azul-c-3);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+    background-color: var(--azul-c);
+}
+
+.mensagem {
+    margin-top: 15px;
+    font-size: 14px;
+    display: none;
+    padding: 10px 12px;
+    border-radius: 5px;
+}
+
+.mensagem.erro {
+    color: #d93025;
+    background-color: #fdecea;
+    border: 1px solid #f5c6cb;
+}
+
+.mensagem.sucesso {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.mensagem ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.mensagem li {
+    margin-bottom: 5px;
+    list-style-type: disc;
+}
+
+.footerCadastro {
+    position: fixed;
+}
+
+/* Contato */
+
+
+/* Rodapé */
+
+footer {
+    background-image: linear-gradient(var(--azul), var(--azul-c));
+    padding: 2rem 5%;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    z-index: 100;
+}
+
+footer p {
+    color: white;
+    font-size: 130%;
+}
+
+/* Index Principal */
+
+@media screen and (max-width: 1250px) {
+
+    /* Card */
+
+    .containerViagens {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 1130px) {
+
+    /* Quem Somos */
+
+    .indexquemsomos {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ladoEsquerdo .textos p {
+        font-size: 2rem;
+    }
+
+    .ladoEsquerdo h1 {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 950px) {
+
+    /* Logo */
+
+    header .logo {
+        height: 150%;
+    }
+
+    /* Menu hamburguer */
+
+    header .botaoMenu {
+        display: flex;
+    }
+
+    header nav {
+        position: fixed;
+        background-color: var(--cinza245);
+        top: 0;
+        bottom: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 3rem;
+        width: 100%;
+        right: -100%;
+        transition: right 0.5s;
+        z-index: 2;
+    }
+
+    header .topoMenu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    header .fecharMenu {
+        border: none;
+        background-color: transparent;
+        color: var(--vermelho);
+        cursor: pointer;
+    }
+
+    /* Menu Dropdown */
+
+    header .Cadastre-se,
+    .Acessar {
+        display: flex;
+    }
+
+    .menulogin {
+        display: none;
+    }
+
+    /* Cabeçalho */
+
+    header a {
+        color: var(--cinza100);
+    }
+
+    header nav a {
+        border-bottom: 1px solid var(--cinza220);
+        display: flex;
+        width: 100%;
+        padding: 1rem;
+        transition: background 0.5s;
+    }
+
+    header nav a:hover {
+        background-color: var(--azul-c-2);
+    }
+
+    header .creditos {
+        display: block;
+        margin-top: 2rem;
+    }
+
+    /* Main */
+
+    .indexPrincipal {
+        flex-direction: column;
+    }
+
+    /* Card */
+
+    .containerViagens {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 855px) {
+
+    /* Card escolher tipo cadastro */
+
+    .containerCard {
+        gap: 5rem;
+    }
+}
+
+@media screen and (max-width: 810px) {
+
+    /* Card escolher tipo cadastro */
+
+    .containerCard {
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    /* Banner Slides */
+
+    .arrow {
+        font-size: 2.2rem;
+        padding: 0.8rem;
+    }
+
+    .dot {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    /* Card */
+
+    .containerViagens {
+        grid-template-columns: 1fr;
+    }
+}

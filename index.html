@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR Turismos</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body class="corFundo">
+
+    <header>
+
+        <img class="logo" src="img/Logos/branca.png" alt="Logo">
+
+        <nav>
+
+            <div class="topoMenu">
+                <h4>Menu</h4>
+                <button class="fecharMenu">[ X ]</button>
+            </div>
+
+            <a href="index.html" class="risco">Início</a>
+            <a href="quemsomos.html">Quem somos</a>
+            <a href="index.html#secaoviagens">Viagens</a>
+            <div class="menulogin">
+                <button id="cadastro" onclick="abrirdropdown()">
+                    <a id="entrar">Entrar</a>
+                </button>
+                <div class="dropdown-entrar" id="dropdownentrar">
+                    <a href="cadastro.html">Cadastre-se</a>
+                    <a href="entrar.html">Acessar</a>
+                </div>
+            </div>
+            <a href="cadastro.html" class="Cadastre-se">Cadastre-se</a>
+            <a href="entrar.html" class="Acessar">Acessar</a>
+            <a href="contato.html">Contato</a>
+
+            <p class="creditos">
+                © <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.
+            </p>
+
+        </nav>
+
+        <button class="botaoMenu">
+
+            <div class="ret1"></div>
+            <div class="ret2"></div>
+            <div class="ret3"></div>
+
+        </button>
+
+    </header>
+
+    <p class="slogan">O mundo é seu próximo destino!</p>
+
+    <section class="banner">
+
+        <div class="slider">
+
+            <div class="slides">
+                <img src="img/slide/Honolulu,United States editada.jpg" alt="Slide 1">
+                <img src="img/slide/ilhabela editada.jpg" alt="Slide 2">
+                <img src="img/slide/positano.jpg" alt="Slide 3">
+                <img src="img/slide/Moorea,French Polynesia editada.jpg" alt="Slide 4">
+                <img src="img/slide/vegas editada.jpg" alt="Slide 5">
+                <img src="img/slide/Gray Rocky Mountain, ITALY editada.jpg" alt="Slide 6">
+                <img src="img/slide/asia singapura.jpg" alt="Slide 7">
+            </div>
+
+            <button class="arrow prev">&#10094;</button>
+            <button class="arrow next">&#10095;</button>
+
+            <div class="dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+                <span class="dot" data-index="5"></span>
+                <span class="dot" data-index="6"></span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <main class="indexPrincipal">
+
+        <section class="viagens" id="secaoviagens">
+
+            <div class="containerViagens">
+
+                <div class="card">
+                    <img src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg" alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Rio de Janeiro</h3>
+                    <h3 class="tituloViagem">País: Brasil</h3>
+                    <h3 class="tituloViagem">Ida: 15/08/2025</h3>
+                    <h3 class="tituloViagem">Volta: 22/08/2025</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Saiba Mais</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/ilhabela/Ilhabela, Brazil editada.jpg" alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Ilhabela</h3>
+                    <h3 class="tituloViagem">País: Brasil</h3>
+                    <h3 class="tituloViagem">Ida: 20/06/2025</h3>
+                    <h3 class="tituloViagem">Volta: 27/06/2025</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Mais Informações</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/teormina/Teormina,Sicily,Italy editada.jpg" alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Teormina, Sicily</h3>
+                    <h3 class="tituloViagem">País: Italy</h3>
+                    <h3 class="tituloViagem">Ida: 10/05/2025</h3>
+                    <h3 class="tituloViagem">Volta: 17/05/2025</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Ver Detalhes</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/Barra do cunhaú/Barra do Cunhaú, Rio Grande do Norte, Brasil editada.jpg"
+                        alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Barra do cunhaú</h3>
+                    <h3 class="tituloViagem">País: Brasil</h3>
+                    <h3 class="tituloViagem">Ida: 07/02/2026</h3>
+                    <h3 class="tituloViagem">Volta: 14/02/2026</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/Moorea,French Polynesia/Moorea,French Polynesia editada.jpg" alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Moorea, French</h3>
+                    <h3 class="tituloViagem">País: Polynesia</h3>
+                    <h3 class="tituloViagem">Ida: 22/01/2026</h3>
+                    <h3 class="tituloViagem">Volta: 29/01/2026</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Agendar</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/Honolulu/Honolulu,United States editada.jpg" alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Honolulu</h3>
+                    <h3 class="tituloViagem">País: Unitad States</h3>
+                    <h3 class="tituloViagem">Ida: 12/12/2025</h3>
+                    <h3 class="tituloViagem">volta: 19/12/2025</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Agendar</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/Positano/Positano,Italy editada.jpg" alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Positano</h3>
+                    <h3 class="tituloViagem">País: Italy</h3>
+                    <h3 class="tituloViagem">Ida: 04/11/2025</h3>
+                    <h3 class="tituloViagem">Volta: 11/11/2025</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Agendar</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/las vegas/Las Vegas,USA editada.jpg" alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Las Vegas</h3>
+                    <h3 class="tituloViagem">País: USA</h3>
+                    <h3 class="tituloViagem">Ida: 18/10/2025</h3>
+                    <h3 class="tituloViagem">Volta: 25/10/2025</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Agendar</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/Gray rocky mountain, italy/Gray Rocky Mountain, ITALY editada.jpg"
+                        alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Gray Rocky Mountain</h3>
+                    <h3 class="tituloViagem">País: Italy</h3>
+                    <h3 class="tituloViagem">Ida: 09/09/2025</h3>
+                    <h3 class="tituloViagem">Volta: 16/09/2025</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Agendar</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/Lagos portugal/Lagos, Portugal editada.jpg" alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Lagos</h3>
+                    <h3 class="tituloViagem">País: Portugal</h3>
+                    <h3 class="tituloViagem">Ida: 25/07/2025</h3>
+                    <h3 class="tituloViagem">Volta: 01/08/2025</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Agendar</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/Singapura asia/Singapore, sudeste Asia  editada.jpg" alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Singapore</h3>
+                    <h3 class="tituloViagem">País: Sudeste Ásia</h3>
+                    <h3 class="tituloViagem">Ida: 03/06/2025</h3>
+                    <h3 class="tituloViagem">Volta: 10/06/2025</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Agendar</button>
+                </div>
+
+                <div class="card">
+                    <img src="img/stresa, italy/Stresa, Piedmont, Italy editada.jpg" alt="Imagem viagem">
+                    <h3 class="tituloViagem">Local: Stresa, Piedmont</h3>
+                    <h3 class="tituloViagem">País: Italy</h3>
+                    <h3 class="tituloViagem">Ida: 15/05/2025</h3>
+                    <h3 class="tituloViagem">Volta: 22/05/2025</h3>
+                    <p>R$1.000,00</p>
+                    <button class="btnagenda">Agendar</button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="style/script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR Turismos</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body class="corFundo">
+    <header>
+
+        <img class="logo" src="img/Logos/branca.png" alt="Logo">
+
+        <nav>
+
+            <div class="topoMenu">
+                <h4>Menu</h4>
+                <button class="fecharMenu">[ X ]</button>
+            </div>
+
+            <a href="index.html">Início</a>
+            <a href="quemsomos.html">Quem somos</a>
+            <a href="index.html#secaoviagens">Viagens</a>
+            <div class="menulogin">
+                <button id="cadastro" onclick="abrirdropdown()">
+                    <a id="entrar" class="risco">Entrar</a>
+                </button>
+                <div class="dropdown-entrar" id="dropdownentrar">
+                    <a href="cadastro.html">Cadastre-se</a>
+                    <a href="entrar.html">Acessar</a>
+                </div>
+            </div>
+            <a href="cadastro.html" class="Cadastre-se">Cadastre-se</a>
+            <a href="entrar.html" class="Acessar">Acessar</a>
+            <a href="contato.html">Contato</a>
+
+            <p class="creditos">
+                © <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.
+            </p>
+
+        </nav>
+
+        <button class="botaoMenu">
+
+            <div class="ret1"></div>
+            <div class="ret2"></div>
+            <div class="ret3"></div>
+
+        </button>
+
+    </header>
+
+    <main>
+        <section class="containerCard">
+
+            <div class="cardCadastro">
+                <ion-icon class="icone" name="person-circle-outline"></ion-icon>
+                <h1>Pessoa Física</h1>
+                <h2>Quer viajar com conforto, segurança e economia?</h2>
+                <h3>Cadastre-se como Pessoa Física e tenha acesso às melhores ofertas, destinos exclusivos e um
+                    atendimento feito para você.</h3>
+                <a href="cadastro-fisica.html">Cadastrar-se</a>
+            </div>
+
+            <div class="cardCadastro">
+                <ion-icon class="icone" name="business-outline"></ion-icon>
+                <h1>Pessoa Jurídica</h1>
+                <h2>Tem uma agência, empresa de turismo ou deseja vender suas viagens conosco?</h2>
+                <h3>Cadastre-se como Pessoa Jurídica para divulgar e vender suas viagens em nossa plataforma. Conte com
+                    suporte profissional e alcance novos clientes.</h3>
+                <a href="cadastro-juridica.html">Cadastrar-se</a>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="style/script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

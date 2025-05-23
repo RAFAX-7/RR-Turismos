@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR Turismos</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body class="corFundo">
+    <header>
+
+        <img class="logo" src="img/Logos/branca.png" alt="Logo">
+
+        <nav>
+
+            <div class="topoMenu">
+                <h4>Menu</h4>
+                <button class="fecharMenu">[ X ]</button>
+            </div>
+
+            <a href="index.html">Início</a>
+            <a href="quemsomos.html">Quem somos</a>
+            <a href="index.html#secaoviagens">Viagens</a>
+            <div class="menulogin">
+                <button id="cadastro" onclick="abrirdropdown()">
+                    <a id="entrar" class="risco">Entrar</a>
+                </button>
+                <div class="dropdown-entrar" id="dropdownentrar">
+                    <a href="cadastro.html">Cadastre-se</a>
+                    <a href="entrar.html">Acessar</a>
+                </div>
+            </div>
+            <a href="cadastro.html" class="Cadastre-se">Cadastre-se</a>
+            <a href="entrar.html" class="Acessar">Acessar</a>
+            <a href="contato.html">Contato</a>
+
+            <p class="creditos">
+                © <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.
+            </p>
+
+        </nav>
+
+        <button class="botaoMenu">
+
+            <div class="ret1"></div>
+            <div class="ret2"></div>
+            <div class="ret3"></div>
+
+        </button>
+
+    </header>
+
+    <main class="maincadastro">
+        <div class="form-container">
+            <h2>Cadastre-se</h2>
+            <form id="formCadastro" action="#" method="post">
+                <label for="nome">Nome Comercial:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">CPF ou CNPJ:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+
+                <label for="confirmarsenha">Confirmar Senha:</label>
+                <input type="password" id="confirmarsenha" name="confirmarsenha" required>
+
+                <button type="submit">Cadastrar-se</button>
+
+                <div id="mensagensErro" class="mensagem"></div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footerCadastro">
+        <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="style/script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

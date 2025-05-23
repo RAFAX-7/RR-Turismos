@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR Turismos</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body class="corFundo">
+    <header>
+
+        <img class="logo" src="img/Logos/branca.png" alt="Logo">
+
+        <nav>
+
+            <div class="topoMenu">
+                <h4>Menu</h4>
+                <button class="fecharMenu">[ X ]</button>
+            </div>
+
+            <a href="index.html">Início</a>
+            <a href="quemsomos.html">Quem somos</a>
+            <a href="index.html#secaoviagens">Viagens</a>
+            <div class="menulogin">
+                <button id="cadastro" onclick="abrirdropdown()">
+                    <a id="entrar">Entrar</a>
+                </button>
+                <div class="dropdown-entrar" id="dropdownentrar">
+                    <a href="cadastro.html">Cadastre-se</a>
+                    <a href="entrar.html">Acessar</a>
+                </div>
+            </div>
+            <a href="cadastro.html" class="Cadastre-se">Cadastre-se</a>
+            <a href="entrar.html" class="Acessar">Acessar</a>
+            <a href="contato.html" class="risco">Contato</a>
+
+            <p class="creditos">
+                © <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.
+            </p>
+
+        </nav>
+
+        <button class="botaoMenu">
+
+            <div class="ret1"></div>
+            <div class="ret2"></div>
+            <div class="ret3"></div>
+
+        </button>
+
+    </header>
+
+    <form class="formContato" method="post" action="">
+        <h1 class="tituloContato">Fale Conosco</h1>
+        <p class="complementoTitulo">Preencha os campos a seguir para solicitar informações ou receber contato via e-mail: </p>
+        
+        <p class="obrigatorio">*campos obrigatórios</p>
+
+        <label for="nome">Nome Completo:<span class="obrigatorio">*</span></label>
+        <input type="text" id="nome" name="nome" placeholder="Por favor, digite seu nome completo" required>
+        
+        <label for="empresa">Empresa:<span class="obrigatorio"></span></label>
+        <input type="text" id="empresa" name="empresa" placeholder="Por favor, digite o nome da empresa (opcional)">
+
+        <label for="cidade">Cidade:<span class="obrigatorio">*</span></label>
+        <input type="text" id="cidade" name="cidade" placeholder="Por favor, digite sua cidade" required="">
+
+        <label for="email">E-mail para contato:<span class="obrigatorio">*</span></label>
+        <input type="email" id="email" name="email" placeholder="Por favor, digite seu e-mail" required="">
+
+        <label for="telefone">Telefone para contato:<span class="obrigatorio">*</span></label>
+        <input type="tel" id="telefone" name="telefone" placeholder="Por favor, digite seu telefone" required=""> 
+
+        <label for="assunto">Assunto:<span class="obrigatorio">*</span></label>
+        <select name="assunto" id="assunto">
+            <option value="Elogio" selected>Elogio ou sugestão</option>
+            <option value="Critica">Críticas e Reclamações</option>
+            <option value="Outros">Outros assuntos</option>
+        </select>
+
+        <label for="mensagem">Mensagem:<span class="obrigatorio">*</span></label>
+        <textarea name="mensagem" id="mensagem" placeholder="Por favor, digite sua mensagem..." required=""></textarea>
+
+        <p class="msgerro obrigatorio"></p>
+        
+        <div class="formRodape">
+            <!-- <div class="g-recaptcha" data-sitekey="6LdLqZYlAAAAACe72P0Qk-P5JpaXE8wOoGEr4hnn"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-isj6kked0x02" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdLqZYlAAAAACe72P0Qk-P5JpaXE8wOoGEr4hnn&amp;co=aHR0cHM6Ly9ndXN0YXZvZGVsdmVjaGlvLmNvbS5icjo0NDM.&amp;hl=pt-BR&amp;v=jt8Oh2-Ue1u7nEbJQUIdocyd&amp;size=normal&amp;cb=dd5rpragl1hf"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div> -->
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+
+    <footer>
+        <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="style/script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
