@@ -142,7 +142,7 @@ nav a::before {
     position: absolute;
     left: 50%;
     bottom: 0;
-    height: 2px;
+    height: 1.5px;
     width: 0;
     background-color: var(--azul-c-2);
     transition: 0.3s;
@@ -384,13 +384,13 @@ header .botaoMenu:hover .ret3 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 4rem;
-    margin: 1.5rem 0;
+    margin: 1.2rem 0;
     width: 100%;
     justify-content: center;
 }
 
 .containerViagens .card {
-    width: 90%;
+    width: 100%;
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
@@ -510,6 +510,17 @@ header .botaoMenu:hover .ret3 {
 
 /* Cadastro */
 
+.form-container .icone {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.form-container .iconesolo {
+    margin-left: -3rem;
+}
+
 .containerCard {
     display: flex;
     justify-content: center;
@@ -573,7 +584,7 @@ header .botaoMenu:hover .ret3 {
     font-size: 6rem;
 }
 
-/* Cadastro Pessoa Física */
+/* Cadastro Pessoa Física e juridica*/
 
 .maincadastro {
     display: flex;
@@ -584,11 +595,16 @@ header .botaoMenu:hover .ret3 {
 
 .form-container {
     background-color: white;
-    padding: 30px 40px;
+    padding: 50px 40px;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+   transition: transform 0.3s, box-shadow 0.3s;
     width: 100%;
     max-width: 400px;
+    overflow: unset;
+}
+.form-container:hover{
+     box-shadow: 0 20px 25px rgba(40, 40, 40, 0.5);
 }
 
 .form-container h2 {
@@ -597,6 +613,7 @@ header .botaoMenu:hover .ret3 {
     color: var(--cinza90);
     font-size: 2.5rem;
 }
+
 
 form label {
     display: block;
@@ -807,7 +824,9 @@ footer p {
 
     .containerViagens {
         grid-template-columns: repeat(2, 1fr);
+
     }
+    
 }
 
 @media screen and (max-width: 855px) {
@@ -843,11 +862,43 @@ footer p {
     }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 500px) {
 
     /* Card */
 
     .containerViagens {
-        grid-template-columns: 1fr;
+      grid-template-columns: 1fr;
+        
     }
+  
 }
+                /*Cards pessoa fisica e juridica*/
+@media screen and (max-width: 600px) {
+    
+.form-container {
+   
+    padding: 20px 60px;
+      width: 100%;
+    max-width: 350px;
+}
+
+
+
+
+}
+@media screen and (max-width: 480px) {
+    
+.form-container {
+   
+    padding: 25px 60px;
+      width: 100%;
+    max-width: 320px;
+    max-height: 55vh;
+    overflow: hidden;
+}
+
+
+
+
+}
+
