@@ -595,16 +595,17 @@ header .botaoMenu:hover .ret3 {
 
 .form-container {
     background-color: white;
-    padding: 50px 40px;
+    padding: 5rem 4rem;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-   transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
     width: 100%;
-    max-width: 400px;
+    max-width: 40rem;
     overflow: unset;
 }
-.form-container:hover{
-     box-shadow: 0 20px 25px rgba(40, 40, 40, 0.5);
+
+.form-container:hover {
+    box-shadow: 0 20px 25px rgba(40, 40, 40, 0.5);
 }
 
 .form-container h2 {
@@ -689,6 +690,100 @@ form input:focus {
 }
 
 /* Contato */
+.formContato {
+    display: flex;
+    flex-direction: column;
+    padding: 6rem 5%;
+}
+
+.formContato .tituloContato {
+    font-size: 4rem;
+    color: var(--cinza90);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.formContato .complementoTitulo {
+    font-size: 2rem;
+    color: var(--cinza100);
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.formContato .obrigatorio {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+.formContato label {
+    font-size: 2rem;
+    color: var(--cinza100);
+    margin-bottom: 1rem;
+}
+
+.formContato input {
+    width: 100%;
+    border: 1px solid var(--cinza-c);
+    border-radius: 6px;
+    font-size: 1.5rem;
+    transition: border-color 0.3s;
+}
+
+.formContato input:focus {
+    border-color: var(--azul);
+    outline: none;
+}
+
+.formContato select {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--cinza-c);
+    font-size: 1.5rem;
+    transition: border-color 0.3s;
+}
+
+.formContato select:focus {
+    border-color: var(--azul);
+    outline: none;
+}
+
+.formContato textarea {
+    width: 100%;
+    padding: 7rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--cinza-c);
+    border-radius: 6px;
+    font-size: 1.5rem;
+    transition: border-color 0.3s;
+    resize: none;
+
+}
+.formContato .formRodape{
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.formContato .formRodape input{
+    border: none;
+    width: 7rem;
+    background-color: var(--azul-c-3);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+    
+}
+.formContato .formRodape input:hover{
+       background-color: var(--azul-c);
+       
+}
+
+
 
 
 /* Rodapé */
@@ -826,7 +921,7 @@ footer p {
         grid-template-columns: repeat(2, 1fr);
 
     }
-    
+
 }
 
 @media screen and (max-width: 855px) {
@@ -867,38 +962,39 @@ footer p {
     /* Card */
 
     .containerViagens {
-      grid-template-columns: 1fr;
-        
+        grid-template-columns: 1fr;
+
     }
-  
+
 }
-                /*Cards pessoa fisica e juridica*/
+
+/*Cards pessoa fisica e juridica*/
 @media screen and (max-width: 600px) {
-    
-.form-container {
-   
-    padding: 20px 60px;
-      width: 100%;
-    max-width: 350px;
-}
+
+    .form-container {
+
+        padding: 20px 60px;
+        width: 100%;
+        max-width: 350px;
+    }
 
 
 
 
 }
+
 @media screen and (max-width: 480px) {
-    
-.form-container {
-   
-    padding: 25px 60px;
-      width: 100%;
-    max-width: 320px;
-    max-height: 55vh;
-    overflow: hidden;
-}
+
+    .form-container {
+
+        padding: 25px 60px;
+        width: 100%;
+        max-width: 320px;
+        max-height: 55vh;
+        overflow: hidden;
+    }
 
 
 
 
 }
-

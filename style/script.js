@@ -174,4 +174,40 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
     startAutoSlide();
 }
 
- 
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Nome
+    const inputNome = document.getElementById('nome');
+    const iconNome = document.getElementById('icon-nome');
+    inputNome.addEventListener('focus', () => {
+        iconNome.setAttribute('trigger', 'loop');
+        setTimeout(() => iconNome.removeAttribute('trigger'), 1000);
+    });
+
+    // Email (CPF ou CNPJ)
+    const inputEmail = document.getElementById('email');
+    const iconEmail = document.getElementById('icon-email');
+    inputEmail.addEventListener('focus', () => {
+        iconEmail.setAttribute('trigger', 'loop');
+        setTimeout(() => iconEmail.removeAttribute('trigger'), 1000);
+    });
+
+    // Senha
+    const inputSenha = document.getElementById('senha');
+    const iconSenha = document.getElementById('icon-senha');
+    inputSenha.addEventListener('focus', () => {
+        iconSenha.setAttribute('trigger', 'loop');
+        setTimeout(() => iconSenha.removeAttribute('trigger'), 1000);
+    });
+
+    // Confirmar Senha
+    const inputConfirmar = document.getElementById('confirmarsenha');
+    const iconConfirmar = document.getElementById('icon-confirmarsenha');
+    inputConfirmar.addEventListener('focus', () => {
+        iconConfirmar.setAttribute('trigger', 'loop');
+        setTimeout(() => iconConfirmar.removeAttribute('trigger'), 1000);
+    });
+});
+

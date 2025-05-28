@@ -55,31 +55,29 @@
     <main class="maincadastro">
         <div class="form-container">
             <h2>Cadastre-se</h2>
+   <form id="formCadastro" action="#" method="post">
 
-            <form id="formCadastro" action="#" method="post">
 
-<script src="https://cdn.lordicon.com/lordicon.js"></script>
 
                 <div class="icone">
-                    <lord-icon class="iconesolo" src="https://cdn.lordicon.com/kdduutaw.json" trigger="hover"
-                        state="hover-looking-around" colors="primary:#1b1091,secondary:#1663c7"
-                        style="width:40px;height:40px">
+                    <lord-icon id="icon-nome" class="iconesolo"  src="https://cdn.lordicon.com/kdduutaw.json"
+                       state="hover-looking-around" colors="primary:#0a41e7,secondary:#3d9bd2"
+                        style="width:40px;height:40px"> 
                     </lord-icon>
                     <input type="text" id="nome" name="nome" placeholder="Nome:" required>
                 </div>
 
 
                 <div class="icone">
-                    <lord-icon class="iconesolo" src="https://cdn.lordicon.com/dhzbkemf.json" trigger="hover"
-                        state="morph-close" colors="primary:#1b1091,secondary:#1663c7"
-                        style="width:40px;height:40px">
+                    <lord-icon id="icon-email" class="iconesolo" src="https://cdn.lordicon.com/apmrcxtj.json" state="morph-close"
+                        colors="primary:#0a41e7,secondary:#3d9bd2" style="width:40px;height:40px">
                     </lord-icon>
-                    <input type="email" id="email" name="email" placeholder="E-mail:" required>
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
                 </div>
 
 
                 <div class="icone">
-                    <lord-icon class="iconesolo" src="https://cdn.lordicon.com/fikcyfpp.json" trigger="hover"
+                    <lord-icon id="icon-senha" class="iconesolo" src="https://cdn.lordicon.com/fikcyfpp.json"
                         colors="primary:#1b1091,secondary:#1663c7" style="width:40px;height:40px">
                     </lord-icon>
                     <input type="password" id="senha" name="senha" placeholder="Senha:" required>
@@ -87,7 +85,7 @@
 
 
                 <div class="icone">
-                    <lord-icon class="iconesolo" src="https://cdn.lordicon.com/fikcyfpp.json" trigger="hover"
+                    <lord-icon id="icon-confirmarsenha" class="iconesolo" src="https://cdn.lordicon.com/fikcyfpp.json"
                         colors="primary:#1b1091,secondary:#1663c7" style="width:40px;height:40px">
                     </lord-icon>
                     <input type="password" id="confirmarsenha" name="confirmarsenha" placeholder="Confirmar senha:"
@@ -108,7 +106,7 @@
     </footer>
 
     <script src="style/script.js"></script>
-
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
