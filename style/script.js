@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const iconNome = document.getElementById('icon-nome');
     inputNome.addEventListener('focus', () => {
         iconNome.setAttribute('trigger', 'loop');
-        setTimeout(() => iconNome.removeAttribute('trigger'), 1000);
+        setTimeout(() => iconNome.removeAttribute('trigger'), 2000);
     });
 
     // Email (CPF ou CNPJ)
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const iconEmail = document.getElementById('icon-email');
     inputEmail.addEventListener('focus', () => {
         iconEmail.setAttribute('trigger', 'loop');
-        setTimeout(() => iconEmail.removeAttribute('trigger'), 1000);
+        setTimeout(() => iconEmail.removeAttribute('trigger'), 400);
     });
 
     // Senha
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const iconSenha = document.getElementById('icon-senha');
     inputSenha.addEventListener('focus', () => {
         iconSenha.setAttribute('trigger', 'loop');
-        setTimeout(() => iconSenha.removeAttribute('trigger'), 1000);
+        setTimeout(() => iconSenha.removeAttribute('trigger'), 900);
     });
 
     // Confirmar Senha
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const iconConfirmar = document.getElementById('icon-confirmarsenha');
     inputConfirmar.addEventListener('focus', () => {
         iconConfirmar.setAttribute('trigger', 'loop');
-        setTimeout(() => iconConfirmar.removeAttribute('trigger'), 1000);
+        setTimeout(() => iconConfirmar.removeAttribute('trigger'), 900);
     });
 });
 
