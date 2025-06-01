@@ -390,7 +390,7 @@ header .botaoMenu:hover .ret3 {
 }
 
 .containerViagens .card {
-    width: 90%;
+    width: 100%;
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
