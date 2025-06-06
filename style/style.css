@@ -772,12 +772,13 @@ form input:focus {
 .formContato .formRodape {
     display: flex;
     justify-content: flex-end;
+    margin-top: -4rem;
 
 }
 
 .formContato .formRodape input {
     border: none;
-    width: 7rem;
+    width: 8rem;
     background-color: var(--azul-c-3);
     color: white;
     cursor: pointer;
