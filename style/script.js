@@ -172,12 +172,50 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
 
     updateSlide(currentIndex);
     startAutoSlide();
+
+    const modal = document.getElementById('modal');
+    const modalTitulo = document.querySelector('.modal-titulo');
+    const modalDetalhes = document.getElementById('modal-detalhes');
+    const closeBtn = document.getElementById('closeModal');
+    const closeFooterBtn = document.getElementById('closeBtn');
+
+    // Função para abrir modal com dados do card
+    function abrirModalComCard(card) {
+        const local = card.querySelectorAll('.tituloViagem')[0].innerText;
+        const pais = card.querySelectorAll('.tituloViagem')[1].innerText;
+        const ida = card.querySelectorAll('.tituloViagem')[2].innerText;
+        const volta = card.querySelectorAll('.tituloViagem')[3].innerText;
+        const preco = card.querySelector('.preco').innerText;
+
+        modalTitulo.innerText = local; // Título será o "Local"
+        modalDetalhes.innerHTML = `
+    <strong>${pais}</strong><br>
+    <strong>${ida}</strong><br>
+    <strong>${volta}</strong><br>
+    <strong>Preço:</strong> ${preco}
+  `;
+
+        modal.style.display = 'flex';
+    }
+
+    // Adiciona evento a todos os botões
+    document.querySelectorAll('.btnagenda').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const card = btn.closest('.card');
+            abrirModalComCard(card);
+        });
+    });
+
+    // Fechar modal
+    closeBtn.addEventListener('click', () => modal.style.display = 'none');
+    closeFooterBtn.addEventListener('click', () => modal.style.display = 'none');
+
 }
 
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Nome
     const inputNome = document.getElementById('nome');
     const iconNome = document.getElementById('icon-nome');
