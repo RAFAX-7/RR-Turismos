@@ -478,7 +478,7 @@ header .botaoMenu:hover .ret3 {
 .Local {
     align-items: center;
     justify-content: center;
-    background-color: var(--cinza220);
+    background-color: var(--azul-c-4);
 }
 
 .containerViagens .card {
@@ -904,12 +904,27 @@ footer p {
 
 /* Index Principal */
 
+@media screen and (max-width: 1290px) {
+
+     /* Modal Viagens */
+
+    .modal-conteudo {
+        max-width: 60%;
+    }    
+}
+
 @media screen and (max-width: 1250px) {
 
     /* Card */
 
     .containerViagens {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Modal Viagens */
+
+    .modal-conteudo {
+        max-width: 60%;
     }
 }
 
@@ -928,6 +943,21 @@ footer p {
 
     .ladoEsquerdo h1 {
         justify-content: center;
+    }
+
+      /* Modal Viagens */
+
+    .modal-conteudo {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    /* Modal Viagens */
+
+    .modal-conteudo {
+        max-width: 70%;
     }
 }
 
@@ -1054,6 +1084,30 @@ footer p {
         width: 1.2rem;
         height: 1.2rem;
     }
+
+    /* Modal Viagens */
+
+    .modal-conteudo {
+        max-width: 80%;
+    }
+
+    .modal-titulo {
+        font-size: 16px;
+    }
+
+    .modal-body {
+        padding: 15px;
+    }
+
+    .modal-header,
+    .modal-footer {
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -1087,5 +1141,32 @@ footer p {
         max-width: 320px;
         max-height: 55vh;
         overflow: hidden;
+    }
+}
+
+@media (max-width: 400px) {
+
+    /* Modal Viagens */
+
+    .modal-conteudo {
+        max-width: 90%;
+    }
+
+    .modal-titulo {
+        font-size: 14px;
+    }
+
+    .modal-body {
+        padding: 10px;
+    }
+
+    .modal-header,
+    .modal-footer {
+        padding: 8px;
+    }
+
+    .btn {
+        font-size: 13px;
+        padding: 6px 12px;
     }
 }
