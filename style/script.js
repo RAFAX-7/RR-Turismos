@@ -173,6 +173,8 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
     updateSlide(currentIndex);
     startAutoSlide();
 
+    // Modal viagem
+
     const modal = document.getElementById('modal');
     const modalTitulo = document.querySelector('.modal-titulo');
     const modalDetalhes = document.getElementById('modal-detalhes');
@@ -189,11 +191,7 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
 
         modalTitulo.innerText = local; // Título será o "Local"
         modalDetalhes.innerHTML = `
-    <strong>${pais}</strong><br>
-    <strong>${ida}</strong><br>
-    <strong>${volta}</strong><br>
-    <strong>Preço:</strong> ${preco}
-  `;
+       `;
 
         modal.style.display = 'flex';
     }

@@ -3,7 +3,7 @@
     --azul-c: rgb(10, 65, 231);
     --azul-c-2: rgba(122, 173, 255, 0.822);
     --azul-c-3: rgb(0, 110, 255);
-    --azul-c-4: rgba(148, 205, 255, 0.322);
+    --azul-c-4: rgba(148, 205, 255, 0.575);
     --azul-e: rgb(0, 17, 70);
     --azul-e-2: rgb(9, 15, 194);
     --preto: rgba(0, 0, 0, 0.2);
@@ -71,7 +71,7 @@ html {
 
 .modal-header {
     padding: 15px;
-    background-color: var(--cinza230);
+    background-color: var(--azul-c-4);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -92,14 +92,51 @@ html {
 }
 
 .modal-body {
+    font-size: 1.8rem;
     padding: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
-/* .modal-detalhes {} */
+.gridPai{
+   display: grid;
+   width: 100%;
+   height: 40rem;
+   border: 1px solid red;
+   margin-top: 2rem;
+   grid-template-columns: 2fr 1fr 1fr;
+   grid-template-rows: 10fr 3fr 1fr 2fr 1fr;
+   grid-template-areas: "f1";
+   gap: 1rem;
+   padding: 1rem;
+}
+
+.gridPai *{
+   border: 1px solid blue;
+}
+
+.gridPai .f1 {
+    grid-area: f1;
+}
+
+.gridPai .f2 {
+    grid-area: f2;
+}
+
+.gridPai .f3 {
+    grid-area: f3;
+}
+
+.gridPai .f4 {
+    grid-area: f4;
+}
+
+.modal-conteudo hr {
+    margin: 0 0.5rem; 
+}
 
 .modal-footer {
     padding: 15px;
-    background-color: var(--cinza230);
     display: flex;
     align-items: center;
     justify-content: end;
