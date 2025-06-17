@@ -1,3 +1,57 @@
+
+ 
+
+
+
+// Inclusão do ano dinamicamente    
+
+let spansAno = document.querySelectorAll(".AnoAtual");
+
+let novadata = new Date();
+
+let ano = novadata.getFullYear();
+
+spansAno.forEach(function (span) {
+    span.innerHTML = ano;
+});
+
+// Dropdown Login
+
+function abrirdropdown() {
+    const menu = document.getElementById('dropdownentrar');
+    menu.classList.toggle('show');
+
+    document.addEventListener('click', function (event) {
+        const menuContainer = document.querySelector('.menulogin');
+        if (!menulogin.contains(event.target)) {
+            menu.classList.remove('show');
+        }
+    });
+}
+
+// Menu hamburguer
+
+let botaomenu = document.querySelector(".botaoMenu");
+botaomenu.addEventListener("click", abrirmenu);
+
+let menu = document.querySelector("header nav");
+
+let botaofecharmenu = document.querySelector(".fecharMenu");
+botaofecharmenu.addEventListener("click", fecharmenu);
+
+function abrirmenu() {
+    menu.style.right = "0";
+}
+
+function fecharmenu() {
+    menu.style.right = "-100%";
+}
+
+// Verificação cadastro 
+
+if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location.pathname.endsWith("cadastro-juridica.html") || window.location.pathname.endsWith("contato.html")) {
+
+    
 //------------------------------mascara telefone-----------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -69,9 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
-//-----------------------------mascara CPF/CNPJ-----------------------------------
+    //-----------------------------mascara CPF/CNPJ-----------------------------------
 function aplicarMascaraCpfCnpj(valor) {
     // Remove tudo que não é número
     valor = valor.replace(/\D/g, '');
@@ -121,56 +173,6 @@ document.addEventListener('DOMContentLoaded', function () {
         nomeInput.value = valor;
     });
 });
-
-
-// Inclusão do ano dinamicamente    
-
-let spansAno = document.querySelectorAll(".AnoAtual");
-
-let novadata = new Date();
-
-let ano = novadata.getFullYear();
-
-spansAno.forEach(function (span) {
-    span.innerHTML = ano;
-});
-
-// Dropdown Login
-
-function abrirdropdown() {
-    const menu = document.getElementById('dropdownentrar');
-    menu.classList.toggle('show');
-
-    document.addEventListener('click', function (event) {
-        const menuContainer = document.querySelector('.menulogin');
-        if (!menulogin.contains(event.target)) {
-            menu.classList.remove('show');
-        }
-    });
-}
-
-// Menu hamburguer
-
-let botaomenu = document.querySelector(".botaoMenu");
-botaomenu.addEventListener("click", abrirmenu);
-
-let menu = document.querySelector("header nav");
-
-let botaofecharmenu = document.querySelector(".fecharMenu");
-botaofecharmenu.addEventListener("click", fecharmenu);
-
-function abrirmenu() {
-    menu.style.right = "0";
-}
-
-function fecharmenu() {
-    menu.style.right = "-100%";
-}
-
-// Verificação cadastro 
-
-if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location.pathname.endsWith("cadastro-juridica.html")) {
-
     document.getElementById('formCadastro').addEventListener('submit', function (event) {
         event.preventDefault();
 
