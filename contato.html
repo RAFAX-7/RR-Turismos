@@ -56,10 +56,10 @@
         <h1 class="tituloContato">Fale Conosco </h1>
         <p class="complementoTitulo">Preencha os campos a seguir para solicitar informações ou receber contato via e-mail: </p>
         
-        <p class="obrigatorio">*campos obrigatórios</p>
+        <p class="obrigatorio">campos obrigatórios *</p>
 
         <label for="nome">Nome Completo:<span class="obrigatorio">*</span></label>
-        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+        <input  type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required=""> 
         
         <label for="empresa">Empresa:<span class="obrigatorio"></span></label>
         <input type="text" id="empresa" name="empresa" placeholder=" Digite o nome da empresa (opcional)">
@@ -96,8 +96,20 @@
         <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="style/script.js"></script>
+ <!-- INÍCIO VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <!-- FIM VLibras -->
 
+    <script src="style/script.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

@@ -57,9 +57,9 @@
 
 
             <div class="cardCadastro">
-                <lord-icon src="https://cdn.lordicon.com/kdduutaw.json" trigger="loop" delay="7000" stroke="bold"
-                    state="morph-group" colors="primary:#0a41e7,secondary:#3d9bd2" style="width:80px;height:80px">
-                </lord-icon>
+                <lord-icon src="https://cdn.lordicon.com/kdduutaw.json" trigger="boomerang" delay="2000" stroke="bold"
+                    state="morph-group" colors="primary:#0a41e7,secondary:#3d9bd2"
+                    style="width:80px;height:80px"></lord-icon>
 
                 <h1>Pessoa Física</h1>
                 <h2>Quer viajar com conforto, segurança e economia?</h2>
@@ -69,8 +69,8 @@
             </div>
 
             <div class="cardCadastro">
-                <lord-icon src="https://cdn.lordicon.com/oqhqyeud.json" trigger="loop" delay="7000" stroke="bold"
-                 colors="primary:#0a41e7,secondary:#3d9bd2"  style="width:80px;height:80px">
+                <lord-icon src="https://cdn.lordicon.com/oqhqyeud.json" trigger="boomerang" delay="2000" stroke="bold"
+                    colors="primary:#0a41e7,secondary:#3d9bd2" style="width:80px;height:80px">
                 </lord-icon>
 
                 <h1>Pessoa Jurídica</h1>
@@ -91,11 +91,25 @@
     <footer>
         <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
     </footer>
+    <!-- INÍCIO VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <!-- FIM VLibras -->
 
     <script src="style/script.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
 </body>
 
 </html>
