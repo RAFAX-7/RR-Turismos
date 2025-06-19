@@ -63,8 +63,8 @@ html {
     background-color: var(--cinza240);
     width: 100%;
     max-width: 50%;
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 10px;
+    overflow: auto;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     margin: 0 10px;
 }
@@ -103,7 +103,6 @@ html {
     display: grid;
     width: 100%;
     height: 100%;
-    /* border: 1px solid red; */
     margin-top: 2rem;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 2fr 1fr 2fr 2fr;
@@ -112,12 +111,14 @@ html {
         "f3 f4"
         "f5 f6"
         "f5 f6";
-    gap: 0.5rem;
+    gap: 1rem;
     padding: 1rem;
 }
 
-.gridPai * {
-    /* border: 1px solid blue; */
+.cardFTViagem {
+    border-radius: 10px;
+    background-color: var(--cinza225);
+    box-shadow: 0 2px 2px rgba(40, 40, 40, 0.5);
 }
 
 .gridPai .f1 {
@@ -127,21 +128,22 @@ html {
 .gridPai .f1 img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    border: 1px solid black;
-    padding: 0.5rem;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .gridPai .f2 {
     grid-area: f2;
     grid-row: 1;
     align-self: start;
+    background-color: var(--cinza225);
+    padding: 1rem;
+    border-radius: 100px;
+    box-shadow: 0 1px 1px rgba(40, 40, 40, 0.5);
 }
 
 .gridPai .f2 h4 {
     display: flex;
     justify-content: center;
-    border: 1px solid black;
 }
 
 .gridPai .f3 {
@@ -149,10 +151,9 @@ html {
     grid-row: 2;
     align-self: start;
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     justify-content: center;
-    border: 1px solid black;
-    padding: 0.5rem;
+    margin: 1rem 0;
 }
 
 .gridPai .f3 .foto1,
@@ -161,6 +162,8 @@ html {
 .foto4 {
     width: 20%;
     height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .gridPai .f3 .foto1 img,
@@ -171,34 +174,76 @@ html {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.gridPai .f3 .foto1 img:hover,
+.foto2 img:hover,
+.foto3 img:hover,
+.foto4 img:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
 }
 
 .gridPai .f4 {
     grid-area: f4;
     grid-row: 1;
     align-self: start;
-    margin-top: 3rem;
+    margin-top: 15%;
+    background-color: var(--cinza225);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(40, 40, 40, 0.5);
 }
 
 .gridPai .f4 p {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     text-align: center;
-    border: 1px solid black;
-    padding: 0.5rem;
 }
 
 .gridPai .f5 {
     grid-area: f5;
     grid-row: 2;
     align-self: end;
-    margin-top: 7rem;
+    margin-top: 1%;
 }
 
 .gridPai .f5 p {
     font-size: 1.5rem;
     border-bottom: 1px solid gray;
-    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.gridPai .f5 p .espacoicone {
+    margin: 0 0.5rem;
+}
+
+.gridPai .f5 span {
+    display: flex;
+    align-items: center;
+    color: var(--cinza50);
+}
+
+.gridPai .f5 span a {
+    color: var(--cinza50);
+    text-decoration: underline;
+    margin: 0 0.5rem;
+}
+
+.gridPai .f5 .iconeguia,
+.iconehotel,
+.iconecomida {
+    width: 6%;
+    margin: 0.5rem;
+}
+
+.gridPai .f5 .iconeida,
+.iconevolta {
+    width: 8%;
+    margin: 0 0.5rem;
 }
 
 .gridPai .f5 .guiaModal {
@@ -210,53 +255,116 @@ html {
     grid-area: f6;
     grid-row: 2;
     align-self: start;
-    border: 1px solid black;
-    padding: 0.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    background-color: var(--cinza225);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(40, 40, 40, 0.5);
 }
 
-.gridPai .f6 h5 {
-    margin: 0;
-    display: flex;
-    justify-content: center;
+.f6 h5 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
-.gridPai .f6 .check {
-    border: 1px solid black;
-    padding: 0.4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
+.f6 h5 span {
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: var(--cinza50);
+    margin-left: 5px;
 }
 
-.gridPai .f6 .datas {
-    font-size: 1.5rem;
-    color: #333;
-}
-
-.gridPai .f6 .passagem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70%;
-    height: 2.5rem;
-}
-
-.gridPai .f6 .passagem select {
+.box-reserva {
     width: 100%;
-    height: 100%;
-    border-radius: 5px;
+    border: 1px solid var(--cinza100);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
 }
 
-.modal-conteudo hr {
-    margin: 2rem;
+.datas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--cinza100);
+}
+
+.check {
+    padding: 1rem;
+    border-right: 1px solid var(--cinza100);
+}
+
+.check:last-child {
+    border-right: none;
+}
+
+.check label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--cinza50);
+    margin-bottom: 5px;
+}
+
+.check p {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.hospedes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.hospedes label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--cinza50);
+    cursor: pointer;
+}
+
+.hospedes p {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+#seta {
+    font-size: 2.5rem;
+    background-color: var(--cinza225);
+    color: var(--cinza50);
+    cursor: pointer;
+    border: none;
+}
+
+.dropdown {
+    display: none;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--cinza225);
+}
+
+.dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown ul li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.dropdown ul li:hover {
+    background-color: var(--cinza200);
 }
 
 .modal-footer {
-    padding: 15px;
+    padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: end;
@@ -273,12 +381,12 @@ html {
 }
 
 .btn {
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     border: none;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
-    margin: 5px;
+    margin: 2rem 0 0 5px;
 }
 
 /* Cor do Body */
@@ -424,7 +532,7 @@ nav a:hover::before {
     z-index: 1;
     display: none;
     position: absolute;
-    top: 8%;
+    top: 9%;
     background-color: var(--cinza245);
     box-shadow: 0 0.2rem 0.5rem var(--preto);
     border-radius: 0.4rem;

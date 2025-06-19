@@ -102,25 +102,27 @@
                         </div>
                         <div class="modal-body">
                             <section class="gridPai">
-                                <div class="f1">
-                                    <img src="img/Rio de Janeiro,Brazil.jpg" alt="">
-                                </div>
+                                <section class="cardFTViagem">
+                                    <div class="f1">
+                                        <img src="img/Rio de Janeiro,Brazil.jpg" alt="">
+                                    </div>
+                                    <div class="f3">
+                                        <div class="foto1">
+                                            <img src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg" alt="">
+                                        </div>
+                                        <div class="foto2">
+                                            <img src="img/Rio de janeiro/rio editada.jpg" alt="">
+                                        </div>
+                                        <div class="foto3">
+                                            <img src="img/Rio de janeiro/Rio2 editada.jpg" alt="">
+                                        </div>
+                                        <div class="foto4">
+                                            <img src="img/Rio de janeiro/rio3 editada.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </section>
                                 <div class="f2">
                                     <h4>Viagem ao Rio de Janeiro - RJ</h4>
-                                </div>
-                                <div class="f3">
-                                    <div class="foto1">
-                                        <img src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg" alt="">
-                                    </div>
-                                    <div class="foto2">
-                                        <img src="img/Rio de janeiro/rio editada.jpg" alt="">
-                                    </div>
-                                    <div class="foto3">
-                                        <img src="img/Rio de janeiro/Rio2 editada.jpg" alt="">
-                                    </div>
-                                    <div class="foto4">
-                                        <img src="img/Rio de janeiro/rio3 editada.jpg" alt="">
-                                    </div>
                                 </div>
                                 <div class="f4">
                                     <p>Conheça a Cidade Maravilhosa! Nossa viagem inclui paradas nos principais
@@ -132,35 +134,57 @@
                                 </div>
                                 <div class="f5">
                                     <p class="guiaModal">
-                                        <span class="texto">Guia: Rodinho mil grau</span>
-                                        <span class="avaliacao">*</span>
+                                        <span class="texto"><img class="iconeguia" src="img/Icones/Guia.png" alt="">
+                                            Guia: <a href="">Rodinho mil grau</a></span>
+                                        <span class="avaliacao">*5,5</span>
                                     </p>
-                                    <p>Hotel: Fiesta</p>
-                                    <p>Refeição: Pão com pão</p>
-                                    <p>Ida: Charrete</p>
-                                    <p>Volta: Apé</p>
+                                    <p><img class="iconehotel" src="img/Icones/Hotel.png" alt=""> Hotel:
+                                        <span class="espacoicone">Fiesta</span>
+                                    </p>
+                                    <p><img class="iconecomida" src="img/Icones/Refeição.png" alt=""> Refeição:
+                                        <span class="espacoicone">Pão com pão</span>
+                                    </p>
+                                    <p><img class="iconeida" src="img/Icones/Ida.png" alt=""> Ida: <span
+                                            class="espacoicone">Charrete</span>
+                                    </p>
+                                    <p><img class="iconevolta" src="img/Icones/Volta.png" alt=""> Volta:
+                                        <span class="espacoicone">Apé</span>
+                                    </p>
                                 </div>
                                 <div class="f6">
-                                    <h5>R$ 500,00 - Por Dia </h5>
-                                    <div class="check">
-                                        <div class="linha">
-                                            Check-in | Check-out
-                                        </div>
+                                    <h5 id="preco">R$ 500,00 <span>Por Dia</span></h5>
+                                    <div class="box-reserva">
                                         <div class="datas">
-                                            10/11/25 | 01/01/26
+                                            <div class="check">
+                                                <label>CHECK-IN</label>
+                                                <p>07/11/2025</p>
+                                            </div>
+                                            <div class="check">
+                                                <label>CHECKOUT</label>
+                                                <p>09/11/2025</p>
+                                            </div>
                                         </div>
-                                        <div class="passagem">
-                                            <select name="" id="">
-                                                <option value="">1 Passagem</option>
-                                                <option value="">2 Passagem</option>
-                                            </select>
+                                        <div class="hospedes">
+                                            <div>
+                                                <label>PASSAGENS</label>
+                                                <p id="qtdPassagem">1 passagem</p>
+                                            </div>
+                                            <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
+                                        </div>
+
+                                        <!-- Dropdown -->
+                                        <div id="dropdown" class="dropdown">
+                                            <ul>
+                                                <li onclick="selecionaPassagem(1)">1 passagem</li>
+                                                <li onclick="selecionaPassagem(2)">2 passagens</li>
+                                                <li onclick="selecionaPassagem(3)">3 passagens</li>
+                                                <li onclick="selecionaPassagem(4)">4 passagens</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </section>
-                            <p id="modal-detalhes"></p>
                         </div>
-                        <hr>
                         <div class="modal-footer">
                             <button class="btn btnFechar" id="closeBtn">Fechar</button>
                             <button class="btn btnConfirmar">Confirmar</button>

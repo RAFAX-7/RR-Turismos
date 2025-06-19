@@ -24,6 +24,31 @@ function abrirdropdown() {
     });
 }
 
+// Dropdown Passagens
+
+const valorUnitario = 500;
+let qtd = 1;
+
+// Abrir ou fechar o dropdown
+function dropdownpassagem() {
+    const dropdown = document.getElementById('dropdown');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+// Seleciona a quantidade e atualiza texto e preço
+function selecionaPassagem(quantidade) {
+    qtd = quantidade;
+
+    const texto = quantidade === 1 ? '1 passagem' : `${quantidade} passagens`;
+    document.getElementById('qtdPassagem').innerText = texto;
+
+    const valorTotal = valorUnitario * quantidade;
+    document.getElementById('preco').innerHTML = `R$ ${valorTotal},00 <span>Por Dia</span>`;
+
+    // Fecha o dropdown após selecionar
+    dropdownpassagem();
+}
+
 // Menu hamburguer
 
 let botaomenu = document.querySelector(".botaoMenu");
@@ -190,8 +215,8 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
         const preco = card.querySelector('.preco').innerText;
 
         modalTitulo.innerText = local; // Título será o "Local"
-        modalDetalhes.innerHTML = `
-       `;
+    //     modalDetalhes.innerHTML = `
+    //    `;
 
         modal.style.display = 'flex';
     }
