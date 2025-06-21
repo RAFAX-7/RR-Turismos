@@ -1117,6 +1117,12 @@ canvas#background-canvas {
     width: 100%;
     text-align: center;
 }
+
+.footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 13px;
+}
 }
 
 @media screen and (max-width: 1130px) {
@@ -1135,6 +1141,12 @@ canvas#background-canvas {
     .ladoEsquerdo h1 {
         justify-content: center;
     }
+
+    .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 13px;
+}
 }
 
 @media screen and (max-width: 950px) {
@@ -1227,6 +1239,11 @@ canvas#background-canvas {
         grid-template-columns: repeat(2, 1fr);
 
     }
+    .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 13px;
+}
 
 }
 
