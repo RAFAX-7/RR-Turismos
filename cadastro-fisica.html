@@ -69,32 +69,27 @@
 
 
                 <div class="icone">
-                    <lord-icon id="icon-email" class="iconesolo"  src="https://cdn.lordicon.com/wpsdctqb.json"
-                        state="morph-close" colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px" >
+                    <lord-icon id="icon-email" class="iconesolo" src="https://cdn.lordicon.com/wpsdctqb.json"
+                        state="morph-close" colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px">
                     </lord-icon>
                     <input type="email" id="email" name="email" placeholder="E-mail" required>
                 </div>
 
-
-                <div class="icone">                   
-                    <lord-icon
-                     id="icon-senha" class="iconesolo"  src="https://cdn.lordicon.com/rxgzsafd.json"  
-                       colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px">
+                <div class="icone">
+                    <lord-icon id="icon-senha" class="iconesolo" src="https://cdn.lordicon.com/rxgzsafd.json"
+                        colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px">
                     </lord-icon>
                     <input type="password" id="senha" name="senha" placeholder="Senha:" required>
                 </div>
 
-
                 <div class="icone">
-                    <lord-icon id="icon-confirmarsenha" class="iconesolo" src="https://cdn.lordicon.com/rxgzsafd.json" 
-                        colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px"  >
-                       
+
+                    <lord-icon id="icon-confirmarsenha" class="iconesolo" src="https://cdn.lordicon.com/rxgzsafd.json"
+                        colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px">
                     </lord-icon>
                     <input type="password" id="confirmarsenha" name="confirmarsenha" placeholder="Confirmar senha:"
                         required>
                 </div>
-
-
 
                 <button type="submit">Cadastrar-se</button>
 
@@ -107,7 +102,20 @@
         <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
     </footer>
 
+    <!-- INÍCIO VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <!-- FIM VLibras -->
+
     <script src="style/script.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
