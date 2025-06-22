@@ -1378,6 +1378,10 @@ footer p {
 
     /* Modal Viagens */
 
+    .modal {
+        display: none;
+    }
+
     .modal-conteudo {
         max-width: 80%;
     }
