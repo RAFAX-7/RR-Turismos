@@ -92,126 +92,228 @@
 
             <div class="containerViagens">
 
-                <div class="card">
+                <!-- Modal Genérico -->
+
+                <div id="modal" class="modal">
+                    <div class="modal-conteudo">
+                        <div class="modal-header">
+                            <h2 class="modal-titulo"></h2>
+                            <span id="closeModal" class="btnClose">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <section class="gridPai">
+                                <section class="cardFTViagem">
+                                    <div class="f1">
+                                        <!-- <img src="img/Rio de Janeiro,Brazil.jpg" alt=""> -->
+                                    </div>
+                                    <div class="f3">
+                                        <div class="foto1">
+                                            <!-- <img src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg" alt=""> -->
+                                        </div>
+                                        <div class="foto2">
+                                            <!-- <img src="img/Rio de janeiro/rio editada.jpg" alt=""> -->
+                                        </div>
+                                        <div class="foto3">
+                                            <!-- <img src="img/Rio de janeiro/Rio2 editada.jpg" alt=""> -->
+                                        </div>
+                                        <div class="foto4">
+                                            <!-- <img src="img/Rio de janeiro/rio3 editada.jpg" alt=""> -->
+                                        </div>
+                                    </div>
+                                </section>
+                                <div class="f2">
+                                    <h4>Viagem ao Rio de Janeiro - RJ</h4>
+                                </div>
+                                <div class="f4">
+                                    <p>Conheça a Cidade Maravilhosa! Nossa viagem inclui paradas nos principais
+                                        cartões-postais do Rio: Cristo Redentor, Pão de Açúcar, Praia de Copacabana,
+                                        Praia de Ipanema e passeio pela Lapa com seus famosos arcos e escadaria Selarón.
+                                        Também visitaremos o Maracanã (externo), o Jardim Botânico e o encantador
+                                        Mirante Dona Marta, com uma vista incrível da cidade. Aproveite momentos de
+                                        lazer nas praias, cultura e muita beleza natural!</p>
+                                </div>
+                                <div class="f5">
+                                    <p class="guiaModal">
+                                        <span class="texto"><img class="iconeguia" src="img/Icones/Guia.png" alt="">
+                                            Guia: <a href="">Rodinho mil grau</a></span>
+                                        <span class="avaliacao">*5,5</span>
+                                    </p>
+                                    <p><img class="iconehotel" src="img/Icones/Hotel.png" alt=""> Hotel:
+                                        <span class="espacoicone">Fiesta</span>
+                                    </p>
+                                    <p><img class="iconecomida" src="img/Icones/Refeição.png" alt=""> Refeição:
+                                        <span class="espacoicone">Pão com pão</span>
+                                    </p>
+                                    <p><img class="iconeida" src="img/Icones/Ida.png" alt=""> Ida: <span
+                                            class="espacoicone">Charrete</span>
+                                    </p>
+                                    <p><img class="iconevolta" src="img/Icones/Volta.png" alt=""> Volta:
+                                        <span class="espacoicone">Apé</span>
+                                    </p>
+                                </div>
+                                <div class="f6">
+                                    <h5 id="preco">R$ 500,00 <span>Por Dia</span></h5>
+                                    <div class="box-reserva">
+                                        <div class="datas">
+                                            <div class="check">
+                                                <label>CHECK-IN</label>
+                                                <p>07/11/2025</p>
+                                            </div>
+                                            <div class="check">
+                                                <label>CHECKOUT</label>
+                                                <p>09/11/2025</p>
+                                            </div>
+                                        </div>
+                                        <div class="hospedes">
+                                            <div>
+                                                <label>PASSAGENS</label>
+                                                <p id="qtdPassagem">1 passagem</p>
+                                            </div>
+                                            <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
+                                        </div>
+
+                                        <!-- Dropdown -->
+                                        <!-- <div id="dropdown" class="dropdown">
+                                            <ul>
+                                                <li onclick="selecionaPassagem(1)">1 passagem</li>
+                                                <li onclick="selecionaPassagem(2)">2 passagens</li>
+                                                <li onclick="selecionaPassagem(3)">3 passagens</li>
+                                                <li onclick="selecionaPassagem(4)">4 passagens</li>
+                                            </ul>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btnFechar" id="closeBtn">Fechar</button>
+                            <button class="btn btnConfirmar">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards das Viagens -->
+
+                <div class="card btnagenda">
                     <img src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg" alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Rio de Janeiro</h3>
-                    <h3 class="tituloViagem">País: Brasil</h3>
-                    <h3 class="tituloViagem">Ida: 15/08/2025</h3>
-                    <h3 class="tituloViagem">Volta: 22/08/2025</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Saiba Mais</button>
-                </div>
-
-                <div class="card">
-                    <img src="img/ilhabela/Ilhabela, Brazil editada.jpg" alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Ilhabela</h3>
-                    <h3 class="tituloViagem">País: Brasil</h3>
-                    <h3 class="tituloViagem">Ida: 20/06/2025</h3>
-                    <h3 class="tituloViagem">Volta: 27/06/2025</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Mais Informações</button>
-                </div>
-
-                <div class="card">
-                    <img src="img/teormina/Teormina,Sicily,Italy editada.jpg" alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Teormina, Sicily</h3>
-                    <h3 class="tituloViagem">País: Italy</h3>
-                    <h3 class="tituloViagem">Ida: 10/05/2025</h3>
-                    <h3 class="tituloViagem">Volta: 17/05/2025</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Ver Detalhes</button>
-                </div>
-
-                <div class="card">
-                    <img src="img/Barra do cunhaú/Barra do Cunhaú, Rio Grande do Norte, Brasil editada.jpg"
-                        alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Barra do cunhaú</h3>
-                    <h3 class="tituloViagem">País: Brasil</h3>
-                    <h3 class="tituloViagem">Ida: 07/02/2026</h3>
-                    <h3 class="tituloViagem">Volta: 14/02/2026</h3>
-                    <p>R$1.000,00</p>
+                    <h3 class="Local tituloViagem">Rio de Janeiro - Brasil</h3>
+                    <h3 class="tituloViagem">País: <span>Brasil</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>15/08/2025</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>22/08/2025</span></h3>
+                    <p class="tituloViagem"> Preço: <span class="preco">R$1.000,00</span></p>
                     <button class="btnagenda">Ver Mais</button>
                 </div>
 
-                <div class="card">
+                <div class="card btnagenda">
+                    <img src="img/ilhabela/Ilhabela, Brazil editada.jpg" alt="Imagem viagem">
+                    <h3 class="Local tituloViagem">Ilhabela</h3>
+                    <h3 class="tituloViagem">País: <span>Brasil</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>20/06/2025</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>27/06/2025</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
+                </div>
+
+                <div class="card btnagenda">
+                    <img src="img/teormina/Teormina,Sicily,Italy editada.jpg" alt="Imagem viagem">
+                    <h3 class="Local tituloViagem">Teormina, Sicily</h3>
+                    <h3 class="tituloViagem">País: <span>Italy</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>10/05/2025</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>17/05/2025</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
+                </div>
+
+                <div class="card btnagenda">
+                    <img src="img/Barra do cunhaú/Barra do Cunhaú, Rio Grande do Norte, Brasil editada.jpg"
+                        alt="Imagem viagem">
+                    <h3 class="Local tituloViagem">Barra do cunhaú</h3>
+                    <h3 class="tituloViagem">País: <span>Brasil</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>07/02/2026</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>14/02/2026</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
+                </div>
+
+                <div class="card btnagenda">
                     <img src="img/Moorea,French Polynesia/Moorea,French Polynesia editada.jpg" alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Moorea, French</h3>
-                    <h3 class="tituloViagem">País: Polynesia</h3>
-                    <h3 class="tituloViagem">Ida: 22/01/2026</h3>
-                    <h3 class="tituloViagem">Volta: 29/01/2026</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Agendar</button>
+                    <h3 class="Local tituloViagem">Moorea, French</h3>
+                    <h3 class="tituloViagem">País: <span>Polynesia</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>22/01/2026</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>29/01/2026</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
                 </div>
 
-                <div class="card">
+                <div class="card btnagenda">
                     <img src="img/Honolulu/Honolulu,United States editada.jpg" alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Honolulu</h3>
-                    <h3 class="tituloViagem">País: Unitad States</h3>
-                    <h3 class="tituloViagem">Ida: 12/12/2025</h3>
-                    <h3 class="tituloViagem">volta: 19/12/2025</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Agendar</button>
+                    <h3 class="Local tituloViagem">Honolulu</h3>
+                    <h3 class="tituloViagem">País: <span>Unitad States</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>12/12/2025</span></h3>
+                    <h3 class="tituloViagem">volta: <span>19/12/2025</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
                 </div>
 
-                <div class="card">
+                <div class="card btnagenda">
                     <img src="img/Positano/Positano,Italy editada.jpg" alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Positano</h3>
-                    <h3 class="tituloViagem">País: Italy</h3>
-                    <h3 class="tituloViagem">Ida: 04/11/2025</h3>
-                    <h3 class="tituloViagem">Volta: 11/11/2025</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Agendar</button>
+                    <h3 class="Local tituloViagem">Positano</h3>
+                    <h3 class="tituloViagem">País: <span>Italy</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>04/11/2025</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>11/11/2025</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
                 </div>
 
-                <div class="card">
+                <div class="card btnagenda">
                     <img src="img/las vegas/Las Vegas,USA editada.jpg" alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Las Vegas</h3>
-                    <h3 class="tituloViagem">País: USA</h3>
-                    <h3 class="tituloViagem">Ida: 18/10/2025</h3>
-                    <h3 class="tituloViagem">Volta: 25/10/2025</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Agendar</button>
+                    <h3 class="Local tituloViagem">Las Vegas</h3>
+                    <h3 class="tituloViagem">País: <span>USA</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>18/10/2025</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>25/10/2025</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
                 </div>
 
-                <div class="card">
+                <div class="card btnagenda">
                     <img src="img/Gray rocky mountain, italy/Gray Rocky Mountain, ITALY editada.jpg"
                         alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Gray Rocky Mountain</h3>
-                    <h3 class="tituloViagem">País: Italy</h3>
-                    <h3 class="tituloViagem">Ida: 09/09/2025</h3>
-                    <h3 class="tituloViagem">Volta: 16/09/2025</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Agendar</button>
+                    <h3 class="Local tituloViagem">Gray Rocky Mountain</h3>
+                    <h3 class="tituloViagem">País: <span>Italy</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>09/09/2025</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>16/09/2025</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
                 </div>
 
-                <div class="card">
+                <div class="card btnagenda">
                     <img src="img/Lagos portugal/Lagos, Portugal editada.jpg" alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Lagos</h3>
-                    <h3 class="tituloViagem">País: Portugal</h3>
-                    <h3 class="tituloViagem">Ida: 25/07/2025</h3>
-                    <h3 class="tituloViagem">Volta: 01/08/2025</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Agendar</button>
+                    <h3 class="Local tituloViagem">Lagos</h3>
+                    <h3 class="tituloViagem">País: <span>Portugal</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>25/07/2025</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>01/08/2025</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
                 </div>
 
-                <div class="card">
+                <div class="card btnagenda">
                     <img src="img/Singapura asia/Singapore, sudeste Asia  editada.jpg" alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Singapore</h3>
-                    <h3 class="tituloViagem">País: Sudeste Ásia</h3>
-                    <h3 class="tituloViagem">Ida: 03/06/2025</h3>
-                    <h3 class="tituloViagem">Volta: 10/06/2025</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Agendar</button>
+                    <h3 class="Local tituloViagem">Singapore</h3>
+                    <h3 class="tituloViagem">País: <span>Sudeste Ásia</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>03/06/2025</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>10/06/2025</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
                 </div>
 
-                <div class="card">
+                <div class="card btnagenda">
                     <img src="img/stresa, italy/Stresa, Piedmont, Italy editada.jpg" alt="Imagem viagem">
-                    <h3 class="tituloViagem">Local: Stresa, Piedmont</h3>
-                    <h3 class="tituloViagem">País: Italy</h3>
-                    <h3 class="tituloViagem">Ida: 15/05/2025</h3>
-                    <h3 class="tituloViagem">Volta: 22/05/2025</h3>
-                    <p>R$1.000,00</p>
-                    <button class="btnagenda">Agendar</button>
+                    <h3 class="Local tituloViagem">Stresa, Piedmont</h3>
+                    <h3 class="tituloViagem">País: <span>Italy</span></h3>
+                    <h3 class="tituloViagem">Ida: <span>15/05/2025</span></h3>
+                    <h3 class="tituloViagem">Volta: <span>22/05/2025</span></h3>
+                    <p class="preco">R$1.000,00</p>
+                    <button class="btnagenda">Ver Mais</button>
                 </div>
 
             </div>

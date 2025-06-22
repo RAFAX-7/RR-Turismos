@@ -1,8 +1,3 @@
-
- 
-
-
-
 // Inclusão do ano dinamicamente    
 
 let spansAno = document.querySelectorAll(".AnoAtual");
@@ -27,6 +22,31 @@ function abrirdropdown() {
             menu.classList.remove('show');
         }
     });
+}
+
+// Dropdown Passagens
+
+const valorUnitario = 500;
+let qtd = 1;
+
+// Abrir ou fechar o dropdown
+function dropdownpassagem() {
+    const dropdown = document.getElementById('dropdown');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+// Seleciona a quantidade e atualiza texto e preço
+function selecionaPassagem(quantidade) {
+    qtd = quantidade;
+
+    const texto = quantidade === 1 ? '1 passagem' : `${quantidade} passagens`;
+    document.getElementById('qtdPassagem').innerText = texto;
+
+    const valorTotal = valorUnitario * quantidade;
+    document.getElementById('preco').innerHTML = `R$ ${valorTotal},00 <span>Por Dia</span>`;
+
+    // Fecha o dropdown após selecionar
+    dropdownpassagem();
 }
 
 // Menu hamburguer
@@ -299,6 +319,42 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
 
     updateSlide(currentIndex);
     startAutoSlide();
+
+    // Modal viagem
+
+    const modal = document.getElementById('modal');
+    const modalTitulo = document.querySelector('.modal-titulo');
+    const modalDetalhes = document.getElementById('modal-detalhes');
+    const closeBtn = document.getElementById('closeModal');
+    const closeFooterBtn = document.getElementById('closeBtn');
+
+    // Função para abrir modal com dados do card
+    function abrirModalComCard(card) {
+        const local = card.querySelectorAll('.tituloViagem')[0].innerText;
+        const pais = card.querySelectorAll('.tituloViagem')[1].innerText;
+        const ida = card.querySelectorAll('.tituloViagem')[2].innerText;
+        const volta = card.querySelectorAll('.tituloViagem')[3].innerText;
+        const preco = card.querySelector('.preco').innerText;
+
+        modalTitulo.innerText = local; // Título será o "Local"
+    //     modalDetalhes.innerHTML = `
+    //    `;
+
+        modal.style.display = 'flex';
+    }
+
+    // Adiciona evento a todos os botões
+    document.querySelectorAll('.btnagenda').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const card = btn.closest('.card');
+            abrirModalComCard(card);
+        });
+    });
+
+    // Fechar modal
+    closeBtn.addEventListener('click', () => modal.style.display = 'none');
+    closeFooterBtn.addEventListener('click', () => modal.style.display = 'none');
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {
