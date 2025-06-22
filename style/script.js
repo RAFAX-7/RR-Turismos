@@ -1,3 +1,8 @@
+
+ 
+
+
+
 // Inclusão do ano dinamicamente    
 
 let spansAno = document.querySelectorAll(".AnoAtual");
@@ -44,8 +49,130 @@ function fecharmenu() {
 
 // Verificação cadastro 
 
-if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location.pathname.endsWith("cadastro-juridica.html")) {
+if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location.pathname.endsWith("cadastro-juridica.html") || window.location.pathname.endsWith("contato.html")) {
 
+    
+//------------------------------mascara telefone-----------------------------------
+
+document.addEventListener('DOMContentLoaded', function () {
+    const input = document.getElementById('telefone');
+
+    const mascara = '(__) _____-____';
+
+    function aplicarMascara(valor) {
+        const numeros = valor.replace(/\D/g, '');
+        let resultado = '';
+        let i = 0;
+
+        for (const char of mascara) {
+            if (char === '_') {
+                resultado += i < numeros.length ? numeros[i++] : '_';
+            } else {
+                resultado += char;
+            }
+        }
+
+        return resultado;
+    }
+
+    function getProximaPosicao(texto) {
+        const pos = texto.indexOf('_');
+        return pos === -1 ? texto.length : pos;
+    }
+
+    input.value = mascara;
+
+    input.addEventListener('focus', () => {
+        setTimeout(() => {
+            const pos = getProximaPosicao(input.value);
+            input.setSelectionRange(pos, pos);
+        }, 0);
+    });
+
+    input.addEventListener('input', () => {
+        const numeros = input.value.replace(/\D/g, '');
+        input.value = aplicarMascara(numeros);
+
+        const pos = getProximaPosicao(input.value);
+        input.setSelectionRange(pos, pos);
+    });
+
+    input.addEventListener('keydown', (e) => {
+        const cursor = input.selectionStart;
+
+        if (e.key === 'Backspace') {
+            // Permite apagar número anterior, pulando caracteres fixos
+            e.preventDefault();
+
+            let valor = input.value;
+            let numeros = valor.replace(/\D/g, '');
+
+            // Descobre quantos números estão preenchidos
+            const preenchidos = mascara.split('').filter((c, i) => c === '_' && valor[i] !== '_').length;
+
+            // Remove o último número
+            numeros = numeros.slice(0, preenchidos - 1);
+
+            // Reaplica a máscara
+            input.value = aplicarMascara(numeros);
+
+            const novaPos = getProximaPosicao(input.value);
+            input.setSelectionRange(novaPos, novaPos);
+        }
+    });
+});
+
+
+    //-----------------------------mascara CPF/CNPJ-----------------------------------
+function aplicarMascaraCpfCnpj(valor) {
+    // Remove tudo que não é número
+    valor = valor.replace(/\D/g, '');
+
+    // Aplica máscara de CPF se até 11 dígitos
+    if (valor.length <= 11) {
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    } else {
+        // Aplica máscara de CNPJ
+        valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+        valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+        valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
+        valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+    }
+
+    return valor;
+}
+
+const inputCpfCnpj = document.getElementById('cpfcnpj');
+if (inputCpfCnpj) {
+    inputCpfCnpj.addEventListener('input', function (e) {
+        let somenteNumeros = e.target.value.replace(/\D/g, ''); // Mantém só números
+        e.target.value = aplicarMascaraCpfCnpj(somenteNumeros);
+    });
+}
+
+//-----------------------------mascara nome-----------------------------------
+document.addEventListener('DOMContentLoaded', function () {
+    const nomeInput = document.getElementById('nome');
+
+    nomeInput.addEventListener('input', function () {
+        let valor = nomeInput.value;
+
+        // Remove tudo que não seja letra, espaço ou hífen (permite acentos)
+        valor = valor.replace(/[^a-zA-ZÀ-ú\s\-]/g, '');
+
+        // Substitui múltiplos espaços por apenas um
+        valor = valor.replace(/\s{2,}/g, ' ');
+
+        // Capitaliza a primeira letra de cada palavra
+        valor = valor.toLowerCase().replace(/(^|\s)\S/g, function (letra) {
+            return letra.toUpperCase();
+        });
+
+        nomeInput.value = valor;
+    });
+});
     document.getElementById('formCadastro').addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -70,7 +197,7 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
         }
 
         if (senha !== confirmarsenha) {
-            erros.push("A confirmação de senha não corresponde à senha.");
+            erros.push("A confirmação de senha não corresponde à senha anterior.");
         }
 
         mensagensErro.style.display = "block";
@@ -174,40 +301,53 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
     startAutoSlide();
 }
 
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Nome
     const inputNome = document.getElementById('nome');
     const iconNome = document.getElementById('icon-nome');
-    inputNome.addEventListener('focus', () => {
-        iconNome.setAttribute('trigger', 'loop');
-        setTimeout(() => iconNome.removeAttribute('trigger'), 2000);
-    });
+    if (inputNome && iconNome) {
+        inputNome.addEventListener('focus', () => {
+            iconNome.setAttribute('trigger', 'loop');
+            setTimeout(() => iconNome.removeAttribute('trigger'), 1000);
+        });
+    }
 
     // Email (CPF ou CNPJ)
     const inputEmail = document.getElementById('email');
     const iconEmail = document.getElementById('icon-email');
-    inputEmail.addEventListener('focus', () => {
-        iconEmail.setAttribute('trigger', 'loop');
-        setTimeout(() => iconEmail.removeAttribute('trigger'), 400);
-    });
+    if (inputEmail && iconEmail) {
+        inputEmail.addEventListener('focus', () => {
+            iconEmail.setAttribute('trigger', 'loop');
+            setTimeout(() => iconEmail.removeAttribute('trigger'), 900);
+        });
+    }
+    // CPF ou CNPJ
+    const inputCpfCnpj = document.getElementById('cpfcnpj');
+    const iconCpfCnpj = document.getElementById('icon-cpfcnpj');
+    if (inputCpfCnpj && iconCpfCnpj) {
+        inputCpfCnpj.addEventListener('focus', () => {
+            iconCpfCnpj.setAttribute('trigger', 'loop');
+            setTimeout(() => iconCpfCnpj.removeAttribute('trigger'), 1000); // aumente aqui!
+        });
+    }
 
     // Senha
     const inputSenha = document.getElementById('senha');
     const iconSenha = document.getElementById('icon-senha');
-    inputSenha.addEventListener('focus', () => {
-        iconSenha.setAttribute('trigger', 'loop');
-        setTimeout(() => iconSenha.removeAttribute('trigger'), 900);
-    });
+    if (inputSenha && iconSenha) {
+        inputSenha.addEventListener('focus', () => {
+            iconSenha.setAttribute('trigger', 'loop');
+            setTimeout(() => iconSenha.removeAttribute('trigger'), 900);
+        });
+    }
 
     // Confirmar Senha
     const inputConfirmar = document.getElementById('confirmarsenha');
     const iconConfirmar = document.getElementById('icon-confirmarsenha');
-    inputConfirmar.addEventListener('focus', () => {
-        iconConfirmar.setAttribute('trigger', 'loop');
-        setTimeout(() => iconConfirmar.removeAttribute('trigger'), 900);
-    });
+    if (inputConfirmar && iconConfirmar) {
+        inputConfirmar.addEventListener('focus', () => {
+            iconConfirmar.setAttribute('trigger', 'loop');
+            setTimeout(() => iconConfirmar.removeAttribute('trigger'), 900);
+        });
+    }
 });
-

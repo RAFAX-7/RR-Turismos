@@ -586,6 +586,11 @@ header .botaoMenu:hover .ret3 {
 
 /* Cadastro Pessoa Física e juridica*/
 
+
+
+    
+
+
 .maincadastro {
     display: flex;
     justify-content: center;
@@ -611,7 +616,7 @@ header .botaoMenu:hover .ret3 {
 .form-container h2 {
     text-align: center;
     margin-bottom: 25px;
-    color: var(--cinza90);
+    color: var(--azul-c-3);
     font-size: 2.5rem;
 }
 
@@ -690,6 +695,9 @@ form input:focus {
 }
 
 /* Contato */
+#telefone{
+    color: var(--cinza100); 
+}
 .formContato {
     display: flex;
     flex-direction: column;
@@ -725,11 +733,12 @@ form input:focus {
 }
 
 .formContato input {
-    width: 100%;
+    width: 100%rem;
     border: 1px solid var(--cinza-c);
     border-radius: 6px;
     font-size: 1.5rem;
     transition: border-color 0.3s;
+    
 }
 
 .formContato input:focus {
@@ -778,11 +787,12 @@ form input:focus {
 
 .formContato .formRodape input {
     border: none;
-    width: 8rem;
+    width: 9rem;
     background-color: var(--azul-c-3);
     color: white;
     cursor: pointer;
     transition: background 0.3s;
+    margin-top: -3rem;
 
 }
 
@@ -965,44 +975,52 @@ footer p {
     }
 }
 
-@media screen and (max-width: 500px) {
-
-    /* Card */
-
-    .containerViagens {
-        grid-template-columns: 1fr;
-
-    }
-
-}
-
 /*Cards pessoa fisica e juridica*/
 @media screen and (max-width: 600px) {
 
     .form-container {
-
         padding: 20px 60px;
         width: 100%;
         max-width: 350px;
+        max-height:     70vh;
+        overflow: hidden;
+        margin-top: -5rem;
+        
     }
+    
+}
+@media screen and (max-width: 500px) {
 
+    /* Card */
+    .containerViagens {
+        grid-template-columns: 1fr;
 
-
-
+    }   
 }
 
 @media screen and (max-width: 480px) {
 
     .form-container {
-
         padding: 25px 60px;
         width: 100%;
-        max-width: 320px;
-        max-height: 55vh;
         overflow: hidden;
+        margin-top: -5rem;
     }
-
-
-
+    
 
 }
+@media screen and (max-width: 400px) {
+
+    .form-container {
+        padding: 20px 50px;
+        width: 100%;
+        max-width: 300px;
+        max-height: 100%;
+        overflow: hidden;
+        margin-top: -5rem;
+    }
+    
+
+}
+
+
