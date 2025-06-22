@@ -117,8 +117,9 @@ html {
 
 .cardFTViagem {
     border-radius: 10px;
-    background-color: var(--cinza225);
-    box-shadow: 0 2px 2px rgba(40, 40, 40, 0.5);
+    /* background-color: var(--cinza225); */
+    /* box-shadow: 0 2px 2px rgba(40, 40, 40, 0.5); */
+    outline: 1px solid red;
 }
 
 .gridPai .f1 {
@@ -135,10 +136,11 @@ html {
     grid-area: f2;
     grid-row: 1;
     align-self: start;
-    background-color: var(--cinza225);
+    /* background-color: var(--cinza225); */
     padding: 1rem;
     border-radius: 100px;
-    box-shadow: 0 1px 1px rgba(40, 40, 40, 0.5);
+    /* box-shadow: 0 1px 1px rgba(40, 40, 40, 0.5); */
+    outline: 1px solid red;
 }
 
 .gridPai .f2 h4 {
@@ -164,6 +166,7 @@ html {
     height: 100%;
     border-radius: 10px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    outline: 1px solid red;
 }
 
 .gridPai .f3 .foto1 img,
@@ -192,10 +195,11 @@ html {
     grid-row: 1;
     align-self: start;
     margin-top: 15%;
-    background-color: var(--cinza225);
+    /* background-color: var(--cinza225); */
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0 1px 1px rgba(40, 40, 40, 0.5);
+    /* box-shadow: 0 1px 1px rgba(40, 40, 40, 0.5); */
+    outline: 1px solid red;
 }
 
 .gridPai .f4 p {
@@ -257,10 +261,11 @@ html {
     align-self: start;
     display: flex;
     flex-direction: column;
-    background-color: var(--cinza225);
+    /* background-color: var(--cinza225); */
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0 1px 1px rgba(40, 40, 40, 0.5);
+    /* box-shadow: 0 1px 1px rgba(40, 40, 40, 0.5); */
+    outline: 1px solid red;
 }
 
 .f6 h5 {
@@ -334,7 +339,7 @@ html {
 
 #seta {
     font-size: 2.5rem;
-    background-color: var(--cinza225);
+    /* background-color: var(--cinza225); */
     color: var(--cinza50);
     cursor: pointer;
     border: none;
