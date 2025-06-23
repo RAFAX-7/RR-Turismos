@@ -1019,6 +1019,8 @@ canvas#background-canvas {
     white-space: nowrap;
 }
 
+
+
 .footer-menu a {
     color: #c0c0c0;
     margin: 0 5px;
@@ -1042,7 +1044,7 @@ canvas#background-canvas {
 }
 
 .social-icons a:first-child {
-    margin-left: 0;
+    margin-left: 15rem;
 }
 
 .social-icons a:nth-child(1):hover {
@@ -1123,6 +1125,11 @@ canvas#background-canvas {
     text-align: center;
     gap: 13px;
 }
+
+.social-icons a:first-child {
+    margin-left: 0;
+}
+
 }
 
 @media screen and (max-width: 1130px) {
@@ -1147,6 +1154,12 @@ canvas#background-canvas {
     text-align: center;
     gap: 13px;
 }
+
+.social-icons a:first-child {
+    margin-left: 0;
+}
+
+
 }
 
 @media screen and (max-width: 950px) {
@@ -1245,6 +1258,11 @@ canvas#background-canvas {
     gap: 13px;
 }
 
+.social-icons a:first-child {
+    margin-left: 0;
+}
+
+
 }
 
 @media screen and (max-width: 855px) {
@@ -1254,6 +1272,11 @@ canvas#background-canvas {
     .containerCard {
         gap: 5rem;
     }
+
+    .social-icons a:first-child {
+    margin-left: 0;
+}
+
 }
 
 @media screen and (max-width: 810px) {
@@ -1263,6 +1286,10 @@ canvas#background-canvas {
     .containerCard {
         gap: 2rem;
     }
+    .social-icons a:first-child {
+    margin-left: 0;
+}
+
 }
 
 @media screen and (max-width: 768px) {
@@ -1331,10 +1358,12 @@ canvas#background-canvas {
     width: 100%;
     text-align: center;
 }
-
+.social-icons a:first-child {
+    margin-left: 0;
 }
 
 
+}
 
 
 /*Cards pessoa fisica e juridica*/
@@ -1349,6 +1378,10 @@ canvas#background-canvas {
         margin-top: -5rem;
 
     }
+    .social-icons a:first-child {
+    margin-left: 0;
+}
+
 
 }
 
@@ -1359,6 +1392,10 @@ canvas#background-canvas {
         grid-template-columns: 1fr;
 
     }
+    .social-icons a:first-child {
+    margin-left: 0;
+}
+
 }
 
 @media screen and (max-width: 480px) {
@@ -1493,6 +1530,10 @@ canvas#background-canvas {
         overflow: hidden;
         margin-top: -5rem;
     }
+    .social-icons a:first-child {
+    margin-left: 0;
+}
+
 }
 
      @media screen and (max-width: 350px) {
