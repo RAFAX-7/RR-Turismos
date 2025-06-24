@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RR Turismos</title>
     <link rel="stylesheet" href="style/style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body class="corFundo">
@@ -54,13 +55,14 @@
 
     <form class="formContato" method="post" action="">
         <h1 class="tituloContato">Fale Conosco </h1>
-        <p class="complementoTitulo">Preencha os campos a seguir para solicitar informações ou receber contato via e-mail: </p>
-        
+        <p class="complementoTitulo">Preencha os campos a seguir para solicitar informações ou receber contato via
+            e-mail: </p>
+
         <p class="obrigatorio">campos obrigatórios *</p>
 
         <label for="nome">Nome Completo:<span class="obrigatorio">*</span></label>
-        <input  type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required=""> 
-        
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required="">
+
         <label for="empresa">Empresa:<span class="obrigatorio"></span></label>
         <input type="text" id="empresa" name="empresa" placeholder=" Digite o nome da empresa (opcional)">
 
@@ -71,7 +73,7 @@
         <input type="email" id="email" name="email" placeholder="Por favor, digite seu e-mail" required="">
 
         <label for="telefone">Telefone para contato:<span class="obrigatorio">*</span></label>
-        <input type="tel" id="telefone" name="telefone" placeholder=" Digite seu telefone" required=""> 
+        <input type="tel" id="telefone" name="telefone" placeholder=" Digite seu telefone" required="">
 
         <label for="assunto">Assunto:<span class="obrigatorio">*</span></label>
         <select name="assunto" id="assunto">
@@ -84,19 +86,78 @@
         <textarea name="mensagem" id="mensagem" placeholder="Por favor, digite sua mensagem..." required=""></textarea>
 
         <p class="msgerro obrigatorio"></p>
-        
+
         <div class="formRodape">
             <!-- <div class="g-recaptcha" data-sitekey="6LdLqZYlAAAAACe72P0Qk-P5JpaXE8wOoGEr4hnn"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-isj6kked0x02" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdLqZYlAAAAACe72P0Qk-P5JpaXE8wOoGEr4hnn&amp;co=aHR0cHM6Ly9ndXN0YXZvZGVsdmVjaGlvLmNvbS5icjo0NDM.&amp;hl=pt-BR&amp;v=jt8Oh2-Ue1u7nEbJQUIdocyd&amp;size=normal&amp;cb=dd5rpragl1hf"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div> -->
             <input type="submit" value="Enviar">
         </div>
 
-        </form>
+    </form>
 
     <footer>
-        <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
+
+        <canvas id="background-canvas"></canvas>
+
+        <div class="footer-logo">
+            <img src="img/Logos/branca.png" alt="Logo">
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>Sobre Nós</h2>
+                <p>Somos uma empresa dedicada a criar experiências incríveis no mundo das viagens e tecnologia.</p>
+                <div class="contact">
+                    <p>📞 +55 (16) 99999-9999</p>
+                    <p>📧 contato@email.com</p>
+                </div>
+                <div class="subscribe">
+                    <input type="email" placeholder="Digite seu e-mail" />
+                    <button>Enviar</button>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h2>Últimas Notícias</h2>
+                <p>✔ Novos destinos adicionados.</p>
+                <p>✔ Promoções imperdíveis.</p>
+                <p>✔ Muito mais em breve!</p>
+            </div>
+
+            <div class="footer-section">
+                <h2>Instagram</h2>
+                <div class="insta-img">
+                    <img src="img/Ilhabela, Brazil.jpg" alt="Imagem 1" />
+                    <img src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg" alt="Imagem 2" />
+                    <img src="img/las vegas/vegas 3 editada.jpg" alt="Imagem 3" />
+                    <img src="img/Barra do Cunhaú, Rio Grande do Norte, Brasil.jpg" alt="Imagem 4" />
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-left">
+                <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-menu">
+
+                <a href="index.html" class="risco">Início</a>
+                <a href="quemsomos.html">Quem somos</a>
+                <a href="index.html#secaoviagens">Viagens</a>
+                <a href="contato.html">Contato</a>
+
+            </div>
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+
     </footer>
 
- <!-- INÍCIO VLibras -->
+    <!-- INÍCIO VLibras -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>

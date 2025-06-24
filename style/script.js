@@ -1,5 +1,109 @@
 
- 
+
+// Configuração do Canvas
+
+const canvas = document.getElementById("background-canvas");
+const ctx = canvas.getContext("2d");
+
+// Função para ajustar o tamanho do canvas conforme a janela
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+//========== FIM configuração do Canvas ==========
+
+// Criação das partículas
+
+let particlesArray;
+
+function createParticles() {
+    particlesArray = [];
+    const numberOfParticles = (canvas.width * canvas.height) / 9000;
+    for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+    }
+}
+//========== FIM criação das partículas ==========
+// Classe Particle (partícula)
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = 2;
+        this.speedX = (Math.random() - 0.5) * 0.8;
+        this.speedY = (Math.random() - 0.5) * 0.8;
+    }
+
+    // Atualiza a posição da partícula
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        // Faz a partícula "rebater" nas bordas
+        if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+        if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+    }
+
+    // Desenha a partícula no canvas
+    draw() {
+        ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+//========== FIM da classe Particle ==========
+
+
+
+// Função para conectar partículas próximas
+
+function connect() {
+    for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+            const dx = particlesArray[a].x - particlesArray[b].x;
+            const dy = particlesArray[a].y - particlesArray[b].y;
+            const distance = dx * dx + dy * dy;
+
+            if (distance < 10000) {
+                ctx.strokeStyle = "rgba(255,255,255,0.05)";
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                ctx.stroke();
+            }
+        }
+    }
+}
+//========== FIM da função de conexão ==========
+
+// Animação das partículas
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach((particle) => {
+        particle.update();
+        particle.draw();
+    });
+    connect();
+    requestAnimationFrame(animate);
+}
+//========== FIM da animação ==========
+
+// Responsividade - atualiza canvas ao redimensionar a janela
+window.addEventListener("resize", () => {
+    resizeCanvas();
+    createParticles();
+});
+//========== FIM da responsividade ==========
+
+// Inicialização
+createParticles();
+animate();
+//========== FIM da inicialização ==========
 
 
 
@@ -76,128 +180,128 @@ function fecharmenu() {
 
 if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location.pathname.endsWith("cadastro-juridica.html") || window.location.pathname.endsWith("contato.html")) {
 
-    
-//------------------------------mascara telefone-----------------------------------
 
-document.addEventListener('DOMContentLoaded', function () {
-    const input = document.getElementById('telefone');
+    //------------------------------mascara telefone-----------------------------------
 
-    const mascara = '(__) _____-____';
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('telefone');
 
-    function aplicarMascara(valor) {
-        const numeros = valor.replace(/\D/g, '');
-        let resultado = '';
-        let i = 0;
+        const mascara = '(__) _____-____';
 
-        for (const char of mascara) {
-            if (char === '_') {
-                resultado += i < numeros.length ? numeros[i++] : '_';
-            } else {
-                resultado += char;
+        function aplicarMascara(valor) {
+            const numeros = valor.replace(/\D/g, '');
+            let resultado = '';
+            let i = 0;
+
+            for (const char of mascara) {
+                if (char === '_') {
+                    resultado += i < numeros.length ? numeros[i++] : '_';
+                } else {
+                    resultado += char;
+                }
             }
+
+            return resultado;
         }
 
-        return resultado;
-    }
+        function getProximaPosicao(texto) {
+            const pos = texto.indexOf('_');
+            return pos === -1 ? texto.length : pos;
+        }
 
-    function getProximaPosicao(texto) {
-        const pos = texto.indexOf('_');
-        return pos === -1 ? texto.length : pos;
-    }
+        input.value = mascara;
 
-    input.value = mascara;
+        input.addEventListener('focus', () => {
+            setTimeout(() => {
+                const pos = getProximaPosicao(input.value);
+                input.setSelectionRange(pos, pos);
+            }, 0);
+        });
 
-    input.addEventListener('focus', () => {
-        setTimeout(() => {
-            const pos = getProximaPosicao(input.value);
-            input.setSelectionRange(pos, pos);
-        }, 0);
-    });
-
-    input.addEventListener('input', () => {
-        const numeros = input.value.replace(/\D/g, '');
-        input.value = aplicarMascara(numeros);
-
-        const pos = getProximaPosicao(input.value);
-        input.setSelectionRange(pos, pos);
-    });
-
-    input.addEventListener('keydown', (e) => {
-        const cursor = input.selectionStart;
-
-        if (e.key === 'Backspace') {
-            // Permite apagar número anterior, pulando caracteres fixos
-            e.preventDefault();
-
-            let valor = input.value;
-            let numeros = valor.replace(/\D/g, '');
-
-            // Descobre quantos números estão preenchidos
-            const preenchidos = mascara.split('').filter((c, i) => c === '_' && valor[i] !== '_').length;
-
-            // Remove o último número
-            numeros = numeros.slice(0, preenchidos - 1);
-
-            // Reaplica a máscara
+        input.addEventListener('input', () => {
+            const numeros = input.value.replace(/\D/g, '');
             input.value = aplicarMascara(numeros);
 
-            const novaPos = getProximaPosicao(input.value);
-            input.setSelectionRange(novaPos, novaPos);
-        }
+            const pos = getProximaPosicao(input.value);
+            input.setSelectionRange(pos, pos);
+        });
+
+        input.addEventListener('keydown', (e) => {
+            const cursor = input.selectionStart;
+
+            if (e.key === 'Backspace') {
+                // Permite apagar número anterior, pulando caracteres fixos
+                e.preventDefault();
+
+                let valor = input.value;
+                let numeros = valor.replace(/\D/g, '');
+
+                // Descobre quantos números estão preenchidos
+                const preenchidos = mascara.split('').filter((c, i) => c === '_' && valor[i] !== '_').length;
+
+                // Remove o último número
+                numeros = numeros.slice(0, preenchidos - 1);
+
+                // Reaplica a máscara
+                input.value = aplicarMascara(numeros);
+
+                const novaPos = getProximaPosicao(input.value);
+                input.setSelectionRange(novaPos, novaPos);
+            }
+        });
     });
-});
 
 
     //-----------------------------mascara CPF/CNPJ-----------------------------------
-function aplicarMascaraCpfCnpj(valor) {
-    // Remove tudo que não é número
-    valor = valor.replace(/\D/g, '');
+    function aplicarMascaraCpfCnpj(valor) {
+        // Remove tudo que não é número
+        valor = valor.replace(/\D/g, '');
 
-    // Aplica máscara de CPF se até 11 dígitos
-    if (valor.length <= 11) {
-        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-        valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    } else {
-        // Aplica máscara de CNPJ
-        valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
-        valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
-        valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
-        valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+        // Aplica máscara de CPF se até 11 dígitos
+        if (valor.length <= 11) {
+            valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+            valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+            valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        } else {
+            // Aplica máscara de CNPJ
+            valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+            valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
+            valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+        }
+
+        return valor;
     }
 
-    return valor;
-}
-
-const inputCpfCnpj = document.getElementById('cpfcnpj');
-if (inputCpfCnpj) {
-    inputCpfCnpj.addEventListener('input', function (e) {
-        let somenteNumeros = e.target.value.replace(/\D/g, ''); // Mantém só números
-        e.target.value = aplicarMascaraCpfCnpj(somenteNumeros);
-    });
-}
-
-//-----------------------------mascara nome-----------------------------------
-document.addEventListener('DOMContentLoaded', function () {
-    const nomeInput = document.getElementById('nome');
-
-    nomeInput.addEventListener('input', function () {
-        let valor = nomeInput.value;
-
-        // Remove tudo que não seja letra, espaço ou hífen (permite acentos)
-        valor = valor.replace(/[^a-zA-ZÀ-ú\s\-]/g, '');
-
-        // Substitui múltiplos espaços por apenas um
-        valor = valor.replace(/\s{2,}/g, ' ');
-
-        // Capitaliza a primeira letra de cada palavra
-        valor = valor.toLowerCase().replace(/(^|\s)\S/g, function (letra) {
-            return letra.toUpperCase();
+    const inputCpfCnpj = document.getElementById('cpfcnpj');
+    if (inputCpfCnpj) {
+        inputCpfCnpj.addEventListener('input', function (e) {
+            let somenteNumeros = e.target.value.replace(/\D/g, ''); // Mantém só números
+            e.target.value = aplicarMascaraCpfCnpj(somenteNumeros);
         });
+    }
 
-        nomeInput.value = valor;
+    //-----------------------------mascara nome-----------------------------------
+    document.addEventListener('DOMContentLoaded', function () {
+        const nomeInput = document.getElementById('nome');
+
+        nomeInput.addEventListener('input', function () {
+            let valor = nomeInput.value;
+
+            // Remove tudo que não seja letra, espaço ou hífen (permite acentos)
+            valor = valor.replace(/[^a-zA-ZÀ-ú\s\-]/g, '');
+
+            // Substitui múltiplos espaços por apenas um
+            valor = valor.replace(/\s{2,}/g, ' ');
+
+            // Capitaliza a primeira letra de cada palavra
+            valor = valor.toLowerCase().replace(/(^|\s)\S/g, function (letra) {
+                return letra.toUpperCase();
+            });
+
+            nomeInput.value = valor;
+        });
     });
-});
     document.getElementById('formCadastro').addEventListener('submit', function (event) {
         event.preventDefault();
 
