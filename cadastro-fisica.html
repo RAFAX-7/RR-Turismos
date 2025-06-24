@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RR Turismos</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body class="corFundo">
@@ -60,35 +61,34 @@
 
 
                 <div class="icone">
-                    <lord-icon id="icon-nome" class="iconesolo" src="https://cdn.lordicon.com/kdduutaw.json"
+                    <lord-icon id="icon-nome" class="iconesolo" src="https://cdn.lordicon.com/cniwvohj.json"
                         state="hover-looking-around" colors="primary:#0a41e7,secondary:#3d9bd2"
-                        style="width:40px;height:40px" stroke="bold">
+                        style="width:35px;height:35px" stroke="bold">
                     </lord-icon>
                     <input type="text" id="nome" name="nome" placeholder="Nome:" required>
                 </div>
 
 
                 <div class="icone">
-                    <lord-icon id="icon-email" class="iconesolo" src="https://cdn.lordicon.com/apmrcxtj.json"
-                        state="morph-close" colors="primary:#0a41e7,secondary:#3d9bd2" style="width:40px;height:40px" >
+                    <lord-icon id="icon-email" class="iconesolo" src="https://cdn.lordicon.com/wpsdctqb.json"
+                        state="morph-close" colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px">
                     </lord-icon>
                     <input type="email" id="email" name="email" placeholder="E-mail" required>
                 </div>
 
 
-                <div class="icone">                   
-                    <lord-icon
-                     id="icon-senha" class="iconesolo"  src="https://cdn.lordicon.com/fgxwhgfp.json"  
-                        stroke="bold" colors="primary:#0a41e7,secondary:#3d9bd2" style="width:40px;height:40px">
+                <div class="icone">
+                    <lord-icon id="icon-senha" class="iconesolo" src="https://cdn.lordicon.com/rxgzsafd.json"
+                        colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px">
                     </lord-icon>
                     <input type="password" id="senha" name="senha" placeholder="Senha:" required>
                 </div>
 
 
                 <div class="icone">
-                    <lord-icon id="icon-confirmarsenha" class="iconesolo" src="https://cdn.lordicon.com/fgxwhgfp.json"  
-                        colors="primary:#0a41e7,secondary:#3d9bd2" style="width:40px;height:40px"  stroke="bold">
-                       
+                    <lord-icon id="icon-confirmarsenha" class="iconesolo" src="https://cdn.lordicon.com/rxgzsafd.json"
+                        colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px">
+
                     </lord-icon>
                     <input type="password" id="confirmarsenha" name="confirmarsenha" placeholder="Confirmar senha:"
                         required>
@@ -103,11 +103,83 @@
         </div>
     </main>
 
-    <footer class="footerCadastro">
-        <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
+    <footer>
+
+        <canvas id="background-canvas"></canvas>
+
+        <div class="footer-logo">
+            <img src="img/Logos/branca.png" alt="Logo">
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>Sobre Nós</h2>
+                <p>Somos uma empresa dedicada a criar experiências incríveis no mundo das viagens e tecnologia.</p>
+                <div class="contact">
+                    <p>📞 +55 (16) 99999-9999</p>
+                    <p>📧 contato@email.com</p>
+                </div>
+                <div class="subscribe">
+                    <input type="email" placeholder="Digite seu e-mail" />
+                    <button>Enviar</button>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h2>Últimas Notícias</h2>
+                <p>✔ Novos destinos adicionados.</p>
+                <p>✔ Promoções imperdíveis.</p>
+                <p>✔ Muito mais em breve!</p>
+            </div>
+
+            <div class="footer-section">
+                <h2>Instagram</h2>
+                <div class="insta-img">
+                    <img src="img/Ilhabela, Brazil.jpg" alt="Imagem 1" />
+                    <img src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg" alt="Imagem 2" />
+                    <img src="img/las vegas/vegas 3 editada.jpg" alt="Imagem 3" />
+                    <img src="img/Barra do Cunhaú, Rio Grande do Norte, Brasil.jpg" alt="Imagem 4" />
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-left">
+                <p>© <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-menu">
+
+                <a href="index.html" class="risco">Início</a>
+                <a href="quemsomos.html">Quem somos</a>
+                <a href="index.html#secaoviagens">Viagens</a>
+                <a href="contato.html">Contato</a>
+
+            </div>
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+
     </footer>
 
+    <!-- INÍCIO VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <!-- FIM VLibras -->
+
     <script src="style/script.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
