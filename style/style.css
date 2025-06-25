@@ -999,6 +999,26 @@ header .botaoMenu:hover .ret3 {
 
 /* Cadastro Pessoa Física e juridica*/
 
+.ja-tem-conta {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+}
+
+
+.ja-tem-conta a {
+    margin-left: 0.5rem;
+    font-size: 1.3rem;
+    color: var(--azul-c-3);
+}
+
+.ja-tem-conta a:hover {
+    color: var(--azul-c);
+    transition: color 0.5s;
+
+}
+
+
 .maincadastro {
     display: flex;
     justify-content: center;
@@ -1027,6 +1047,7 @@ header .botaoMenu:hover .ret3 {
     color: var(--azul-c-3);
     font-size: 2.5rem;
 }
+
 
 form label {
     display: block;
@@ -1079,6 +1100,7 @@ form input:focus {
     color: #d93025;
     background-color: #fdecea;
     border: 1px solid #f5c6cb;
+    gap: 0.1rem;
 }
 
 .mensagem.sucesso {
@@ -1100,6 +1122,8 @@ form input:focus {
 .footerCadastro {
     position: fixed;
 }
+
+
 
 /* Contato */
 #telefone {
@@ -1201,7 +1225,6 @@ form input:focus {
     color: white;
     cursor: pointer;
     transition: background 0.3s;
-    margin-top: -3rem;
 }
 
 .formContato .formRodape input:hover {
@@ -1424,7 +1447,7 @@ canvas#background-canvas {
     z-index: 9999 !important;
     transform: scale(1.2);
     border-radius: 1rem !important;
-    box-shadow: 1px 4px 9px var(--preto-2) !important;
+    box-shadow: 1px 2px 2px var(--preto-2) !important;
 }
 
 [vw-access-button]:hover {
@@ -1520,6 +1543,11 @@ canvas#background-canvas {
     .modal-conteudo {
         max-width: 60%;
     }
+
+    .social-icons a:first-child {
+        margin-left: 0;
+    }
+
 }
 
 @media (max-width: 1000px) {
@@ -1672,6 +1700,15 @@ canvas#background-canvas {
 }
 
 @media screen and (max-width: 768px) {
+    .form-container {
+        padding: 20px 60px;
+        width: 100%;
+        max-width: 45rem;
+        height: 53rem;
+        overflow: hidden;
+        margin-top: -5rem;
+
+    }
 
     /* Banner Slides */
 
@@ -1712,7 +1749,67 @@ canvas#background-canvas {
         font-size: 14px;
         padding: 8px 16px;
     }
+
+    /* Rodape*/
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .footer-section {
+        max-width: 100%;
+    }
+
+    .subscribe {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subscribe input {
+        border-radius: 30px;
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .subscribe button {
+        border-radius: 30px;
+        width: 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 13px;
+    }
+
+    .footer-left {
+        order: 3;
+        /* ano por último */
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-menu {
+        order: 1;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-right {
+        order: 2;
+        width: 100%;
+        text-align: center;
+    }
+
+    .social-icons a:first-child {
+        margin-left: 0;
+    }
+
+
 }
+
 
 @media screen and (max-width: 600px) {
 
@@ -1721,7 +1818,15 @@ canvas#background-canvas {
     .form-container {
         padding: 20px 60px;
         width: 100%;
-        max-width: 350px;
+        max-width: 45rem;
+        height: 53rem;
+        overflow: hidden;
+        margin-top: -5rem;
+
+    }
+
+    .social-icons a:first-child {
+        margin-left: 0;
     }
 
     /* Rodape*/
@@ -1815,16 +1920,136 @@ canvas#background-canvas {
 @media screen and (max-width: 480px) {
 
     /*Cards pessoa fisica e juridica*/
-
     .form-container {
-        padding: 25px 60px;
+        padding: 20px 60px;
         width: 100%;
+        max-width: 42rem;
+        height: 55rem;
         overflow: hidden;
         margin-top: -5rem;
+
     }
+
+    footer {
+        padding: 60px 1rem 30px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 0.5rem;
+    }
+
+    .footer-section {
+        width: 100%;
+        max-width: 100%;
+        text-align: left;
+        padding: 0;
+        flex: none;
+    }
+
+    .footer-section h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+        color: #fca311;
+    }
+
+    .footer-section p,
+    .contact p {
+        font-size: 14px;
+        line-height: 1.4;
+        color: #d3d3d3;
+        margin-bottom: 8px;
+    }
+
+    .subscribe {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        width: 100%;
+        padding: 0;
+    }
+
+    .subscribe input,
+    .subscribe button {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 30px;
+        box-sizing: border-box;
+        text-align: left;
+    }
+
+    .insta-img {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 80%;
+        padding: 0;
+    }
+
+    .insta-img img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        max-width: none;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid #333;
+        margin-top: 40px;
+        padding-top: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 12px;
+        padding: 15px 0.5rem;
+        font-size: 13px;
+    }
+
+    .footer-left {
+        order: 3;
+        /* ano por último */
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-menu {
+        order: 1;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-right {
+        order: 2;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-menu a {
+        display: inline-block;
+        margin: 0 8px 8px 0;
+        font-size: 14px;
+        word-break: break-word;
+    }
+
 }
 
 @media screen and (max-width: 400px) {
+
+    .form-container {
+        padding: 20px 60px;
+        width: 100%;
+        max-width: 100%;
+        height: 56rem;
+        overflow: hidden;
+        margin-top: -5rem;
+
+    }
+
     footer {
         padding: 60px 1rem 30px;
     }

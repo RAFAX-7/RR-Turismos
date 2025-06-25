@@ -178,7 +178,7 @@ function fecharmenu() {
 
 // Verificação cadastro 
 
-if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location.pathname.endsWith("cadastro-juridica.html") || window.location.pathname.endsWith("contato.html")) {
+if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location.pathname.endsWith("cadastro-juridica.html") || window.location.pathname.endsWith("acessar.html") || window.location.pathname.endsWith("contato.html")) {
 
 
     //------------------------------mascara telefone-----------------------------------
@@ -301,6 +301,8 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
 
             nomeInput.value = valor;
         });
+
+
     });
     document.getElementById('formCadastro').addEventListener('submit', function (event) {
         event.preventDefault();
@@ -342,6 +344,94 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
             document.getElementById('formCadastro').reset();
         }
     });
+     //-----------------------------mensagem erro fisica-----------------------------------
+    document.getElementById('formCadastro').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const senha = document.getElementById('senha').value;
+        const confirmarsenha = document.getElementById('confirmarsenha').value;
+        const mensagensErro = document.getElementById('mensagensErro');
+
+        let erros = [];
+
+        if (nome.length <= 3) {
+            erros.push("O nome deve ter mais de 3 caracteres.");
+        }
+
+        if (!email.includes('@')) {
+            erros.push("O email deve conter '@'.");
+        }
+
+        if (senha.length < 6) {
+            erros.push("A senha deve ter no mínimo 6 caracteres.");
+        }
+
+        if (senha !== confirmarsenha) {
+            erros.push("A confirmação de senha não corresponde à senha anterior.");
+        }
+
+        mensagensErro.style.display = "block";
+
+        if (erros.length > 0) {
+            mensagensErro.className = "mensagem erro";
+            mensagensErro.innerHTML = "<ul><li>" + erros.join("</li><li>") + "</li></ul>";
+        } else {
+            mensagensErro.className = "mensagem sucesso";
+            mensagensErro.textContent = "Cadastro realizado com sucesso!";
+
+            // Opcional: limpar os campos
+            document.getElementById('formCadastro').reset();
+        }
+    });
+
+    //-----------------------------mensagem erro juridica-----------------------------------
+    document.getElementById('formCadastro').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const cpfcnpj = document.getElementById('cpfcnpj').value.trim();
+    const senha = document.getElementById('senha').value;
+    const confirmarsenha = document.getElementById('confirmarsenha').value;
+    const mensagensErro = document.getElementById('mensagensErro');
+
+    let erros = [];
+
+    // Validação nome: mais que 3 caracteres
+    if (nome.length <= 3) {
+        erros.push("O nome deve ter mais de 3 caracteres.");
+    }
+
+    // Validação CPF ou CNPJ: mínimo 11 caracteres (CPF) e máximo 18 (com máscara)
+    if (cpfcnpj.length < 11 || cpfcnpj.length > 18) {
+        erros.push("Informe um CPF ou CNPJ válido.");
+    }
+
+    // Validação senha: mínimo 6 caracteres
+    if (senha.length < 6) {
+        erros.push("A senha deve ter no mínimo 6 caracteres.");
+    }
+
+    // Confirmação de senha igual a senha
+    if (senha !== confirmarsenha) {
+        erros.push("A confirmação de senha não corresponde à senha.");
+    }
+
+    mensagensErro.style.display = "block";
+
+    if (erros.length > 0) {
+        mensagensErro.className = "mensagem erro";
+        mensagensErro.innerHTML = "<ul><li>" + erros.join("</li><li>") + "</li></ul>";
+    } else {
+        mensagensErro.className = "mensagem sucesso";
+        mensagensErro.textContent = "Cadastro realizado com sucesso!";
+
+        // Limpar formulário após sucesso
+        this.reset();
+    }
+});
+
 }
 
 // Banner slides

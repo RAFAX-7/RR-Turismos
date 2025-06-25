@@ -53,8 +53,9 @@
 
     </header>
 
-    <main class="maincadastro">
+   <main class="maincadastro">
         <div class="form-container">
+
             <h2>Cadastre-se</h2>
             <form id="formCadastro" action="#" method="post">
 
@@ -76,6 +77,7 @@
                     <input type="email" id="email" name="email" placeholder="E-mail" required>
                 </div>
 
+
                 <div class="icone">
                     <lord-icon id="icon-senha" class="iconesolo" src="https://cdn.lordicon.com/rxgzsafd.json"
                         colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px">
@@ -83,16 +85,23 @@
                     <input type="password" id="senha" name="senha" placeholder="Senha:" required>
                 </div>
 
-                <div class="icone">
 
+                <div class="icone">
                     <lord-icon id="icon-confirmarsenha" class="iconesolo" src="https://cdn.lordicon.com/rxgzsafd.json"
                         colors="primary:#0a41e7,secondary:#3d9bd2" style="width:35px;height:35px">
+
                     </lord-icon>
                     <input type="password" id="confirmarsenha" name="confirmarsenha" placeholder="Confirmar senha:"
                         required>
                 </div>
 
+
+
                 <button type="submit">Cadastrar-se</button>
+                 <p class="ja-tem-conta"">
+                    Ja possui uma conta?
+                    <a href="acessar.html"; text-decoration: underline;">Log-in</a>
+                </p>
 
                 <div id="mensagensErro" class="mensagem"></div>
             </form>
