@@ -29,11 +29,12 @@
     --card-dark: rgb(58, 58, 58);
 
 }
+
 /* Isola o VLibras de estilos globais */
 
 
 * {
-    
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -43,7 +44,7 @@
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
     scroll-behavior: smooth;
-    
+
 }
 
 html {
@@ -619,7 +620,7 @@ header .botaoMenu:hover .ret3 {
     display: flex;
     font-size: 2rem;
     flex-direction: column;
-    margin: 0 16rem;
+    margin: 0 2rem;
     padding: 2rem;
     gap: 1rem;
     border-radius: 20px;
@@ -643,7 +644,7 @@ header .botaoMenu:hover .ret3 {
 }
 
 .reservas {
-    width: 50%; 
+    width: 50%;
     margin: 0 1rem;
 }
 
@@ -1571,6 +1572,14 @@ body.dark-mode .slogan {
     color: white;
 }
 
+body.dark-mode .containerViagens .card .informacao {
+    color: white;
+}
+
+body.dark-mode .card a {
+    color: var(--cinza200)
+}
+
 /*quem somos dark*/
 
 body.dark-mode .logo2 {
@@ -1590,6 +1599,7 @@ body.dark-mode .cardCadastro {
     background-color: rgb(193, 192, 192);
     color: var(--preto-2);
 }
+
 body.dark-mode .ja-tem-conta {
     color: black;
 }
@@ -1599,24 +1609,26 @@ body.dark-mode .form-container {
 }
 
 /*contato*/
-body.dark-mode .formContato .complementoTitulo{
-    color: var(--cinza200);
-}
-body.dark-mode .formContato label{
+body.dark-mode .formContato .complementoTitulo {
     color: var(--cinza200);
 }
 
-body.dark-mode .formContato input{
+body.dark-mode .formContato label {
+    color: var(--cinza200);
+}
+
+body.dark-mode .formContato input {
     background-color: var(--cinza-c);
 }
+
 body.dark-mode .formContato .formRodape input {
     background-color: var(--azul-c-3);
-   
+
 }
 
 body.dark-mode .formContato .formRodape input:hover {
     background-color: var(--azul-c);
-   
+
 }
 
 
@@ -1762,6 +1774,7 @@ body.dark-mode .formContato .formRodape input:hover {
         transition: right 0.5s;
         z-index: 2;
     }
+
     body.dark-mode header nav {
         background-color: var(--fundo-dark);
     }

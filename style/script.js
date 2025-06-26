@@ -273,28 +273,28 @@ function abrirdropdown() {
 
 // Dropdown Passagens
 
-const valorUnitario = 500;
-let qtd = 1;
+// const valorUnitario = 500;
+// let qtd = 1;
 
-// Abrir ou fechar o dropdown
-function dropdownpassagem() {
-    const dropdown = document.getElementById('dropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-}
+// // Abrir ou fechar o dropdown
+// function dropdownpassagem() {
+//     const dropdown = document.getElementById('dropdown');
+//     dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+// }
 
-// Seleciona a quantidade e atualiza texto e preço
-function selecionaPassagem(quantidade) {
-    qtd = quantidade;
+// // Seleciona a quantidade e atualiza texto e preço
+// function selecionaPassagem(quantidade) {
+//     qtd = quantidade;
 
-    const texto = quantidade === 1 ? '1 passagem' : `${quantidade} passagens`;
-    document.getElementById('qtdPassagem').innerText = texto;
+//     const texto = quantidade === 1 ? '1 passagem' : `${quantidade} passagens`;
+//     document.getElementById('qtdPassagem').innerText = texto;
 
-    const valorTotal = valorUnitario * quantidade;
-    document.getElementById('preco').innerHTML = `R$ ${valorTotal},00 <span>Por Dia</span>`;
+//     const valorTotal = valorUnitario * quantidade;
+//     document.getElementById('preco').innerHTML = `R$ ${valorTotal},00 <span>Por Dia</span>`;
 
-    // Fecha o dropdown após selecionar
-    dropdownpassagem();
-}
+//     // Fecha o dropdown após selecionar
+//     dropdownpassagem();
+// }
 
 // Menu hamburguer
 
