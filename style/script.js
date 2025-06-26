@@ -241,7 +241,7 @@ function preencherDadosDaURL() {
     document.getElementById('dataVolta').textContent = p.get('volta') || 'Data volta não encontrada';
 
     document.getElementById('imgPrincipal').src = p.get('img1') || '';
-     document.getElementById('img1').src = p.get('img1') || '';
+    document.getElementById('img1').src = p.get('img1') || '';
     document.getElementById('img2').src = p.get('img2') || '';
     document.getElementById('img3').src = p.get('img3') || '';
     document.getElementById('img4').src = p.get('img4') || '';
