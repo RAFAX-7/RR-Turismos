@@ -1,5 +1,3 @@
-
-
 //----------------Dark Mode----------------
 
 const iconMoon = document.getElementById("iconMoon");
@@ -192,6 +190,72 @@ let ano = novadata.getFullYear();
 spansAno.forEach(function (span) {
     span.innerHTML = ano;
 });
+
+// Envia Infromações do Card para a página de agendamento
+
+// Função que é chamada na index.html ao clicar no card
+function abrirAgendar(card) {
+    const local = card.querySelector('.Local')?.innerText || '';
+    const guia = card.querySelector('.guiaNome')?.innerText || '';
+    const ida = card.querySelector('.ida')?.innerText || '';
+    const volta = card.querySelector('.volta')?.innerText || '';
+
+    // const titulo = card.querySelector('.tituloViagem')?.innerText || '';
+    const descricao = card.querySelector('.descricaoViagem')?.innerText || '';
+
+
+    const img1 = card.querySelector('.verimg1')?.src || '';
+    const img2 = card.querySelector('.verimg2')?.src || '';
+    const img3 = card.querySelector('.verimg3')?.src || '';
+    const img4 = card.querySelector('.verimg4')?.src || '';
+
+    const reservaElem = card.querySelector('.reserva');
+    const reservaHTML = reservaElem ? encodeURIComponent(reservaElem.outerHTML) : '';
+
+    const url = new URL('agendar.html', window.location.origin);
+    url.searchParams.set('local', local);
+    url.searchParams.set('guia', guia);
+    url.searchParams.set('ida', ida);
+    url.searchParams.set('volta', volta);
+    url.searchParams.set('descricao', descricao);
+    url.searchParams.set('img1', img1);
+    url.searchParams.set('img2', img2);
+    url.searchParams.set('img3', img3);
+    url.searchParams.set('img4', img4);
+    url.searchParams.set('reservaHTML', reservaHTML);
+
+    window.location.href = url.toString();
+}
+
+// Script que roda na agendar.html para preencher os dados da URL
+function preencherDadosDaURL() {
+    if (!window.location.search) return;
+
+    const p = new URLSearchParams(window.location.search);
+
+    // document.getElementById('tituloViagem').textContent = p.get('titulo') || 'Título não encontrado';
+    document.getElementById('descricaoViagem').textContent = p.get('descricao') || 'Descrição não encontrada';
+    document.getElementById('localViagem').textContent = p.get('local') || 'Local não encontrado';
+    document.getElementById('guiaViagem').textContent = p.get('guia') || 'Guia não encontrado';
+    document.getElementById('dataIda').textContent = p.get('ida') || 'Data ida não encontrada';
+    document.getElementById('dataVolta').textContent = p.get('volta') || 'Data volta não encontrada';
+
+    document.getElementById('imgPrincipal').src = p.get('img1') || '';
+     document.getElementById('img1').src = p.get('img1') || '';
+    document.getElementById('img2').src = p.get('img2') || '';
+    document.getElementById('img3').src = p.get('img3') || '';
+    document.getElementById('img4').src = p.get('img4') || '';
+
+    const reservaHTML = p.get('reservaHTML');
+    if (reservaHTML) {
+        document.getElementById('reservaContainer').innerHTML = decodeURIComponent(reservaHTML);
+    }
+}
+
+if (window.location.pathname.endsWith('agendar.html')) {
+    window.addEventListener('DOMContentLoaded', preencherDadosDaURL);
+}
+
 
 // Dropdown Login
 
@@ -592,42 +656,6 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
 
     updateSlide(currentIndex);
     startAutoSlide();
-
-    // Modal viagem
-
-    const modal = document.getElementById('modal');
-    const modalTitulo = document.querySelector('.modal-titulo');
-    const modalDetalhes = document.getElementById('modal-detalhes');
-    const closeBtn = document.getElementById('closeModal');
-    const closeFooterBtn = document.getElementById('closeBtn');
-
-    // Função para abrir modal com dados do card
-    function abrirModalComCard(card) {
-        const local = card.querySelectorAll('.tituloViagem')[0].innerText;
-        const pais = card.querySelectorAll('.tituloViagem')[1].innerText;
-        const ida = card.querySelectorAll('.tituloViagem')[2].innerText;
-        const volta = card.querySelectorAll('.tituloViagem')[3].innerText;
-        const preco = card.querySelector('.preco').innerText;
-
-        modalTitulo.innerText = local; // Título será o "Local"
-        //     modalDetalhes.innerHTML = `
-        //    `;
-
-        modal.style.display = 'flex';
-    }
-
-    // Adiciona evento a todos os botões
-    document.querySelectorAll('.btnagenda').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const card = btn.closest('.card');
-            abrirModalComCard(card);
-        });
-    });
-
-    // Fechar modal
-    closeBtn.addEventListener('click', () => modal.style.display = 'none');
-    closeFooterBtn.addEventListener('click', () => modal.style.display = 'none');
-
 }
 
 document.addEventListener('DOMContentLoaded', function () {
