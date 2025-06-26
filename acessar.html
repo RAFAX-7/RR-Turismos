@@ -85,6 +85,15 @@
                  <div id="mensagensErro" class="mensagem"></div>
             </form>
         </div>
+
+        <!-- INÍCIO VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <!-- FIM VLibras -->
     </main> 
 
     <footer>
@@ -149,15 +158,88 @@
         </div>
 
     </footer>
+    
+    <div class="accessibility-wrapper">
+        <div class="accessibility-panel">
 
-    <!-- INÍCIO VLibras -->
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
+            <!-- Botão de dark mode -->
+            <button class="panel-button" id="darkModeBtn" aria-label="Alternar modo escuro" onclick="toggleDarkMode()">
+                <!-- Lua -->
+                <lord-icon id="iconMoon" src="https://cdn.lordicon.com/yodwgokk.json" trigger="hover"
+                    style="width:36px; height:36px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible;">
+                </lord-icon>
+
+                <!-- Sol SVG -->
+                <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFD93B" stroke="#F1C40F"
+                    stroke-width="1.5"
+                    style="width: 36px; height: 36px; position: absolute; top: 50%; left: 50%; transform-origin: center; transform: translate(-50%, -50%) rotate(0deg); visibility: hidden;"
+                    class="sun-animated">
+                    <circle cx="12" cy="12" r="5" />
+                    <g>
+                        <line x1="12" y1="1" x2="12" y2="4" />
+                        <line x1="12" y1="20" x2="12" y2="23" />
+                        <line x1="4.2" y1="4.2" x2="6.3" y2="6.3" />
+                        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
+                        <line x1="1" y1="12" x2="4" y2="12" />
+                        <line x1="20" y1="12" x2="23" y2="12" />
+                        <line x1="4.2" y1="19.8" x2="6.3" y2="17.7" />
+                        <line x1="17.7" y1="6.3" x2="19.8" y2="4.2" />
+                    </g>
+                </svg>
+            </button>
+
+            <!-- Seletor de idiomas -->
+            <div class="lang-selector" id="langSelector">
+                <button class="lang-toggle" onclick="toggleLangMenu()" aria-label="Selecionar idioma">
+                    <lord-icon src="https://cdn.lordicon.com/tyntlpjn.json" trigger="hover"
+                        style="width:36px; height:36px;">
+                    </lord-icon>
+                </button>
+                <div class="lang-menu">
+                    <button onclick="setLanguage('portuguese')"><img src="https://flagcdn.com/w40/br.png"
+                            alt="PT"></button>
+                    <button onclick="setLanguage('english')"><img src="https://flagcdn.com/w40/us.png"
+                            alt="EN"></button>
+                    <button onclick="setLanguage('spanish')"><img src="https://flagcdn.com/w40/es.png"
+                            alt="ES"></button>
+                    <button onclick="setLanguage('french')"><img src="https://flagcdn.com/w40/fr.png" alt="FR"></button>
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- FIM VLibras -->
+
+        <!-- Botão de acessibilidade com ícone estilizado personalizado -->
+       <button class="accessibility-button" aria-label="Acessibilidade">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36" role="img" aria-label="Ícone de acessibilidade">
+    <!-- Círculo externo mais fino -->
+    <circle cx="32" cy="32" r="30" stroke="black" stroke-width="2" fill="none" />
+    
+    <!-- Cabeça preta menor e suave -->
+    <circle cx="32" cy="16" r="5" fill="black" />
+  
+    <!-- Tronco preto, linha mais fina, com linhas arredondadas -->
+    <line x1="32" y1="22" x2="32" y2="42" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+  
+    <!-- Braços abertos pretos, linha fina e arredondada -->
+    <line x1="32" y1="28" x2="10" y2="22" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="32" y1="28" x2="54" y2="22" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+  
+    <!-- Pernas abertas pretas, linha fina e arredondada -->
+    <line x1="32" y1="42" x2="16" y2="58" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="32" y1="42" x2="48" y2="58" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+  
+    <!-- Pontos pretos menores nas extremidades -->
+    <circle cx="10" cy="22" r="2" fill="black" />
+    <circle cx="54" cy="22" r="2" fill="black" />
+    <circle cx="16" cy="58" r="2" fill="black" />
+    <circle cx="48" cy="58" r="2" fill="black" />
+  </svg>
+</button>
+
+
+        <!-- Tradutor invisível -->
+        <div id="google_translate_element" style="display: none;"></div>
+
+    
 
     <script src="style/script.js"></script>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>

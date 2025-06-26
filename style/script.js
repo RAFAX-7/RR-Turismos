@@ -1,5 +1,79 @@
 
 
+//----------------Dark Mode----------------
+
+const iconMoon = document.getElementById("iconMoon");
+const iconSun = document.getElementById("iconSun");
+
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+        iconMoon.style.visibility = "hidden";
+        iconSun.style.visibility = "visible";
+    } else {
+        iconMoon.style.visibility = "visible";
+        iconSun.style.visibility = "hidden";
+    }
+}
+
+function toggleLangMenu() {
+    document.getElementById("langSelector").classList.toggle("open");
+}
+
+function setLanguage(langName) {
+    const iframe = document.querySelector('iframe.goog-te-menu-frame');
+    if (!iframe) return;
+
+    const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    const links = innerDoc.querySelectorAll('a');
+
+    for (const link of links) {
+        if (link.textContent.toLowerCase().includes(langName.toLowerCase())) {
+            link.click();
+            break;
+        }
+    }
+}
+
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'pt',
+        includedLanguages: 'pt,en,es,fr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const accessBtn = document.querySelector(".accessibility-button");
+        const panel = document.querySelector(".accessibility-panel");
+
+        // Mostrar painel quando passa o mouse sobre o botão
+        accessBtn.addEventListener("mouseenter", () => {
+            panel.classList.add("active");
+        });
+
+        // Manter visível se passar o mouse no painel
+        panel.addEventListener("mouseenter", () => {
+            panel.classList.add("active");
+        });
+
+        // Ocultar painel se sair do botão e não estiver sobre o painel
+        accessBtn.addEventListener("mouseleave", () => {
+            setTimeout(() => {
+                if (!panel.matches(":hover")) {
+                    panel.classList.remove("active");
+                }
+            }, 100);
+        });
+
+        // Ocultar ao sair do painel
+        panel.addEventListener("mouseleave", () => {
+            panel.classList.remove("active");
+        });
+    });
+}
+
 // Configuração do Canvas
 
 const canvas = document.getElementById("background-canvas");
@@ -344,7 +418,7 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
             document.getElementById('formCadastro').reset();
         }
     });
-     //-----------------------------mensagem erro fisica-----------------------------------
+    //-----------------------------mensagem erro fisica-----------------------------------
     document.getElementById('formCadastro').addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -387,50 +461,50 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
     });
 
     //-----------------------------mensagem erro juridica-----------------------------------
-    document.getElementById('formCadastro').addEventListener('submit', function(event) {
-    event.preventDefault();
+    document.getElementById('formCadastro').addEventListener('submit', function (event) {
+        event.preventDefault();
 
-    const nome = document.getElementById('nome').value.trim();
-    const cpfcnpj = document.getElementById('cpfcnpj').value.trim();
-    const senha = document.getElementById('senha').value;
-    const confirmarsenha = document.getElementById('confirmarsenha').value;
-    const mensagensErro = document.getElementById('mensagensErro');
+        const nome = document.getElementById('nome').value.trim();
+        const cpfcnpj = document.getElementById('cpfcnpj').value.trim();
+        const senha = document.getElementById('senha').value;
+        const confirmarsenha = document.getElementById('confirmarsenha').value;
+        const mensagensErro = document.getElementById('mensagensErro');
 
-    let erros = [];
+        let erros = [];
 
-    // Validação nome: mais que 3 caracteres
-    if (nome.length <= 3) {
-        erros.push("O nome deve ter mais de 3 caracteres.");
-    }
+        // Validação nome: mais que 3 caracteres
+        if (nome.length <= 3) {
+            erros.push("O nome deve ter mais de 3 caracteres.");
+        }
 
-    // Validação CPF ou CNPJ: mínimo 11 caracteres (CPF) e máximo 18 (com máscara)
-    if (cpfcnpj.length < 11 || cpfcnpj.length > 18) {
-        erros.push("Informe um CPF ou CNPJ válido.");
-    }
+        // Validação CPF ou CNPJ: mínimo 11 caracteres (CPF) e máximo 18 (com máscara)
+        if (cpfcnpj.length < 11 || cpfcnpj.length > 18) {
+            erros.push("Informe um CPF ou CNPJ válido.");
+        }
 
-    // Validação senha: mínimo 6 caracteres
-    if (senha.length < 6) {
-        erros.push("A senha deve ter no mínimo 6 caracteres.");
-    }
+        // Validação senha: mínimo 6 caracteres
+        if (senha.length < 6) {
+            erros.push("A senha deve ter no mínimo 6 caracteres.");
+        }
 
-    // Confirmação de senha igual a senha
-    if (senha !== confirmarsenha) {
-        erros.push("A confirmação de senha não corresponde à senha.");
-    }
+        // Confirmação de senha igual a senha
+        if (senha !== confirmarsenha) {
+            erros.push("A confirmação de senha não corresponde à senha.");
+        }
 
-    mensagensErro.style.display = "block";
+        mensagensErro.style.display = "block";
 
-    if (erros.length > 0) {
-        mensagensErro.className = "mensagem erro";
-        mensagensErro.innerHTML = "<ul><li>" + erros.join("</li><li>") + "</li></ul>";
-    } else {
-        mensagensErro.className = "mensagem sucesso";
-        mensagensErro.textContent = "Cadastro realizado com sucesso!";
+        if (erros.length > 0) {
+            mensagensErro.className = "mensagem erro";
+            mensagensErro.innerHTML = "<ul><li>" + erros.join("</li><li>") + "</li></ul>";
+        } else {
+            mensagensErro.className = "mensagem sucesso";
+            mensagensErro.textContent = "Cadastro realizado com sucesso!";
 
-        // Limpar formulário após sucesso
-        this.reset();
-    }
-});
+            // Limpar formulário após sucesso
+            this.reset();
+        }
+    });
 
 }
 
@@ -536,8 +610,8 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
         const preco = card.querySelector('.preco').innerText;
 
         modalTitulo.innerText = local; // Título será o "Local"
-    //     modalDetalhes.innerHTML = `
-    //    `;
+        //     modalDetalhes.innerHTML = `
+        //    `;
 
         modal.style.display = 'flex';
     }
