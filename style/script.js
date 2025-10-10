@@ -212,19 +212,21 @@ function abrirAgendar(card) {
     const reservaElem = card.querySelector('.reserva');
     const reservaHTML = reservaElem ? encodeURIComponent(reservaElem.outerHTML) : '';
 
-    const url = new URL('agendar.html', window.location.origin);
-    url.searchParams.set('local', local);
-    url.searchParams.set('guia', guia);
-    url.searchParams.set('ida', ida);
-    url.searchParams.set('volta', volta);
-    url.searchParams.set('descricao', descricao);
-    url.searchParams.set('img1', img1);
-    url.searchParams.set('img2', img2);
-    url.searchParams.set('img3', img3);
-    url.searchParams.set('img4', img4);
-    url.searchParams.set('reservaHTML', reservaHTML);
+    
+    // build relative URL with query string (works on file:// and http)
+    const params = new URLSearchParams();
+    params.set('local', local);
+    params.set('guia', guia);
+    params.set('ida', ida);
+    params.set('volta', volta);
+    params.set('descricao', descricao);
+    params.set('img1', img1);
+    params.set('img2', img2);
+    params.set('img3', img3);
+    params.set('img4', img4);
+    params.set('reservaHTML', reservaHTML);
+    window.location.href = 'agendar.html?' + params.toString();
 
-    window.location.href = url.toString();
 }
 
 // Script que roda na agendar.html para preencher os dados da URL
@@ -708,3 +710,47 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+/* ======= appended gallery setup ======= */
+
+/* ====== Gallery thumbnail click -> replace principal image ====== */
+function setupGaleria() {
+    // On agendar.html the thumbnails have ids img1..img4 and main img has id imgPrincipal.
+    try {
+        const mainImg = document.getElementById('imgPrincipal');
+        const thumbs = [];
+        // collect known thumbnail ids
+        ['img1','img2','img3','img4'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) thumbs.push(el);
+        });
+        // Also allow elements with class 'miniatura' (in case of different structure)
+        document.querySelectorAll('.miniatura').forEach(el => {
+            if (!thumbs.includes(el)) thumbs.push(el);
+        });
+
+        thumbs.forEach(thumb => {
+            thumb.style.cursor = 'pointer';
+            thumb.addEventListener('click', function(e) {
+                const src = thumb.src || thumb.getAttribute('data-src') || thumb.getAttribute('srcset') || null;
+                if (src && mainImg) {
+                    mainImg.src = src;
+                    // small visual feedback - briefly add a class if defined
+                    mainImg.classList.add('fade-replace-temp');
+                    setTimeout(() => mainImg.classList.remove('fade-replace-temp'), 250);
+                }
+            });
+        });
+    } catch (err) {
+        console.warn('setupGaleria error:', err);
+    }
+}
+
+// add a small CSS class to style.css to animate replacement (if class absent it's harmless)
+
+// ensure gallery sets up when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupGaleria);
+} else {
+    try { setupGaleria(); } catch(e) {}
+}
