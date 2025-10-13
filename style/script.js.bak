@@ -20,50 +20,20 @@ function toggleLangMenu() {
     document.getElementById("langSelector").classList.toggle("open");
 }
 
-
 function setLanguage(langName) {
-    // map friendly names to language codes
-    const map = { 'portuguese': 'pt', 'english': 'en', 'spanish': 'es', 'french': 'fr', 'espanhol': 'es', 'inglês': 'en', 'ingles':'en' };
-    const key = (langName || '').toString().toLowerCase();
-    const lang = map[key] || key; // if passed a code already, use it
+    const iframe = document.querySelector('iframe.goog-te-menu-frame');
+    if (!iframe) return;
 
-    // 1) Try the visible combo (most direct)
-    try {
-        const combo = document.querySelector('.goog-te-combo');
-        if (combo) {
-            combo.value = lang;
-            combo.dispatchEvent(new Event('change'));
-            return;
+    const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    const links = innerDoc.querySelectorAll('a');
+
+    for (const link of links) {
+        if (link.textContent.toLowerCase().includes(langName.toLowerCase())) {
+            link.click();
+            break;
         }
-    } catch (e) { console.warn('setLanguage: combo method failed', e); }
-
-    // 2) Try clicking the language link inside the google iframe menu
-    try {
-        const iframe = document.querySelector('iframe.goog-te-menu-frame');
-        if (iframe) {
-            const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const links = innerDoc.querySelectorAll('a');
-            for (const link of links) {
-                const txt = (link.textContent || link.innerText || '').toLowerCase();
-                if (txt.indexOf(key) !== -1 || (link.href || '').indexOf('/' + lang) !== -1) {
-                    link.click();
-                    return;
-                }
-            }
-        }
-    } catch (e) { console.warn('setLanguage: iframe method failed', e); }
-
-    // 3) Cookie fallback: set googtrans cookie and reload (works as last resort)
-    try {
-        const cookieVal = '/pt/' + lang;
-        document.cookie = 'googtrans=' + cookieVal + ';path=/';
-        // try to set domain cookie too (may fail on file://)
-        try { document.cookie = 'googtrans=' + cookieVal + ';domain=.' + location.hostname + ';path=/'; } catch (e) {}
-        // reload to apply
-        location.reload();
-    } catch (e) { console.warn('setLanguage: cookie fallback failed', e); }
+    }
 }
-
 
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({
