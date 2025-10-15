@@ -95,14 +95,14 @@
 
                 <!-- Cards das Viagens -->
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem" src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg" alt="Imagem viagem">
 
                     <h3 class="Local informacao">Rio de Janeiro - Brasil</h3>
 
                     <h3 class="informacao guiaLinha">
                         <img class="iconeP" src="img/Icones/Guia.png" alt="Guia">
-                        Guia: <a class="guiaNome">Rodolfo</a>
+                        Guia: <a href="agendar.html" class="guiaNome">Rodolfo</a>
                     </h3>
 
                     <h3 class="informacao">
@@ -121,63 +121,9 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Dados ocultos que serão enviados para agendar.html -->
-                    <img class="verimg1" src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg"
-                        alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/Rio de janeiro/rio editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/Rio de janeiro/Rio2 editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/Rio de janeiro/rio3 editada.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Conheça a Cidade Maravilhosa! Nossa viagem inclui paradas nos principais cartões-postais do Rio:
-                        Cristo Redentor, Pão de Açúcar, Praia de Copacabana, Praia de Ipanema e passeio pela Lapa com
-                        seus
-                        famosos arcos e escadaria Selarón. Também visitaremos o Maracanã (externo), o Jardim Botânico e
-                        o
-                        encantador Mirante Dona Marta, com uma vista incrível da cidade. Aproveite momentos de lazer nas
-                        praias, cultura e muita beleza natural!
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">07/11/2025</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">09/11/2025</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem" src="img/ilhabela/Ilhabela, Brazil editada.jpg" alt="Imagem viagem">
 
                     <h3 class="Local informacao">Ilhabela - Brasil</h3>
@@ -203,58 +149,9 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1" src="img/ilhabela/Ilhabela, Brazil editada.jpg" alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/ilhabela/bela editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/ilhabela/bela2 editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/ilhabela/bela4.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Descubra Ilhabela, um paraíso tropical com mais de 40 praias e cachoeiras deslumbrantes. O
-                        passeio inclui trilhas pela Mata Atlântica, mergulho em águas cristalinas, visitas à Praia do
-                        Curral, Praia de Castelhanos e ao centro histórico charmoso com lojinhas e gastronomia caiçara.
-                        Aproveite dias incríveis cercado por natureza exuberante e paisagens inesquecíveis.
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">21/06/2025</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">25/06/2025</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">2 passagens</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem" src="img/teormina/Teormina,Sicily,Italy editada.jpg" alt="Imagem viagem">
 
                     <h3 class="Local informacao">Taormina, Sicily - Italy</h3>
@@ -280,60 +177,10 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1" src="img/teormina/Teormina,Sicily,Italy editada.jpg" alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/teormina/1editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/teormina/2editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/teormina/3editada.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Explore a charmosa cidade de Taormina, na Sicília, com vista para o Mar Jônico e o majestoso
-                        Monte Etna. O passeio inclui visita ao famoso Teatro Grego, ao Corso Umberto (rua principal com
-                        lojas e cafés), à belíssima Isola Bella e aos jardins públicos da Villa Comunale. Aproveite
-                        também a culinária italiana autêntica e paisagens deslumbrantes da costa sul da Itália.
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">11/05/2025</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">15/05/2025</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem"
                         src="img/Barra do cunhaú/Barra do Cunhaú, Rio Grande do Norte, Brasil editada.jpg"
                         alt="Imagem viagem">
@@ -361,63 +208,10 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1"
-                        src="img/Barra do cunhaú/Barra do Cunhaú, Rio Grande do Norte, Brasil editada.jpg"
-                        alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/Barra do cunhaú/cunhaú1 editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/Barra do cunhaú/cunhaú2 editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/Barra do cunhaú/cunhaú3 editada.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Descubra as belezas naturais de Barra do Cunhaú, no Rio Grande do Norte! Um paraíso entre mar e
-                        rio com águas calmas, perfeitas para banho e esportes como kitesurf. O roteiro inclui passeios
-                        de buggy, travessia de balsa, visita ao encontro do rio Curimataú com o mar e paradas para
-                        frutos do mar frescos à beira da praia. Ideal para quem busca tranquilidade e contato com a
-                        natureza.
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">08/02/2026</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">13/02/2026</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem" src="img/Moorea,French Polynesia/Moorea,French Polynesia editada.jpg"
                         alt="Imagem viagem">
 
@@ -444,62 +238,10 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1" src="img/Moorea,French Polynesia/Moorea,French Polynesia editada.jpg"
-                        alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/Moorea,French Polynesia/1 editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/Moorea,French Polynesia/2 editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/Moorea,French Polynesia/3 editada.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Viva dias inesquecíveis em Moorea, um paraíso na Polinésia Francesa com mar azul-turquesa,
-                        bangalôs sobre a água e paisagens tropicais exuberantes. Nosso roteiro inclui mergulho com
-                        arraias, passeio de barco entre golfinhos, trilhas com vistas panorâmicas da ilha e visita à
-                        Baía de Cook. Relaxe em praias paradisíacas com estrutura de alto nível e aproveite o pôr do sol
-                        mais impressionante do Pacífico Sul.
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">23/01/2026</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">28/01/2026</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem" src="img/Honolulu/Honolulu,United States editada.jpg" alt="Imagem viagem">
 
                     <h3 class="Local informacao">Honolulu - United States</h3>
@@ -525,63 +267,10 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1" src="img/Honolulu/Honolulu,United States editada.jpg" alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/Honolulu/honolulu1 editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/Honolulu/lulu2 editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/Honolulu/lulu3 editada.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Descubra Honolulu, capital do Havaí, onde a cultura havaiana se mistura com praias tropicais
-                        paradisíacas.
-                        Esta viagem inclui passeios em Waikiki Beach, cratera Diamond Head, mergulho com snorkel na baía
-                        de Hanauma,
-                        e uma visita emocionante ao memorial de Pearl Harbor. Aproveite a culinária local, trilhas
-                        deslumbrantes e o
-                        pôr do sol espetacular à beira-mar em um dos destinos mais encantadores dos Estados Unidos.
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">13/12/2025</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">18/12/2025</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem" src="img/Positano/Positano,Italy editada.jpg" alt="Imagem viagem">
 
                     <h3 class="Local informacao">Positano - Italy</h3>
@@ -607,64 +296,9 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1" src="img/Positano/Positano,Italy editada.jpg" alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/Positano/1 editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/Positano/2 editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/Positano/3 editada.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Explore o charme de Positano, uma das joias da Costa Amalfitana, com suas casinhas coloridas nas
-                        encostas,
-                        ruas estreitas e vistas de tirar o fôlego do Mar Mediterrâneo. Nesta viagem, visitaremos praias
-                        deslumbrantes
-                        como Spiaggia Grande, o centrinho histórico com lojas artesanais, e faremos passeios de barco
-                        pela costa,
-                        passando por cavernas e falésias. Ideal para quem busca romantismo, paisagens icônicas e a
-                        autêntica
-                        culinária italiana.
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">05/11/2025</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">10/11/2025</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem" src="img/las vegas/Las Vegas,USA editada.jpg" alt="Imagem viagem">
 
                     <h3 class="Local informacao">Las Vegas - USA</h3>
@@ -690,63 +324,10 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1" src="img/las vegas/Las Vegas,USA editada.jpg" alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/las vegas/vegas1 editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/las vegas/vegas 2 editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/las vegas/vegas 3 editada.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Viva a experiência vibrante de Las Vegas! Nesta viagem, você visitará cassinos icônicos como o
-                        Bellagio e o
-                        Caesars Palace, assistirá a espetáculos incríveis e passeará pela famosa Las Vegas Strip
-                        iluminada à noite.
-                        Também haverá tempo para explorar o Grand Canyon em uma excursão opcional. Aproveite a culinária
-                        internacional,
-                        as compras em outlets e os shows de luzes e fontes que fazem de Vegas um destino inesquecível!
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">19/10/2025</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">24/10/2025</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem" src="img/Gray rocky mountain, italy/Gray Rocky Mountain, ITALY editada.jpg"
                         alt="Imagem viagem">
 
@@ -773,63 +354,9 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1" src="img/Gray rocky mountain, italy/Gray Rocky Mountain, ITALY editada.jpg"
-                        alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/Gray rocky mountain, italy/Manarola, Ligúria, Itália editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/Gray rocky mountain, italy/Prati di Tivo, Abruzzo, Italia editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/Gray rocky mountain, italy/Roma, Lácio, Itália editada.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Explore as impressionantes paisagens montanhosas de Gray Rocky Mountain na Itália! Esta viagem
-                        oferece trilhas
-                        cercadas por rochas cinzentas, florestas densas e lagos cristalinos. Ideal para quem ama
-                        natureza e aventura, o
-                        roteiro inclui passeios guiados pelas trilhas alpinas, visita a vilarejos locais, culinária
-                        típica da região e
-                        mirantes com vistas de tirar o fôlego dos Alpes italianos. Uma jornada inesquecível no coração
-                        das montanhas!
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">10/09/2025</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">15/09/2025</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+
+                <div class="card btnagenda">
                     <img class="viagem" src="img/Lagos portugal/Lagos, Portugal editada.jpg" alt="Imagem viagem">
 
                     <h3 class="Local informacao">Lagos - Portugal</h3>
@@ -855,64 +382,10 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1" src="img/Lagos portugal/Lagos, Portugal editada.jpg" alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/Lagos portugal/lago1 editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/Lagos portugal/lago2 EDITADA.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/Lagos portugal/lago3 editada.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Descubra o charme de Lagos, uma joia do Algarve português! Nesta viagem você visitará as
-                        icônicas falésias da
-                        Ponta da Piedade, passeará pelas praias cristalinas como a Praia Dona Ana e Praia do Camilo, e
-                        explorará o
-                        centro histórico com suas ruas de paralelepípedos e cultura vibrante. Inclui passeio de barco
-                        por grutas,
-                        visita ao Forte da Ponta da Bandeira e tempo livre para curtir o pôr do sol inesquecível à
-                        beira-mar.
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">26/07/2025</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">31/07/2025</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem" src="img/Singapura asia/Singapore, sudeste Asia  editada.jpg"
                         alt="Imagem viagem">
 
@@ -939,61 +412,10 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1" src="img/Singapura asia/Singapore, sudeste Asia  editada.jpg"
-                        alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/Singapura asia/singapura ediytada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/Singapura asia/singapura2 editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/Singapura asia/singapura3 editada.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Explore Singapura, a vibrante cidade-estado do Sudeste Asiático, famosa por sua mistura
-                        cultural, arquitetura futurista e deliciosa culinária. Visite os Jardins da Baía, Marina Bay
-                        Sands, Chinatown e Little India. Aproveite passeios pela Ilha Sentosa, mercados locais e a
-                        impressionante vida noturna desta metrópole fascinante.
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">04/06/2025</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">09/06/2025</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
 
-                <div class="card btnagenda" onclick="abrirAgendar(this)">
+                <div class="card btnagenda">
                     <img class="viagem" src="img/stresa, italy/Stresa, Piedmont, Italy editada.jpg" alt="Imagem viagem">
 
                     <h3 class="Local informacao">Stresa, Piedmont - Italy</h3>
@@ -1019,72 +441,20 @@
                     </h3>
 
                     <button class="btnagenda">Ver Mais</button>
-
-                    <!-- Imagens extras para galeria -->
-                    <img class="verimg1" src="img/stresa, italy/Stresa, Piedmont, Italy editada.jpg"
-                        alt="Imagem 1 extra">
-                    <img class="verimg2" src="img/stresa, italy/1 editada.jpg" alt="Imagem 2 extra">
-                    <img class="verimg3" src="img/stresa, italy/2 editada.jpg" alt="Imagem 3 extra">
-                    <img class="verimg4" src="img/stresa, italy/editada 3.jpg" alt="Imagem 4 extra">
-
-                    <p class="descricaoViagem">
-                        Descubra Stresa, um encantador destino no Piemonte, Itália, às margens do Lago Maggiore. A
-                        cidade oferece paisagens pitorescas, jardins floridos e vilarejos históricos. Aproveite passeios
-                        de barco pelas ilhas Borromeu, visite o Palácio Borromeu e desfrute da culinária italiana
-                        tradicional com vista para o lago.
-                    </p>
-
-                    <div class="reserva">
-                        <h5 class="precoPorDia">
-                            R$ 500,00 <span>Por Dia</span>
-                        </h5>
-
-                        <div class="box-reserva">
-                            <div class="datas">
-                                <div class="check">
-                                    <label>CHECK-IN</label>
-                                    <p class="checkin">16/05/2025</p>
-                                </div>
-                                <div class="check">
-                                    <label>CHECKOUT</label>
-                                    <p class="checkout">21/05/2025</p>
-                                </div>
-                            </div>
-
-                            <div class="hospedes">
-                                <div>
-                                    <label>PASSAGENS</label>
-                                    <p class="qtdPassagem">1 passagem</p>
-                                </div>
-                                <button id="seta" onclick="dropdownpassagem()">&#9662;</button>
-                            </div>
-
-                            <!-- Dropdown -->
-                            <div id="dropdown" class="dropdown">
-                                <ul>
-                                    <li onclick="selecionaPassagem(1)">1 passagem</li>
-                                    <li onclick="selecionaPassagem(2)">2 passagens</li>
-                                    <li onclick="selecionaPassagem(3)">3 passagens</li>
-                                    <li onclick="selecionaPassagem(4)">4 passagens</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
-           <!-- INÍCIO VLibras -->Add commentMore actions
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
-    <!-- FIM VLibras -->
 
-    
+            <!-- INÍCIO VLibras -->
+            <div vw class="enabled">
+                <div vw-access-button class="active"></div>
+                <div vw-plugin-wrapper>
+                    <div class="vw-plugin-top-wrapper"></div>
+                </div>
+            </div>
+            <!-- FIM VLibras -->
+
         </section>
-
 
     </main>
 
@@ -1232,9 +602,10 @@
 
         <!-- Tradutor invisível -->
         <div id="google_translate_element" style="display: none;"></div>
-    <script src="style/script.js"></script>
-    <!-- Google Translate widget -->
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <script src="style/script.js"></script>
+        <!-- Google Translate widget -->
+        <script type="text/javascript"
+            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
         <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
         <script src="https://cdn.lordicon.com/lordicon.js"></script>

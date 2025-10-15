@@ -23,7 +23,7 @@ function toggleLangMenu() {
 
 function setLanguage(langName) {
     // map friendly names to language codes
-    const map = { 'portuguese': 'pt', 'english': 'en', 'spanish': 'es', 'french': 'fr', 'espanhol': 'es', 'inglês': 'en', 'ingles':'en' };
+    const map = { 'portuguese': 'pt', 'english': 'en', 'spanish': 'es', 'french': 'fr', 'espanhol': 'es', 'inglês': 'en', 'ingles': 'en' };
     const key = (langName || '').toString().toLowerCase();
     const lang = map[key] || key; // if passed a code already, use it
 
@@ -58,7 +58,7 @@ function setLanguage(langName) {
         const cookieVal = '/pt/' + lang;
         document.cookie = 'googtrans=' + cookieVal + ';path=/';
         // try to set domain cookie too (may fail on file://)
-        try { document.cookie = 'googtrans=' + cookieVal + ';domain=.' + location.hostname + ';path=/'; } catch (e) {}
+        try { document.cookie = 'googtrans=' + cookieVal + ';domain=.' + location.hostname + ';path=/'; } catch (e) { }
         // reload to apply
         location.reload();
     } catch (e) { console.warn('setLanguage: cookie fallback failed', e); }
@@ -221,74 +221,6 @@ spansAno.forEach(function (span) {
     span.innerHTML = ano;
 });
 
-// Envia Infromações do Card para a página de agendamento
-
-// Função que é chamada na index.html ao clicar no card
-function abrirAgendar(card) {
-    const local = card.querySelector('.Local')?.innerText || '';
-    const guia = card.querySelector('.guiaNome')?.innerText || '';
-    const ida = card.querySelector('.ida')?.innerText || '';
-    const volta = card.querySelector('.volta')?.innerText || '';
-
-    // const titulo = card.querySelector('.tituloViagem')?.innerText || '';
-    const descricao = card.querySelector('.descricaoViagem')?.innerText || '';
-
-
-    const img1 = card.querySelector('.verimg1')?.src || '';
-    const img2 = card.querySelector('.verimg2')?.src || '';
-    const img3 = card.querySelector('.verimg3')?.src || '';
-    const img4 = card.querySelector('.verimg4')?.src || '';
-
-    const reservaElem = card.querySelector('.reserva');
-    const reservaHTML = reservaElem ? encodeURIComponent(reservaElem.outerHTML) : '';
-
-    
-    // build relative URL with query string (works on file:// and http)
-    const params = new URLSearchParams();
-    params.set('local', local);
-    params.set('guia', guia);
-    params.set('ida', ida);
-    params.set('volta', volta);
-    params.set('descricao', descricao);
-    params.set('img1', img1);
-    params.set('img2', img2);
-    params.set('img3', img3);
-    params.set('img4', img4);
-    params.set('reservaHTML', reservaHTML);
-    window.location.href = 'agendar.html?' + params.toString();
-
-}
-
-// Script que roda na agendar.html para preencher os dados da URL
-function preencherDadosDaURL() {
-    if (!window.location.search) return;
-
-    const p = new URLSearchParams(window.location.search);
-
-    // document.getElementById('tituloViagem').textContent = p.get('titulo') || 'Título não encontrado';
-    document.getElementById('descricaoViagem').textContent = p.get('descricao') || 'Descrição não encontrada';
-    document.getElementById('localViagem').textContent = p.get('local') || 'Local não encontrado';
-    document.getElementById('guiaViagem').textContent = p.get('guia') || 'Guia não encontrado';
-    document.getElementById('dataIda').textContent = p.get('ida') || 'Data ida não encontrada';
-    document.getElementById('dataVolta').textContent = p.get('volta') || 'Data volta não encontrada';
-
-    document.getElementById('imgPrincipal').src = p.get('img1') || '';
-    document.getElementById('img1').src = p.get('img1') || '';
-    document.getElementById('img2').src = p.get('img2') || '';
-    document.getElementById('img3').src = p.get('img3') || '';
-    document.getElementById('img4').src = p.get('img4') || '';
-
-    const reservaHTML = p.get('reservaHTML');
-    if (reservaHTML) {
-        document.getElementById('reservaContainer').innerHTML = decodeURIComponent(reservaHTML);
-    }
-}
-
-if (window.location.pathname.endsWith('agendar.html')) {
-    window.addEventListener('DOMContentLoaded', preencherDadosDaURL);
-}
-
-
 // Dropdown Login
 
 function abrirdropdown() {
@@ -302,31 +234,6 @@ function abrirdropdown() {
         }
     });
 }
-
-// Dropdown Passagens
-
-// const valorUnitario = 500;
-// let qtd = 1;
-
-// // Abrir ou fechar o dropdown
-// function dropdownpassagem() {
-//     const dropdown = document.getElementById('dropdown');
-//     dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-// }
-
-// // Seleciona a quantidade e atualiza texto e preço
-// function selecionaPassagem(quantidade) {
-//     qtd = quantidade;
-
-//     const texto = quantidade === 1 ? '1 passagem' : `${quantidade} passagens`;
-//     document.getElementById('qtdPassagem').innerText = texto;
-
-//     const valorTotal = valorUnitario * quantidade;
-//     document.getElementById('preco').innerHTML = `R$ ${valorTotal},00 <span>Por Dia</span>`;
-
-//     // Fecha o dropdown após selecionar
-//     dropdownpassagem();
-// }
 
 // Menu hamburguer
 
@@ -349,7 +256,6 @@ function fecharmenu() {
 // Verificação cadastro 
 
 if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location.pathname.endsWith("cadastro-juridica.html") || window.location.pathname.endsWith("acessar.html") || window.location.pathname.endsWith("contato.html")) {
-
 
     //------------------------------mascara telefone-----------------------------------
 
@@ -474,6 +380,7 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
 
 
     });
+
     document.getElementById('formCadastro').addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -741,46 +648,180 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-/* ======= appended gallery setup ======= */
+if (window.location.pathname.endsWith("agendar.html")) {
 
-/* ====== Gallery thumbnail click -> replace principal image ====== */
-function setupGaleria() {
-    // On agendar.html the thumbnails have ids img1..img4 and main img has id imgPrincipal.
-    try {
-        const mainImg = document.getElementById('imgPrincipal');
-        const thumbs = [];
-        // collect known thumbnail ids
-        ['img1','img2','img3','img4'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) thumbs.push(el);
-        });
-        // Also allow elements with class 'miniatura' (in case of different structure)
-        document.querySelectorAll('.miniatura').forEach(el => {
-            if (!thumbs.includes(el)) thumbs.push(el);
-        });
+    // travel-detail.js — comportamento da galeria, cálculo de reserva, mapa de assentos e modo escuro
+    (function () {
 
-        thumbs.forEach(thumb => {
-            thumb.style.cursor = 'pointer';
-            thumb.addEventListener('click', function(e) {
-                const src = thumb.src || thumb.getAttribute('data-src') || thumb.getAttribute('srcset') || null;
-                if (src && mainImg) {
-                    mainImg.src = src;
-                    // small visual feedback - briefly add a class if defined
-                    mainImg.classList.add('fade-replace-temp');
-                    setTimeout(() => mainImg.classList.remove('fade-replace-temp'), 250);
-                }
+        // === GALERIA DE IMAGENS PRINCIPAL ===
+        // Obtém a imagem principal e todas as miniaturas (thumbnails)
+        const mainImage = document.getElementById('mainImage').querySelector('img');
+        const thumbs = document.querySelectorAll('.thumb');
+
+        // Troca a imagem principal ao clicar em uma miniatura
+        thumbs.forEach(t => {
+            t.addEventListener('click', e => {
+                const src = t.getAttribute('data-src').replace(/'$/, '');
+                mainImage.src = src;
             });
         });
-    } catch (err) {
-        console.warn('setupGaleria error:', err);
-    }
-}
 
-// add a small CSS class to style.css to animate replacement (if class absent it's harmless)
 
-// ensure gallery sets up when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupGaleria);
-} else {
-    try { setupGaleria(); } catch(e) {}
+        // === CÁLCULO DE RESERVA (valor total por quantidade de passagens) ===
+
+        // Captura o valor da passagem individual
+        const rateEl = document.getElementById('rate');
+
+        // Captura o campo de quantidade de passagens (pessoas)
+        const peopleEl = document.getElementById('people');
+
+        // Captura o campo onde será exibido o valor total
+        const totalEl = document.getElementById('total');
+
+        // Captura o botão de calcular/confirmar
+        const bookBtn = document.getElementById('bookBtn');
+
+        // Garante que o valor nunca seja menor que 1
+        peopleEl.addEventListener('input', () => {
+            if (peopleEl.value < 1 || peopleEl.value === '') {
+                peopleEl.value = 1;
+            }
+        });
+
+
+
+        // Função que calcula o valor total (sem considerar datas)
+        function updatePrice() {
+            // Pega o valor da passagem (ou 0 se estiver vazio)
+            const rate = Number(rateEl.value) || 0;
+
+            // Pega a quantidade de passagens (mínimo 1)
+            const people = Math.max(1, Number(peopleEl.value) || 1);
+
+            // Calcula o total (valor por passagem × quantidade)
+            const total = rate * people;
+
+            // Atualiza o campo de total com duas casas decimais
+            totalEl.textContent = total.toFixed(2);
+        }
+
+
+        // Atualiza o preço automaticamente sempre que o usuário altera os campos
+        [rateEl, peopleEl].forEach(i =>
+            i.addEventListener('input', updatePrice)
+        );
+
+
+        // Quando o usuário clica no botão de calcular
+        bookBtn.addEventListener('click', () => {
+            // Atualiza o valor total
+            updatePrice();
+
+            // Exibe o valor calculado em um alerta
+            alert('Valor total: R$ ' + totalEl.textContent);
+        });
+
+
+
+        // === MAPA DE ASSENTOS DO ÔNIBUS ===
+        (function createBusLayout() {
+            busMap.innerHTML = ''; // Limpa o mapa antes de gerar
+
+            // Cria a área do motorista
+            const driverDiv = document.createElement('div');
+            driverDiv.className = 'driver';
+            driverDiv.textContent = 'Motorista / Entrada';
+            busMap.appendChild(driverDiv);
+
+            // Espaço de perna opcional
+            const leg = document.createElement('div');
+            leg.className = 'leg-row';
+            busMap.appendChild(leg);
+
+            // Define quantidade de fileiras e letras dos assentos
+            const rows = 12;
+            const seatLettersLeft = ['A', 'B'];  // lado esquerdo
+            const seatLettersRight = ['C', 'D']; // lado direito
+            let seatNum = 1;
+
+            // Gera automaticamente os assentos do ônibus
+            for (let r = 1; r <= rows; r++) {
+                // Lado esquerdo
+                for (let i = 0; i < seatLettersLeft.length; i++) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'seat window';
+                    const label = `${r}${seatLettersLeft[i]}`;
+                    btn.setAttribute('data-seat', label);
+                    btn.textContent = label;
+
+                    // Adiciona o evento de clique
+                    btn.addEventListener('click', seatClickHandler);
+                    busMap.appendChild(btn);
+                }
+
+                // Espaço do corredor (vazio)
+                const aisle = document.createElement('div');
+                aisle.className = 'col-label';
+                aisle.textContent = '';
+                busMap.appendChild(aisle);
+
+                // Lado direito
+                for (let i = 0; i < seatLettersRight.length; i++) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'seat window';
+                    const label = `${r}${seatLettersRight[i]}`;
+                    btn.setAttribute('data-seat', label);
+                    btn.textContent = label;
+
+                    btn.addEventListener('click', seatClickHandler);
+                    busMap.appendChild(btn);
+                }
+            }
+
+            // Evento ao clicar em um assento
+            function seatClickHandler(e) {
+                const el = e.currentTarget;
+                if (el.classList.contains('occupied')) return; // ignora se estiver ocupado
+                document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+                el.classList.add('selected');
+                selectedSeatEl.textContent = el.getAttribute('data-seat'); // mostra o assento escolhido
+            }
+        })();
+
+
+        // === INTERAÇÃO COM MAPA SVG (arrastar marcador) ===
+        const marker = document.getElementById('marker');
+        const coordsEl = document.getElementById('coords');
+
+        // Permite mover o marcador pelo mapa e mostrar coordenadas
+        marker.addEventListener('mousedown', function (ev) {
+            const svg = document.getElementById('localMap');
+            const pt = svg.createSVGPoint();
+
+            // Função que atualiza posição enquanto arrasta
+            function onMove(e) {
+                pt.x = e.clientX;
+                pt.y = e.clientY;
+                const loc = pt.matrixTransform(svg.getScreenCTM().inverse());
+                marker.setAttribute('cx', loc.x);
+                marker.setAttribute('cy', loc.y);
+                coordsEl.textContent = Math.round(loc.x) + ',' + Math.round(loc.y);
+            }
+
+            // Quando soltar o clique, para de mover
+            function up() {
+                window.removeEventListener('mousemove', onMove);
+                window.removeEventListener('mouseup', up);
+            }
+
+            window.addEventListener('mousemove', onMove);
+            window.addEventListener('mouseup', up);
+        });
+
+        // === CHAMA O CÁLCULO INICIAL ===
+        updatePrice();
+
+    })();
 }

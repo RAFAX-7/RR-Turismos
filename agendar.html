@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RR Turismos</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body class="corFundo">
@@ -13,7 +14,7 @@
 
         <img class="logo" src="img/Logos/branca.png" alt="Logo">
 
-        <nav>
+        <nav id="menu">
 
             <div class="topoMenu">
                 <h4>Menu</h4>
@@ -29,11 +30,11 @@
                 </button>
                 <div class="dropdown-entrar" id="dropdownentrar">
                     <a href="cadastro.html">Cadastre-se</a>
-                    <a href="entrar.html">Acessar</a>
+                    <a href="acessar.html">Acessar</a>
                 </div>
             </div>
             <a href="cadastro.html" class="Cadastre-se">Cadastre-se</a>
-            <a href="entrar.html" class="Acessar">Acessar</a>
+            <a href="acessar.html" class="Acessar">Acessar</a>
             <a href="contato.html">Contato</a>
 
             <p class="creditos">
@@ -51,61 +52,134 @@
         </button>
 
     </header>
-    <main>
-        <div class="titulo">
-            <h1>Informações da Viagem</h1>
+
+    <main class="container">
+        <section class="left">
+            <div class="gallery">
+                <div class="main-image" id="mainImage" role="region" aria-label="Galeria de imagens">
+                    <!-- SVG placeholder image -->
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450'><rect width='100%' height='100%' fill='%23cbd5e1'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='28' fill='%2342537a'>Imagem principal do local</text></svg>"
+                        alt="Imagem principal" />
+                </div>
+                <div class="thumbs" id="thumbs" aria-hidden="false">
+                    <!-- Thumbnails -->
+                    <button class="thumb"
+                        data-src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='225'><rect width='100%' height='100%' fill='%23cbd5e1'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='20' fill='%2342537a'>Foto 1</text></svg>'"
+                        aria-label="Foto 1"><img
+                            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='90'><rect width='100%' height='100%' fill='%23cbd5e1'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='12' fill='%2342537a'>Foto 1</text></svg>"
+                            alt="Foto 1" /></button>
+                    <button class="thumb"
+                        data-src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='225'><rect width='100%' height='100%' fill='%23dbeafe'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='20' fill='%23344e6a'>Foto 2</text></svg>'"
+                        aria-label="Foto 2"><img
+                            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='90'><rect width='100%' height='100%' fill='%23dbeafe'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='12' fill='%23344e6a'>Foto 2</text></svg>"
+                            alt="Foto 2" /></button>
+                    <button class="thumb"
+                        data-src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='225'><rect width='100%' height='100%' fill='%23fde68a'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='20' fill='%233a2f0b'>Foto 3</text></svg>'"
+                        aria-label="Foto 3"><img
+                            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='90'><rect width='100%' height='100%' fill='%23fde68a'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='12' fill='%233a2f0b'>Foto 3</text></svg>"
+                            alt="Foto 3" /></button>
+                </div>
+            </div>
+
+            <article class="info">
+                <h2 id="title">Nome do Destino</h2>
+                <p id="shortDesc">Texto fictício temporário: Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Ex numquam itaque sequi, vel sint, perferendis pariatur magni debitis voluptatem perspiciatis
+                    aspernatur tenetur tempora harum beatae eos non ipsum consequuntur expedita?</p>
+
+                <div class="details-grid">
+                    <div><strong>Local:</strong> Praia do Exemplo, BR</div>
+                    <div><strong>Duração sugerida:</strong> 3 dias</div>
+                    <div><strong>Categoria:</strong> Aventura</div>
+                    <div><strong>Idioma:</strong> Português</div>
+                </div>
+            </article>
+
+            <section class="additional">
+                <h3>Informações adicionais</h3>
+                <p>Descrição longa fictícia: aqui você terá espaço para adicionar o texto completo sobre o destino,
+                    horários, recomendações, uniforme, tipo de atividade e tudo mais.</p>
+
+                <h4>Guia</h4>
+                <div class="guide-card">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><rect width='100%' height='100%' fill='%23e2e8f0'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='14' fill='%23343a40'>Foto Guia</text></svg>"
+                        alt="Foto do guia" />
+                    <div>
+                        <a href="guide.html" id="guideLink">João Guia</a>
+                        <div class="stars" aria-hidden="true">★★★★★ (4.8)</div>
+                        <div class="from">Origem: São Paulo</div>
+                    </div>
+                </div>
+
+                <h4>Avaliações</h4>
+                <div id="reviews">
+                    <div class="review"><strong>Maria</strong> — "Ótima experiência!"</div>
+                    <div class="review"><strong>Carlos</strong> — "Recomendo para quem gosta de sol."</div>
+                </div>
+            </section>
+        </section>
+
+        <aside class="right">
+            <div class="booking">
+                <h3>Reservar agora</h3>
+                <label>Valor por pessoa:
+                    <input type="number" id="rate" value="500" disabled/>
+                </label>
+
+                <label>Quantidade de pessoas:
+                    <input type="number" id="people" value="1" min="1" />
+                </label>
+
+                <label>Data de entrada:
+                    <input type="date" id="startDate" value="2025-10-14" disabled/>
+                </label>
+
+                <label>Data de saída:
+                    <input type="date" id="endDate" value="2025-10-14" disabled/>
+                </label>
+
+                <div class="price-summary">
+                    <div>Dias: <span id="days">0</span></div>
+                    <div>Preço total: R$ <span id="total">0.00</span></div>
+                </div>
+
+                <button id="bookBtn">Reservar</button>
+            </div>
+
+            <div class="seatmap">
+                <h3>Mapa do ônibus</h3>
+                <div id="busMap" class="bus-map" role="application" aria-label="Mapa de assentos">
+                    <!-- seats generated by JS -->
+                </div>
+                <div>Assento selecionado: <strong id="selectedSeat">Nenhum</strong></div>
+            </div>
+
+            <div class="map-placeholder">
+                <h3>Mapa do local</h3>
+                <!-- Simple interactive SVG map -->
+                <svg id="localMap" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet" aria-label="Mapa do local">
+                    <rect width="100%" height="100%" fill="transparent" />
+                    <g id="mapLayer">
+                        <rect x="20" y="20" width="260" height="120" rx="8" fill="#e6fffa" stroke="#4fd1c5" />
+                        <text x="150" y="80" text-anchor="middle" dominant-baseline="middle">Área do parque</text>
+
+                        <rect x="320" y="40" width="240" height="80" rx="8" fill="#fff7ed" stroke="#f6ad55" />
+                        <text x="440" y="80" text-anchor="middle" dominant-baseline="middle">Praia</text>
+
+                        <!-- marker -->
+                        <circle id="marker" cx="100" cy="40" r="8" fill="#e53e3e" style="cursor:pointer" />
+                    </g>
+                </svg>
+                <div class="coords">Coordenadas (simuladas): <span id="coords">100,40</span></div>
+            </div>
+        </aside>
+
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
         </div>
-
-        <section class="galeriaViagem">
-            <div class="cardimg">
-                <div class="miniaturas">
-                    <img id="img1" class="miniatura" alt="Imagem 1 da galeria">
-                    <img id="img2" class="miniatura" alt="Imagem 2 da galeria">
-                    <img id="img3" class="miniatura" alt="Imagem 3 da galeria">
-                    <img id="img4" class="miniatura" alt="Imagem 4 da galeria">
-                </div>
-
-                <div class="principal">
-                    <img id="imgPrincipal" alt="Imagem principal da viagem">
-                </div>
-            </div>
-
-            <div class="descricao">
-                <p id="descricaoViagem"></p>
-            </div>
-        </section>
-
-        <section class="galeriaInfo">
-
-            <div class="info">
-
-                <h3 class="informacao guiaLinha">
-                    <img class="iconeM" src="img/Icones/Guia.png" alt="Guia"> Guia: <a href=""><span
-                            id="guiaViagem"></span></a>
-                </h3>
-
-                <h3 class="informacao">
-                    <img class="iconeG" src="img/Icones/Local.png" alt="Ícone Ida"> Local: <span
-                        id="localViagem"></span>
-                </h3>
-
-                <h3 class="informacao">
-                    <img class="iconeGG" src="img/Icones/Ida.png" alt="Ícone Ida"> Ida:<span id="dataIda"></span>
-                </h3>
-
-                <h3 class="informacao">
-                    <img class="iconeGG" src="img/Icones/Volta.png" alt="Ícone Volta"> Volta: <span
-                        id="dataVolta"></span>
-                </h3>
-
-            </div>
-
-            <div class="reservas">
-                <div id="reservaContainer"></div>
-            </div>
-
-        </section>
-
     </main>
 
     <footer>
@@ -121,7 +195,7 @@
                 <h2>Sobre Nós</h2>
                 <p>Somos uma empresa dedicada a criar experiências incríveis no mundo das viagens e tecnologia.</p>
                 <div class="contact">
-                    <p>📞 ‪+55 (16) 99999-9999‬</p>
+                    <p>📞 +55 (16) 99999-9999</p>
                     <p>📧 contato@email.com</p>
                 </div>
                 <div class="subscribe">
@@ -168,12 +242,101 @@
                 </div>
             </div>
         </div>
+
     </footer>
 
-    <script src="style/script.js"></script>
+    <div class="accessibility-wrapper">
+        <div class="accessibility-panel">
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+            <!-- Botão de dark mode -->
+            <button class="panel-button" id="darkModeBtn" aria-label="Alternar modo escuro" onclick="toggleDarkMode()">
+                <!-- Lua -->
+                <lord-icon id="iconMoon" src="https://cdn.lordicon.com/yodwgokk.json" trigger="hover"
+                    style="width:36px; height:36px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible;">
+                </lord-icon>
+
+                <!-- Sol SVG -->
+                <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFD93B" stroke="#F1C40F"
+                    stroke-width="1.5"
+                    style="width: 36px; height: 36px; position: absolute; top: 50%; left: 50%; transform-origin: center; transform: translate(-50%, -50%) rotate(0deg); visibility: hidden;"
+                    class="sun-animated">
+                    <circle cx="12" cy="12" r="5" />
+                    <g>
+                        <line x1="12" y1="1" x2="12" y2="4" />
+                        <line x1="12" y1="20" x2="12" y2="23" />
+                        <line x1="4.2" y1="4.2" x2="6.3" y2="6.3" />
+                        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
+                        <line x1="1" y1="12" x2="4" y2="12" />
+                        <line x1="20" y1="12" x2="23" y2="12" />
+                        <line x1="4.2" y1="19.8" x2="6.3" y2="17.7" />
+                        <line x1="17.7" y1="6.3" x2="19.8" y2="4.2" />
+                    </g>
+                </svg>
+            </button>
+
+            <!-- Seletor de idiomas -->
+            <div class="lang-selector" id="langSelector">
+                <button class="lang-toggle" onclick="toggleLangMenu()" aria-label="Selecionar idioma">
+                    <lord-icon src="https://cdn.lordicon.com/tyntlpjn.json" trigger="hover"
+                        style="width:36px; height:36px;">
+                    </lord-icon>
+                </button>
+                <div class="lang-menu">
+                    <button onclick="setLanguage('portuguese')"><img src="https://flagcdn.com/w40/br.png"
+                            alt="PT"></button>
+                    <button onclick="setLanguage('english')"><img src="https://flagcdn.com/w40/us.png"
+                            alt="EN"></button>
+                    <button onclick="setLanguage('spanish')"><img src="https://flagcdn.com/w40/es.png"
+                            alt="ES"></button>
+                    <button onclick="setLanguage('french')"><img src="https://flagcdn.com/w40/fr.png" alt="FR"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão de acessibilidade com ícone estilizado personalizado -->
+        <button class="accessibility-button" aria-label="Acessibilidade">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36" role="img"
+                aria-label="Ícone de acessibilidade">
+                <!-- Círculo externo mais fino -->
+                <circle cx="32" cy="32" r="30" stroke="black" stroke-width="2" fill="none" />
+
+                <!-- Cabeça preta menor e suave -->
+                <circle cx="32" cy="16" r="5" fill="black" />
+
+                <!-- Tronco preto, linha mais fina, com linhas arredondadas -->
+                <line x1="32" y1="22" x2="32" y2="42" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+
+                <!-- Braços abertos pretos, linha fina e arredondada -->
+                <line x1="32" y1="28" x2="10" y2="22" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="32" y1="28" x2="54" y2="22" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+
+                <!-- Pernas abertas pretas, linha fina e arredondada -->
+                <line x1="32" y1="42" x2="16" y2="58" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="32" y1="42" x2="48" y2="58" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+
+                <!-- Pontos pretos menores nas extremidades -->
+                <circle cx="10" cy="22" r="2" fill="black" />
+                <circle cx="54" cy="22" r="2" fill="black" />
+                <circle cx="16" cy="58" r="2" fill="black" />
+                <circle cx="48" cy="58" r="2" fill="black" />
+            </svg>
+        </button>
+
+
+        <!-- Tradutor invisível -->
+        <div id="google_translate_element" style="display: none;"></div>
+        <script src="style/script.js"></script>
+        <!-- Google Translate widget -->
+        <script type="text/javascript"
+            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
