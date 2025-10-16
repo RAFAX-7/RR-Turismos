@@ -31,7 +31,6 @@
     --fg: #0f172a;
     --muted: #64748b;
     --card: #f8fafc;
-    --accent: #3b82f6;
     --success: #10b981;
 }
 
@@ -1521,6 +1520,7 @@ body.dark-mode .formContato .formRodape input:hover {
     padding: 14px;
     border-radius: 10px;
     box-shadow: 0 6px 18px rgba(2, 6, 23, 0.05);
+    margin-bottom: 2rem;
 }
 
 .right label {
@@ -1557,8 +1557,25 @@ body.dark-mode .formContato .formRodape input:hover {
     padding: 1rem;
     margin: auto;
     display: block;
-    border-radius: 10px;
+    border-radius: 1rem;
     font-size: 1.5rem;
+}
+
+.seatmap h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--azul-c-4);
+    box-shadow: 0 2px 6px rgba(2, 6, 23, 0.04);
+}
+
+.assentos {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--azul-c-4);
 }
 
 .bus-map {
@@ -1586,10 +1603,26 @@ body.dark-mode .formContato .formRodape input:hover {
 }
 
 .map-placeholder {
-    margin-top: 14px;
+    margin-top: 1rem;
     background: var(--card);
-    padding: 10px;
-    border-radius: 8px
+    padding: 1rem;
+    border-radius: 1rem
+}
+
+.map-placeholder h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.coords {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: 1.5rem;
 }
 
 .foot {
@@ -1614,17 +1647,18 @@ body.dark-mode .formContato .formRodape input:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.04);
-    border-radius: 8px;
-    font-weight: 700;
+    padding: 1rem;
+    background-color: var(--azul-c-4);
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    box-shadow: 0 2px 6px rgba(2, 6, 23, 0.04);
 }
 
 .seat {
     background: var(--card);
     border: 1px solid rgba(2, 6, 23, 0.06);
-    padding: 10px;
-    border-radius: 10px;
+    padding: 1rem;
+    border-radius: 1rem;
     text-align: center;
     cursor: pointer;
     user-select: none;
@@ -1649,7 +1683,7 @@ body.dark-mode .formContato .formRodape input:hover {
 }
 
 .seat.selected {
-    background: var(--accent);
+    background: var(--azul-c-3);
     color: white;
     border-color: transparent;
     box-shadow: 0 8px 20px rgba(59, 130, 246, 0.18);

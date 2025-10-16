@@ -675,6 +675,13 @@ if (window.location.pathname.endsWith("agendar.html")) {
         // Captura o campo de quantidade de passagens (pessoas)
         const peopleEl = document.getElementById('people');
 
+        // Captura as datas de entrada e saída
+        const startDateEl = document.getElementById('startDate');
+        const endDateEl = document.getElementById('endDate');
+
+        // Captura o campo onde será exibido o número de dias
+        const daysEl = document.getElementById('days');
+
         // Captura o campo onde será exibido o valor total
         const totalEl = document.getElementById('total');
 
@@ -686,11 +693,27 @@ if (window.location.pathname.endsWith("agendar.html")) {
             if (peopleEl.value < 1 || peopleEl.value === '') {
                 peopleEl.value = 1;
             }
+            updatePrice();
         });
 
+        // Função que calcula a diferença de dias entre as datas
+        function calcularDias() {
+            const start = new Date(startDateEl.value);
+            const end = new Date(endDateEl.value);
 
+            // Cálculo em milissegundos → dias
+            const diffTime = end - start;
+            let diffDays = diffTime / (1000 * 60 * 60 * 24);
 
-        // Função que calcula o valor total (sem considerar datas)
+            // Garante que o mínimo é 1 dia
+            if (diffDays < 1) diffDays = 1;
+
+            // Exibe o número de dias
+            daysEl.textContent = diffDays;
+            return diffDays;
+        }
+
+        // Função que calcula o valor total (considerando quantidade e dias)
         function updatePrice() {
             // Pega o valor da passagem (ou 0 se estiver vazio)
             const rate = Number(rateEl.value) || 0;
@@ -698,19 +721,20 @@ if (window.location.pathname.endsWith("agendar.html")) {
             // Pega a quantidade de passagens (mínimo 1)
             const people = Math.max(1, Number(peopleEl.value) || 1);
 
-            // Calcula o total (valor por passagem × quantidade)
-            const total = rate * people;
+            // Pega a quantidade de dias
+            const days = calcularDias();
+
+            // Calcula o total (valor × quantidade × dias)
+            const total = rate * people * days;
 
             // Atualiza o campo de total com duas casas decimais
             totalEl.textContent = total.toFixed(2);
         }
 
-
         // Atualiza o preço automaticamente sempre que o usuário altera os campos
-        [rateEl, peopleEl].forEach(i =>
+        [rateEl, peopleEl, startDateEl, endDateEl].forEach(i =>
             i.addEventListener('input', updatePrice)
         );
-
 
         // Quando o usuário clica no botão de calcular
         bookBtn.addEventListener('click', () => {
@@ -721,11 +745,18 @@ if (window.location.pathname.endsWith("agendar.html")) {
             alert('Valor total: R$ ' + totalEl.textContent);
         });
 
-
+        // Atualiza automaticamente ao carregar
+        updatePrice();
 
         // === MAPA DE ASSENTOS DO ÔNIBUS ===
         (function createBusLayout() {
             busMap.innerHTML = ''; // Limpa o mapa antes de gerar
+
+            // Captura o elemento onde será exibido o assento selecionado
+            const selectedSeatEl = document.getElementById('selectedSeat');
+
+            // Captura a quantidade de pessoas para limitar a seleção
+            const peopleEl = document.getElementById('people');
 
             // Cria a área do motorista
             const driverDiv = document.createElement('div');
@@ -743,6 +774,9 @@ if (window.location.pathname.endsWith("agendar.html")) {
             const seatLettersLeft = ['A', 'B'];  // lado esquerdo
             const seatLettersRight = ['C', 'D']; // lado direito
             let seatNum = 1;
+
+            // Lista para armazenar assentos selecionados
+            let selectedSeats = [];
 
             // Gera automaticamente os assentos do ônibus
             for (let r = 1; r <= rows; r++) {
@@ -780,16 +814,59 @@ if (window.location.pathname.endsWith("agendar.html")) {
                 }
             }
 
+            // Função que define quantos assentos podem ser escolhidos
+            function maxSeatsAllowed() {
+                const people = Number(peopleEl.value) || 1;
+                // A cada 2 pessoas, 1 assento adicional (ex: 1-2→1, 3-4→2, 5-6→3, etc.)
+                return Math.ceil(people / 2);
+            }
+
+            // Atualiza o texto de assentos selecionados
+            function updateSelectedDisplay() {
+                if (selectedSeats.length === 0) {
+                    selectedSeatEl.textContent = 'Nenhum';
+                } else {
+                    selectedSeatEl.textContent = selectedSeats.join(', ');
+                }
+            }
+
             // Evento ao clicar em um assento
             function seatClickHandler(e) {
                 const el = e.currentTarget;
-                if (el.classList.contains('occupied')) return; // ignora se estiver ocupado
-                document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
-                el.classList.add('selected');
-                selectedSeatEl.textContent = el.getAttribute('data-seat'); // mostra o assento escolhido
-            }
-        })();
 
+                // Ignora se o assento estiver ocupado
+                if (el.classList.contains('occupied')) return;
+
+                const seatLabel = el.getAttribute('data-seat');
+                const index = selectedSeats.indexOf(seatLabel);
+                const maxSeats = maxSeatsAllowed();
+
+                // Se o assento já estiver selecionado → desmarca
+                if (index > -1) {
+                    selectedSeats.splice(index, 1);
+                    el.classList.remove('selected');
+                } else {
+                    // Se ainda não estiver selecionado → verifica limite
+                    if (selectedSeats.length < maxSeats) {
+                        selectedSeats.push(seatLabel);
+                        el.classList.add('selected');
+                    } else {
+                        alert(`Você pode selecionar no máximo ${maxSeats} assento(s) para ${peopleEl.value} pessoa(s).`);
+                    }
+                }
+
+                // Atualiza o texto com os assentos escolhidos
+                updateSelectedDisplay();
+            }
+
+            // Sempre que mudar a quantidade de pessoas, limpa as seleções antigas
+            peopleEl.addEventListener('input', () => {
+                document.querySelectorAll('.seat.selected').forEach(s => s.classList.remove('selected'));
+                selectedSeats = [];
+                updateSelectedDisplay();
+            });
+
+        })();
 
         // === INTERAÇÃO COM MAPA SVG (arrastar marcador) ===
         const marker = document.getElementById('marker');
