@@ -1,3 +1,217 @@
+//-----------------------pagina do guia---------
+if (window.location.pathname.endsWith("guia.html")) {
+     // ====== GALERIA LIGHTBOX ======
+    const imagensGaleria = document.querySelectorAll(".galeria-img");
+    const lightbox = document.getElementById("lightbox");
+    const imgLightbox = lightbox.querySelector("img");
+    const fecharLightbox = document.getElementById("fecharLightbox");
+
+    imagensGaleria.forEach(img => {
+      img.addEventListener("click", () => {
+        imgLightbox.src = img.src;
+        lightbox.style.display = "flex";
+      });
+    });
+
+    fecharLightbox.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = "none";
+      }
+    });
+
+    // ====== AVALIAÇÃO GERAL (estrelas do guia) ======
+    function criarEstrelas(media) {
+      const estrelasDiv = document.getElementById("estrelasGuia");
+      estrelasDiv.innerHTML = "";
+      for (let i = 1; i <= 5; i++) {
+        const span = document.createElement("span");
+        span.classList.add("estrela");
+        if (i <= media) {
+          span.classList.add("ativa");
+        }
+        span.textContent = "★";
+        estrelasDiv.appendChild(span);
+      }
+    }
+
+    // ====== COMENTÁRIOS ======
+    const form = document.getElementById("comentForm");
+    const comentariosContainer = document.getElementById("comentariosContainer");
+    const verMaisBtn = document.getElementById("verMais");
+
+    // Comentários iniciais (igual seu original)
+    let comentarios = [
+      {
+        nome: "Marina S.",
+        comentario: "Donizet foi um guia incrível, muito atencioso e conhecedor dos lugares.",
+        estrelas: 5,
+        foto: "https://randomuser.me/api/portraits/women/65.jpg",
+      },
+      {
+        nome: "Lucas T.",
+        comentario: "Adorei a excursão com Donizet. Ele tornou tudo muito divertido e educativo.",
+        estrelas: 5,
+        foto: "https://randomuser.me/api/portraits/men/32.jpg",
+      },
+      {
+        nome: "Ana P.",
+        comentario: "Experiência inesquecível, recomendo para quem gosta de viajar com segurança e informação.",
+        estrelas: 5,
+        foto: "https://randomuser.me/api/portraits/women/44.jpg",
+      },
+      {
+        nome: "Carlos M.",
+        comentario: "Ótima condução e paciência para responder todas as dúvidas do grupo.",
+        estrelas: 5,
+        foto: "https://randomuser.me/api/portraits/men/55.jpg",
+      },
+      {
+        nome: "Beatriz F.",
+        comentario: "Muito profissional e simpático, fez da viagem algo memorável.",
+        estrelas: 5,
+        foto: "https://randomuser.me/api/portraits/women/22.jpg",
+      },
+    ];
+
+    // Exibir inicialmente 3 comentários
+    let comentariosVisiveis = 3;
+
+    function exibirComentarios() {
+      comentariosContainer.innerHTML = "";
+
+      let listaParaExibir = comentarios.slice(0, comentariosVisiveis);
+
+      listaParaExibir.forEach(c => {
+        const div = document.createElement("div");
+        div.classList.add("comentario-card");
+
+        let estrelasHtml = "";
+        for (let i = 1; i <= 5; i++) {
+          estrelasHtml += i <= c.estrelas ? "★" : "☆";
+        }
+
+        div.innerHTML = `
+          <div class="coment-topo">
+            <img src="${c.foto}" alt="Foto de ${c.nome}" />
+            <div>
+              <strong>${c.nome}</strong>
+              <div class="coment-stars" style="color: gold;">${estrelasHtml}</div>
+            </div>
+          </div>
+          <p>${c.comentario}</p>
+        `;
+        comentariosContainer.appendChild(div);
+      });
+
+      if (comentariosVisiveis >= comentarios.length) {
+        verMaisBtn.textContent = "Ver menos";
+      } else {
+        verMaisBtn.textContent = "Ver mais";
+      }
+    }
+
+    // Alternar ver mais / ver menos
+    verMaisBtn.addEventListener("click", () => {
+      if (verMaisBtn.textContent === "Ver mais") {
+        comentariosVisiveis = comentarios.length;
+      } else {
+        comentariosVisiveis = 3;
+      }
+      exibirComentarios();
+    });
+
+    // Envio do formulário de comentários
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const nomeInput = document.getElementById("nome");
+      const comentarioInput = document.getElementById("comentario");
+      const estrelasInput = document.querySelectorAll(".estrelas-input .estrela.ativa").length;
+
+      if (!nomeInput.value.trim() || !comentarioInput.value.trim() || estrelasInput === 0) {
+        alert("Por favor, preencha todos os campos e selecione a avaliação em estrelas.");
+        return;
+      }
+
+      comentarios.unshift({
+        nome: nomeInput.value.trim(),
+        comentario: comentarioInput.value.trim(),
+        estrelas: estrelasInput,
+        foto: "https://randomuser.me/api/portraits/lego/1.jpg", // Foto genérica
+      });
+
+      // Atualiza avaliação média e comentários
+      atualizarMediaAvaliacoes();
+
+      // Mostrar somente os primeiros 3 depois de adicionar novo comentário
+      comentariosVisiveis = 3;
+      exibirComentarios();
+
+      // Limpar formulário e estrelas selecionadas
+      nomeInput.value = "";
+      comentarioInput.value = "";
+      comentarioInput.blur();
+
+      document.querySelectorAll(".estrelas-input .estrela").forEach(s => {
+        s.classList.remove("ativa");
+        s.setAttribute("aria-checked", "false");
+        s.tabIndex = -1;
+      });
+      document.querySelector(".estrelas-input .estrela").tabIndex = 0;
+    });
+
+    // Sistema de seleção de estrelas no formulário (igual seu código original)
+    const estrelasInput = document.querySelectorAll(".estrelas-input .estrela");
+    estrelasInput.forEach((estrela, idx) => {
+      estrela.addEventListener("click", () => {
+        setEstrelas(idx + 1);
+      });
+      estrela.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setEstrelas(idx + 1);
+        }
+      });
+    });
+
+    function setEstrelas(qtde) {
+      estrelasInput.forEach((estrela, idx) => {
+        if (idx < qtde) {
+          estrela.classList.add("ativa");
+          estrela.setAttribute("aria-checked", "true");
+          estrela.tabIndex = 0;
+        } else {
+          estrela.classList.remove("ativa");
+          estrela.setAttribute("aria-checked", "false");
+          estrela.tabIndex = -1;
+        }
+      });
+    }
+
+    // Atualiza média das avaliações (estrelas do guia)
+    function atualizarMediaAvaliacoes() {
+      let soma = 0;
+      comentarios.forEach(c => soma += c.estrelas);
+      let media = (soma / comentarios.length) || 0;
+      media = Math.round(media);
+
+      criarEstrelas(media);
+      document.getElementById("mediaAval").textContent = `Média: ${media}.0 ⭐ (${comentarios.length} avaliações)`;
+    }
+
+    // Inicialização
+    atualizarMediaAvaliacoes();
+    exibirComentarios();
+}
+    
+
+
+
+
+
 //----------------Dark Mode----------------
 
 const iconMoon = document.getElementById("iconMoon");
@@ -351,6 +565,95 @@ function fecharmenu() {
 if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location.pathname.endsWith("cadastro-juridica.html") || window.location.pathname.endsWith("acessar.html") || window.location.pathname.endsWith("contato.html")) {
 
 
+
+    // ---------------------------- icones animados -----------------------------------
+    
+document.addEventListener('DOMContentLoaded', function () {
+    // Nome
+    const inputNome = document.getElementById('nome');
+    const iconNome = document.getElementById('icon-nome');
+    if (inputNome && iconNome) {
+        inputNome.addEventListener('focus', () => {
+            iconNome.setAttribute('trigger', 'loop');
+            setTimeout(() => iconNome.removeAttribute('trigger'), 1000);
+        });
+    }
+
+    // Email (CPF ou CNPJ)
+    const inputEmail = document.getElementById('email');
+    const iconEmail = document.getElementById('icon-email');
+    if (inputEmail && iconEmail) {
+        inputEmail.addEventListener('focus', () => {
+            iconEmail.setAttribute('trigger', 'loop');
+            setTimeout(() => iconEmail.removeAttribute('trigger'), 900);
+        });
+    }
+    // CPF ou CNPJ
+    const inputCpfCnpj = document.getElementById('cpfcnpj');
+    const iconCpfCnpj = document.getElementById('icon-cpfcnpj');
+    if (inputCpfCnpj && iconCpfCnpj) {
+        inputCpfCnpj.addEventListener('focus', () => {
+            iconCpfCnpj.setAttribute('trigger', 'loop');
+            setTimeout(() => iconCpfCnpj.removeAttribute('trigger'), 1000); // aumente aqui!
+        });
+    }
+
+    // Senha
+    const inputSenha = document.getElementById('senha');
+    const iconSenha = document.getElementById('icon-senha');
+    if (inputSenha && iconSenha) {
+        inputSenha.addEventListener('focus', () => {
+            iconSenha.setAttribute('trigger', 'loop');
+            setTimeout(() => iconSenha.removeAttribute('trigger'), 900);
+        });
+    }
+
+    // Confirmar Senha
+    const inputConfirmar = document.getElementById('confirmarsenha');
+    const iconConfirmar = document.getElementById('icon-confirmarsenha');
+    if (inputConfirmar && iconConfirmar) {
+        inputConfirmar.addEventListener('focus', () => {
+            iconConfirmar.setAttribute('trigger', 'loop');
+            setTimeout(() => iconConfirmar.removeAttribute('trigger'), 900);
+        });
+    }
+});
+
+/* ======= appended gallery setup ======= */
+
+/* ====== Gallery thumbnail click -> replace principal image ====== */
+function setupGaleria() {
+    // On agendar.html the thumbnails have ids img1..img4 and main img has id imgPrincipal.
+    try {
+        const mainImg = document.getElementById('imgPrincipal');
+        const thumbs = [];
+        // collect known thumbnail ids
+        ['img1','img2','img3','img4'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) thumbs.push(el);
+        });
+        // Also allow elements with class 'miniatura' (in case of different structure)
+        document.querySelectorAll('.miniatura').forEach(el => {
+            if (!thumbs.includes(el)) thumbs.push(el);
+        });
+
+        thumbs.forEach(thumb => {
+            thumb.style.cursor = 'pointer';
+            thumb.addEventListener('click', function(e) {
+                const src = thumb.src || thumb.getAttribute('data-src') || thumb.getAttribute('srcset') || null;
+                if (src && mainImg) {
+                    mainImg.src = src;
+                    // small visual feedback - briefly add a class if defined
+                    mainImg.classList.add('fade-replace-temp');
+                    setTimeout(() => mainImg.classList.remove('fade-replace-temp'), 250);
+                }
+            });
+        });
+    } catch (err) {
+        console.warn('setupGaleria error:', err);
+    }
+}
+
     //------------------------------mascara telefone-----------------------------------
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -688,92 +991,6 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
 
     updateSlide(currentIndex);
     startAutoSlide();
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Nome
-    const inputNome = document.getElementById('nome');
-    const iconNome = document.getElementById('icon-nome');
-    if (inputNome && iconNome) {
-        inputNome.addEventListener('focus', () => {
-            iconNome.setAttribute('trigger', 'loop');
-            setTimeout(() => iconNome.removeAttribute('trigger'), 1000);
-        });
-    }
-
-    // Email (CPF ou CNPJ)
-    const inputEmail = document.getElementById('email');
-    const iconEmail = document.getElementById('icon-email');
-    if (inputEmail && iconEmail) {
-        inputEmail.addEventListener('focus', () => {
-            iconEmail.setAttribute('trigger', 'loop');
-            setTimeout(() => iconEmail.removeAttribute('trigger'), 900);
-        });
-    }
-    // CPF ou CNPJ
-    const inputCpfCnpj = document.getElementById('cpfcnpj');
-    const iconCpfCnpj = document.getElementById('icon-cpfcnpj');
-    if (inputCpfCnpj && iconCpfCnpj) {
-        inputCpfCnpj.addEventListener('focus', () => {
-            iconCpfCnpj.setAttribute('trigger', 'loop');
-            setTimeout(() => iconCpfCnpj.removeAttribute('trigger'), 1000); // aumente aqui!
-        });
-    }
-
-    // Senha
-    const inputSenha = document.getElementById('senha');
-    const iconSenha = document.getElementById('icon-senha');
-    if (inputSenha && iconSenha) {
-        inputSenha.addEventListener('focus', () => {
-            iconSenha.setAttribute('trigger', 'loop');
-            setTimeout(() => iconSenha.removeAttribute('trigger'), 900);
-        });
-    }
-
-    // Confirmar Senha
-    const inputConfirmar = document.getElementById('confirmarsenha');
-    const iconConfirmar = document.getElementById('icon-confirmarsenha');
-    if (inputConfirmar && iconConfirmar) {
-        inputConfirmar.addEventListener('focus', () => {
-            iconConfirmar.setAttribute('trigger', 'loop');
-            setTimeout(() => iconConfirmar.removeAttribute('trigger'), 900);
-        });
-    }
-});
-
-/* ======= appended gallery setup ======= */
-
-/* ====== Gallery thumbnail click -> replace principal image ====== */
-function setupGaleria() {
-    // On agendar.html the thumbnails have ids img1..img4 and main img has id imgPrincipal.
-    try {
-        const mainImg = document.getElementById('imgPrincipal');
-        const thumbs = [];
-        // collect known thumbnail ids
-        ['img1','img2','img3','img4'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) thumbs.push(el);
-        });
-        // Also allow elements with class 'miniatura' (in case of different structure)
-        document.querySelectorAll('.miniatura').forEach(el => {
-            if (!thumbs.includes(el)) thumbs.push(el);
-        });
-
-        thumbs.forEach(thumb => {
-            thumb.style.cursor = 'pointer';
-            thumb.addEventListener('click', function(e) {
-                const src = thumb.src || thumb.getAttribute('data-src') || thumb.getAttribute('srcset') || null;
-                if (src && mainImg) {
-                    mainImg.src = src;
-                    // small visual feedback - briefly add a class if defined
-                    mainImg.classList.add('fade-replace-temp');
-                    setTimeout(() => mainImg.classList.remove('fade-replace-temp'), 250);
-                }
-            });
-        });
-    } catch (err) {
-        console.warn('setupGaleria error:', err);
-    }
 }
 
 // add a small CSS class to style.css to animate replacement (if class absent it's harmless)

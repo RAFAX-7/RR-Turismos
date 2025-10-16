@@ -1,305 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <link rel="stylesheet" href="style/style.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Perfil do Guia - Donizet Alves da Silva</title>
   <style>
     /* ======== ESTILO GERAL ======== */
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #f3f5f7;
-      color: #333;
-    }
+ 
+   
 
-    header {
-      background: #003366;
-      color: white;
-      text-align: center;
-      padding: 25px 20px;
-      font-size: 1.6rem;
-      font-weight: 600;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-    }
-
-    /* ======== PERFIL ======== */
-    .perfil {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      gap: 30px;
-    }
-
-    .perfil img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #003366;
-    }
-
-    .info h2 {
-      margin: 0;
-      color: #003366;
-      font-size: 1.8rem;
-    }
-
-    .cargo {
-      color: #555;
-      margin-top: 5px;
-      font-style: italic;
-    }
-
-    .dados {
-      margin-top: 15px;
-      line-height: 1.6;
-    }
-
-    .dados p {
-      margin: 6px 0;
-    }
-
-    /* ======== AVALIAÇÃO GERAL ======== */
-    .avaliacao {
-      margin-top: 15px;
-    }
-
-    .estrelas {
-      display: flex;
-      gap: 5px;
-      font-size: 1.6rem;
-    }
-
-    .estrela {
-      color: #ccc;
-    }
-
-    .estrela.ativa {
-      color: gold;
-    }
-
-    .media-avaliacoes {
-      font-size: 0.95rem;
-      color: #003366;
-      margin-top: 5px;
-    }
-
-    /* ======== CONTATO ======== */
-    .contato {
-      margin-top: 25px;
-    }
-
-    .contato h3 {
-      margin-bottom: 10px;
-      color: #003366;
-    }
-
-    .icones-contato {
-      display: flex;
-      gap: 20px;
-    }
-
-    .icones-contato a svg {
-      width: 30px;
-      height: 30px;
-      transition: transform 0.3s ease;
-    }
-
-    .icones-contato a:hover svg {
-      transform: scale(1.1);
-    }
-
-    .whats svg { stroke: #25d366; }
-    .insta svg { stroke: #e1306c; }
-    .face svg { stroke: #1877f2; }
-
-    /* ======== DESCRIÇÃO ======== */
-    .descricao {
-      margin-top: 30px;
-      line-height: 1.6;
-      color: #444;
-    }
-
-    /* ======== SEÇÕES ======== */
-    .secao {
-      margin-top: 50px;
-    }
-
-    .secao h3 {
-      color: #003366;
-      border-left: 5px solid #003366;
-      padding-left: 10px;
-    }
-
-    /* ======== GALERIA ======== */
-    .galeria {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-      gap: 15px;
-    }
-
-    .galeria img {
-      width: 32%;
-      height: 180px;
-      border-radius: 8px;
-      object-fit: cover;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    /* ======== LIGHTBOX ======== */
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .lightbox img {
-      max-width: 80%;
-      max-height: 80%;
-      border-radius: 10px;
-    }
-
-    .fechar-lightbox {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      color: white;
-      cursor: pointer;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    /* ======== COMENTÁRIOS ======== */
-    #comentForm {
-      margin-bottom: 25px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    #comentForm input,
-    #comentForm textarea,
-    #comentForm button {
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-family: inherit;
-      font-size: 1rem;
-    }
-
-    #comentForm button {
-      background: #003366;
-      color: white;
-      cursor: pointer;
-    }
-
-    .estrelas-input {
-      display: flex;
-      gap: 5px;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .estrelas-input .estrela {
-      color: #ccc;
-      transition: color 0.2s;
-    }
-
-    .estrelas-input .estrela.ativa {
-      color: gold;
-    }
-
-    .comentarios-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-
-    .comentario-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .coment-topo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .coment-topo img {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .coment-stars {
-      color: gold;
-      margin-bottom: 5px;
-    }
-
-    #verMais {
-      background: none;
-      border: none;
-      color: #003366;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: underline;
-      margin-top: 10px;
-    }
-
-    footer {
-      text-align: center;
-      background: #003366;
-      color: white;
-      padding: 15px;
-      margin-top: 40px;
-      font-size: 0.9rem;
+    /* small responsive tweak so icons don't overflow on tiny widths */
+    @media (max-width:420px) {
+      
+      
     }
   </style>
 </head>
 <body>
-  <header>Perfil do Guia Turístico</header>
+<header>
 
-  <div class="container">
+        <img class="logo" src="img/Logos/branca.png" alt="Logo">
+
+        <nav id="menu">
+
+            <div class="topoMenu">
+                <h4>Menu</h4>
+                <button class="fecharMenu">[ X ]</button>
+            </div>
+
+            <a href="index.html" class="risco">Início</a>
+            <a href="quemsomos.html">Quem somos</a>
+            <a href="index.html#secaoviagens">Viagens</a>
+            <div class="menulogin">
+                <button id="cadastro" onclick="abrirdropdown()">
+                    <a id="entrar">Entrar</a>
+                </button>
+                <div class="dropdown-entrar" id="dropdownentrar">
+                    <a href="cadastro.html">Cadastre-se</a>
+                    <a href="acessar.html">Acessar</a>
+                </div>
+            </div>
+            <a href="cadastro.html" class="Cadastre-se">Cadastre-se</a>
+            <a href="acessar.html" class="Acessar">Acessar</a>
+            <a href="contato.html">Contato</a>
+
+            <p class="creditos">
+                © <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.
+            </p>
+
+        </nav>
+
+        <button class="botaoMenu">
+
+            <div class="ret1"></div>
+            <div class="ret2"></div>
+            <div class="ret3"></div>
+
+        </button>
+
+    </header>
+<main>
+
+
+  <div class="container-guia">
     <!-- PERFIL -->
     <div class="perfil">
-      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Guia" />
-      <div class="info">
-        <h2>Donizet Alves da Silva</h2>
+      <img src="img/imagens quem somos/RR-Fundadores.jpg" alt="Guia" />
+      <div class="infor">
+        <h2>Rafael e Rodolfo</h2>
         <p class="cargo">Guia responsável pela excursão</p>
 
         <div class="dados">
           <p><strong>Registro CADASTUR:</strong> 25.987.654/0001-99</p>
           <p><strong>Experiência:</strong> 12 anos guiando excursões nacionais e internacionais</p>
           <p><strong>Idiomas:</strong> Português, Espanhol, Inglês</p>
-          <p><strong>Localização:</strong> Curitiba, Paraná, Brasil</p>
+          <p><strong>Localização:</strong> taquaritinga, Sao paulo, Brasil</p>
         </div>
 
         <!-- Avaliação geral -->
@@ -309,54 +85,64 @@
         </div>
 
         <!-- Contato -->
-        <div class="contato">
+        <div class="contato-guia">
           <h3>Entrar em contato com o guia</h3>
           <div class="icones-contato">
-            <a href="https://wa.me/5599999999999" target="_blank" class="whats" aria-label="WhatsApp">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a9.94 9.94 0 0 0-8.45 15.46L2 22l4.73-1.45A10 10 0 1 0 12 2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 14.1c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.18-.35.22-.65.07a8.12 8.12 0 0 1-2.39-1.47 8.7 8.7 0 0 1-1.6-2c-.17-.3 0-.46.13-.61.14-.15.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53s-.67-1.62-.91-2.22c-.24-.57-.5-.5-.68-.51h-.58c-.2 0-.53.08-.8.38-.26.3-1.05 1.02-1.05 2.47s1.07 2.86 1.22 3.06a9.91 9.91 0 0 0 7.58 4.09c.45.06.9.1 1.36.1 1.63 0 3.22-.45 4.6-1.3.45-.26.9-.58 1.27-.94.17-.17.26-.38.2-.6-.07-.22-.27-.35-.56-.5z"/>
-              </svg>
-            </a>
-            <a href="#" class="insta" aria-label="Instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11.37a4 4 0 1 1-7.74 1.91 4 4 0 0 1 7.74-1.91z"/>
-                <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
-              </svg>
-            </a>
-            <a href="#" class="face" aria-label="Facebook">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-                <path d="M18 2h-3a4 4 0 0 0-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 0 1 1-1h3z"/>
-              </svg>
-            </a>
+            <!-- Ícones criados (SVG inline). Mantive o link do WhatsApp -->
+            <div class="whatsapp-guia" >
+              <a href="https://wa.me/5599999999999" target="_blank" class="whatsapp" aria-label="WhatsApp">
+                <!-- WhatsApp SVG (clean, legível em pequeno tamanho) -->
+               <input type="submit" value="WhatsApp" class="botao-whatsapp">
+              </a
+             
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- DESCRIÇÃO -->
-    <section class="descricao secao">
+    <div class="descricao-guia">
       <h3>Descrição</h3>
-      <p>Donizet Alves da Silva é um guia apaixonado por viagens e cultura, com mais de uma década de experiência conduzindo grupos pelo Brasil e pelo mundo. Sua missão é proporcionar experiências inesquecíveis, unindo conhecimento, segurança e empatia.</p>
-    </section>
+      <section class="descrição">
+   <p>Rafael e rodolfo  são guias apaixonados por viagens e cultura, com mais de uma década de experiência conduzindo <br>
+        grupos pelo Brasil e pelo mundo. Sua missão é proporcionar experiências inesquecíveis, unindo conhecimento <br> segurança e empatia.</p>
+      </section>
+   
+    </div>
 
-    <!-- GALERIA PRINCIPAL -->
-    <section class="galeria secao">
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Paisagem 1" class="galeria-img" />
-      <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c" alt="Paisagem 2" class="galeria-img" />
-      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e" alt="Paisagem 3" class="galeria-img" />
-    </section>
-
-    <!-- VIAGENS COM DONIZET -->
-    <section class="secao">
+    <!-- VIAGENS COM DONIZET (permanece logo após descrição) -->
+    <div class="seçao">
       <h3>Viagens também com Donizet</h3>
-      <ul>
+ 
+
+ <section class="outras-viagens">
+  <ul>
         <li>Excursão à Serra do Mar - Paraná</li>
+        <br>
         <li>Tour histórico em Ouro Preto - Minas Gerais</li>
+        <br>
         <li>Visita cultural em Salvador - Bahia</li>
+        <br>
         <li>Expedição na Chapada Diamantina - Bahia</li>
       </ul>
+ </section>
+</div>
+      
+   
+
+    <!-- TÍTULO SIMPLES ACIMA DA GALERIA (SEPARADO, com espaçamento) -->
+    <section class="secao-2">
+      <h3>Lugares onde Donizet já esteve</h3>
+   
+
+    <!-- GALERIA PRINCIPAL (sem alterar tamanho das imagens) -->
+    <section class="galeria secao" aria-label="Galeria de lugares onde Donizet já esteve">
+      <img src="img/slide/Honolulu,United States editada.jpg" class="galeria-img" />
+      <img src="img/slide/vegas editada.jpg" alt="Paisagem 2" class="galeria-img" />
+      <img src="img/Las Vegas,USA.jpg" alt="Paisagem 3" class="galeria-img" />
     </section>
+     </section>
 
     <!-- COMENTÁRIOS -->
     <section class="secao">
@@ -382,219 +168,167 @@
     </section>
   </div>
 
-  <footer>© 2025 Donizet Alves da Silva. Todos os direitos reservados.</footer>
+  
 
   <div class="lightbox" id="lightbox">
     <span class="fechar-lightbox" id="fecharLightbox">&times;</span>
     <img src="" alt="Imagem ampliada" />
   </div>
 
-  <script>
-    // ====== GALERIA LIGHTBOX ======
-    const imagensGaleria = document.querySelectorAll(".galeria-img");
-    const lightbox = document.getElementById("lightbox");
-    const imgLightbox = lightbox.querySelector("img");
-    const fecharLightbox = document.getElementById("fecharLightbox");
+  </main>
+  <footer>
 
-    imagensGaleria.forEach(img => {
-      img.addEventListener("click", () => {
-        imgLightbox.src = img.src;
-        lightbox.style.display = "flex";
-      });
-    });
+        <canvas id="background-canvas"></canvas>
 
-    fecharLightbox.addEventListener("click", () => {
-      lightbox.style.display = "none";
-    });
+        <div class="footer-logo">
+            <img src="img/Logos/branca.png" alt="Logo">
+        </div>
 
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) {
-        lightbox.style.display = "none";
-      }
-    });
-
-    // ====== AVALIAÇÃO GERAL (estrelas do guia) ======
-    function criarEstrelas(media) {
-      const estrelasDiv = document.getElementById("estrelasGuia");
-      estrelasDiv.innerHTML = "";
-      for (let i = 1; i <= 5; i++) {
-        const span = document.createElement("span");
-        span.classList.add("estrela");
-        if (i <= media) {
-          span.classList.add("ativa");
-        }
-        span.textContent = "★";
-        estrelasDiv.appendChild(span);
-      }
-    }
-
-    // ====== COMENTÁRIOS ======
-    const form = document.getElementById("comentForm");
-    const comentariosContainer = document.getElementById("comentariosContainer");
-    const verMaisBtn = document.getElementById("verMais");
-
-    // Comentários iniciais (igual seu original)
-    let comentarios = [
-      {
-        nome: "Marina S.",
-        comentario: "Donizet foi um guia incrível, muito atencioso e conhecedor dos lugares.",
-        estrelas: 5,
-        foto: "https://randomuser.me/api/portraits/women/65.jpg",
-      },
-      {
-        nome: "Lucas T.",
-        comentario: "Adorei a excursão com Donizet. Ele tornou tudo muito divertido e educativo.",
-        estrelas: 5,
-        foto: "https://randomuser.me/api/portraits/men/32.jpg",
-      },
-      {
-        nome: "Ana P.",
-        comentario: "Experiência inesquecível, recomendo para quem gosta de viajar com segurança e informação.",
-        estrelas: 5,
-        foto: "https://randomuser.me/api/portraits/women/44.jpg",
-      },
-      {
-        nome: "Carlos M.",
-        comentario: "Ótima condução e paciência para responder todas as dúvidas do grupo.",
-        estrelas: 5,
-        foto: "https://randomuser.me/api/portraits/men/55.jpg",
-      },
-      {
-        nome: "Beatriz F.",
-        comentario: "Muito profissional e simpático, fez da viagem algo memorável.",
-        estrelas: 5,
-        foto: "https://randomuser.me/api/portraits/women/22.jpg",
-      },
-    ];
-
-    // Exibir inicialmente 3 comentários
-    let comentariosVisiveis = 3;
-
-    function exibirComentarios() {
-      comentariosContainer.innerHTML = "";
-
-      let listaParaExibir = comentarios.slice(0, comentariosVisiveis);
-
-      listaParaExibir.forEach(c => {
-        const div = document.createElement("div");
-        div.classList.add("comentario-card");
-
-        let estrelasHtml = "";
-        for (let i = 1; i <= 5; i++) {
-          estrelasHtml += i <= c.estrelas ? "★" : "☆";
-        }
-
-        div.innerHTML = `
-          <div class="coment-topo">
-            <img src="${c.foto}" alt="Foto de ${c.nome}" />
-            <div>
-              <strong>${c.nome}</strong>
-              <div class="coment-stars" style="color: gold;">${estrelasHtml}</div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>Sobre Nós</h2>
+                <p>Somos uma empresa dedicada a criar experiências incríveis no mundo das viagens e tecnologia.</p>
+                <div class="contact">
+                    <p>📞 +55 (16) 99999-9999</p>
+                    <p>📧 contato@email.com</p>
+                </div>
+                <div class="subscribe">
+                    <input type="email" placeholder="Digite seu e-mail" />
+                    <button>Enviar</button>
+                </div>
             </div>
-          </div>
-          <p>${c.comentario}</p>
-        `;
-        comentariosContainer.appendChild(div);
-      });
 
-      if (comentariosVisiveis >= comentarios.length) {
-        verMaisBtn.textContent = "Ver menos";
-      } else {
-        verMaisBtn.textContent = "Ver mais";
-      }
-    }
+            <div class="footer-section">
+                <h2>Últimas Notícias</h2>
+                <p>✔ Novos destinos adicionados.</p>
+                <p>✔ Promoções imperdíveis.</p>
+                <p>✔ Muito mais em breve!</p>
+            </div>
 
-    // Alternar ver mais / ver menos
-    verMaisBtn.addEventListener("click", () => {
-      if (verMaisBtn.textContent === "Ver mais") {
-        comentariosVisiveis = comentarios.length;
-      } else {
-        comentariosVisiveis = 3;
-      }
-      exibirComentarios();
-    });
+            <div class="footer-section">
+                <h2>Instagram</h2>
+                <div class="insta-img">
+                    <img src="img/Ilhabela, Brazil.jpg" alt="Imagem 1" />
+                    <img src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg" alt="Imagem 2" />
+                    <img src="img/las vegas/vegas 3 editada.jpg" alt="Imagem 3" />
+                    <img src="img/Positano/3 editada.jpg" alt="Imagem 4" />
+                </div>
+            </div>
+        </div>
 
-    // Envio do formulário de comentários
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const nomeInput = document.getElementById("nome");
-      const comentarioInput = document.getElementById("comentario");
-      const estrelasInput = document.querySelectorAll(".estrelas-input .estrela.ativa").length;
+        <div class="footer-bottom">
+            <div class="footer-left">
+                <p>© <span class="AnoAtual"></span> RR Turismos. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-menu">
 
-      if (!nomeInput.value.trim() || !comentarioInput.value.trim() || estrelasInput === 0) {
-        alert("Por favor, preencha todos os campos e selecione a avaliação em estrelas.");
-        return;
-      }
+                <a href="index.html" class="risco">Início</a>
+                <a href="quemsomos.html">Quem somos</a>
+                <a href="index.html#secaoviagens">Viagens</a>
+                <a href="contato.html">Contato</a>
 
-      comentarios.unshift({
-        nome: nomeInput.value.trim(),
-        comentario: comentarioInput.value.trim(),
-        estrelas: estrelasInput,
-        foto: "https://randomuser.me/api/portraits/lego/1.jpg", // Foto genérica
-      });
+            </div>
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
 
-      // Atualiza avaliação média e comentários
-      atualizarMediaAvaliacoes();
+    </footer>
 
-      // Mostrar somente os primeiros 3 depois de adicionar novo comentário
-      comentariosVisiveis = 3;
-      exibirComentarios();
+     <div class="accessibility-wrapper">
+        <div class="accessibility-panel">
 
-      // Limpar formulário e estrelas selecionadas
-      nomeInput.value = "";
-      comentarioInput.value = "";
-      comentarioInput.blur();
+            <!-- Botão de dark mode -->
+            <button class="panel-button" id="darkModeBtn" aria-label="Alternar modo escuro" onclick="toggleDarkMode()">
+                <!-- Lua -->
+                <lord-icon id="iconMoon" src="https://cdn.lordicon.com/yodwgokk.json" trigger="hover"
+                    style="width:36px; height:36px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible;">
+                </lord-icon>
 
-      document.querySelectorAll(".estrelas-input .estrela").forEach(s => {
-        s.classList.remove("ativa");
-        s.setAttribute("aria-checked", "false");
-        s.tabIndex = -1;
-      });
-      document.querySelector(".estrelas-input .estrela").tabIndex = 0;
-    });
+                <!-- Sol SVG -->
+                <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFD93B" stroke="#F1C40F"
+                    stroke-width="1.5"
+                    style="width: 36px; height: 36px; position: absolute; top: 50%; left: 50%; transform-origin: center; transform: translate(-50%, -50%) rotate(0deg); visibility: hidden;"
+                    class="sun-animated">
+                    <circle cx="12" cy="12" r="5" />
+                    <g>
+                        <line x1="12" y1="1" x2="12" y2="4" />
+                        <line x1="12" y1="20" x2="12" y2="23" />
+                        <line x1="4.2" y1="4.2" x2="6.3" y2="6.3" />
+                        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
+                        <line x1="1" y1="12" x2="4" y2="12" />
+                        <line x1="20" y1="12" x2="23" y2="12" />
+                        <line x1="4.2" y1="19.8" x2="6.3" y2="17.7" />
+                        <line x1="17.7" y1="6.3" x2="19.8" y2="4.2" />
+                    </g>
+                </svg>
+            </button>
 
-    // Sistema de seleção de estrelas no formulário (igual seu código original)
-    const estrelasInput = document.querySelectorAll(".estrelas-input .estrela");
-    estrelasInput.forEach((estrela, idx) => {
-      estrela.addEventListener("click", () => {
-        setEstrelas(idx + 1);
-      });
-      estrela.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          setEstrelas(idx + 1);
-        }
-      });
-    });
+            <!-- Seletor de idiomas -->
+            <div class="lang-selector" id="langSelector">
+                <button class="lang-toggle" onclick="toggleLangMenu()" aria-label="Selecionar idioma">
+                    <lord-icon src="https://cdn.lordicon.com/tyntlpjn.json" trigger="hover"
+                        style="width:36px; height:36px;">
+                    </lord-icon>
+                </button>
+                <div class="lang-menu">
+                    <button onclick="setLanguage('portuguese')"><img src="https://flagcdn.com/w40/br.png"
+                            alt="PT"></button>
+                    <button onclick="setLanguage('english')"><img src="https://flagcdn.com/w40/us.png"
+                            alt="EN"></button>
+                    <button onclick="setLanguage('spanish')"><img src="https://flagcdn.com/w40/es.png"
+                            alt="ES"></button>
+                    <button onclick="setLanguage('french')"><img src="https://flagcdn.com/w40/fr.png" alt="FR"></button>
+                </div>
+            </div>
+        </div>
 
-    function setEstrelas(qtde) {
-      estrelasInput.forEach((estrela, idx) => {
-        if (idx < qtde) {
-          estrela.classList.add("ativa");
-          estrela.setAttribute("aria-checked", "true");
-          estrela.tabIndex = 0;
-        } else {
-          estrela.classList.remove("ativa");
-          estrela.setAttribute("aria-checked", "false");
-          estrela.tabIndex = -1;
-        }
-      });
-    }
+        <!-- Botão de acessibilidade com ícone estilizado personalizado -->
+        <button class="accessibility-button" aria-label="Acessibilidade">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36" role="img"
+                aria-label="Ícone de acessibilidade">
+                <!-- Círculo externo mais fino -->
+                <circle cx="32" cy="32" r="30" stroke="black" stroke-width="2" fill="none" />
 
-    // Atualiza média das avaliações (estrelas do guia)
-    function atualizarMediaAvaliacoes() {
-      let soma = 0;
-      comentarios.forEach(c => soma += c.estrelas);
-      let media = (soma / comentarios.length) || 0;
-      media = Math.round(media);
+                <!-- Cabeça preta menor e suave -->
+                <circle cx="32" cy="16" r="5" fill="black" />
 
-      criarEstrelas(media);
-      document.getElementById("mediaAval").textContent = `Média: ${media}.0 ⭐ (${comentarios.length} avaliações)`;
-    }
+                <!-- Tronco preto, linha mais fina, com linhas arredondadas -->
+                <line x1="32" y1="22" x2="32" y2="42" stroke="black" stroke-width="2.5" stroke-linecap="round" />
 
-    // Inicialização
-    atualizarMediaAvaliacoes();
-    exibirComentarios();
-  </script>
+                <!-- Braços abertos pretos, linha fina e arredondada -->
+                <line x1="32" y1="28" x2="10" y2="22" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="32" y1="28" x2="54" y2="22" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+
+                <!-- Pernas abertas pretas, linha fina e arredondada -->
+                <line x1="32" y1="42" x2="16" y2="58" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="32" y1="42" x2="48" y2="58" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+
+                <!-- Pontos pretos menores nas extremidades -->
+                <circle cx="10" cy="22" r="2" fill="black" />
+                <circle cx="54" cy="22" r="2" fill="black" />
+                <circle cx="16" cy="58" r="2" fill="black" />
+                <circle cx="48" cy="58" r="2" fill="black" />
+            </svg>
+        </button>
+
+
+        <!-- Tradutor invisível -->
+        <div id="google_translate_element" style="display: none;"></div>
+    <script src="style/script.js"></script>
+    <!-- Google Translate widget -->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

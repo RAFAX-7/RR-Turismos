@@ -1,4 +1,5 @@
 :root {
+    --azul-marinho: #003366;
     --azul: rgba(3, 61, 155, 0.822);
     --azul-c: rgb(10, 65, 231);
     --azul-c-2: rgba(122, 173, 255, 0.822);
@@ -1139,6 +1140,305 @@ form input:focus {
 .formContato .formRodape input:hover {
     background-color: var(--azul-c);
 }
+
+/*pagina Guia */
+
+    .container-guia {
+      max-width:120rem;
+      margin: 40px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+    .container-guia:hover {
+      box-shadow: 0 10px 20px rgb(0, 0, 0);
+      transition: 0.7s;
+    }
+
+    /* ======== PERFIL ======== */
+    .perfil {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap:5rem;
+    }
+
+    .perfil img {
+      width: 25rem;
+      height: 25rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--azul-marinho);
+    }
+
+    .infor h2 {
+      margin: 0;
+      color:var(--azul-marinho);
+      font-size: 3rem;
+    }
+
+    .cargo {
+      color:var(--cinza200);
+      margin-top: 5px;
+      font-style: italic;
+      font-size: 1.5rem;
+    }
+
+    .dados {
+      margin-top: 1.5rem;
+      line-height: 2;
+      font-size: 2rem;
+    }
+    .dados strong{
+        color: var(--azul-marinho);
+    }
+
+    .dados p {
+      margin: 6px 0;
+    }
+
+    /* ======== AVALIAÇÃO GERAL ======== */
+    .avaliacao {
+      margin-top: 1rem;
+    }
+
+    .estrelas {
+      display: flex;
+      gap: 5px;
+      font-size: 2.5rem;
+    }
+
+    .estrela {
+      color: #ccc;
+    }
+
+    .estrela.ativa {
+      color: gold;
+    }
+
+    .media-avaliacoes {
+      font-size: 2rem;
+      color: #003366;
+      margin-top: 5px;
+    }
+
+    /*Contato guia*/
+    .contato-guia h3{
+      margin-top: 2rem;
+      color: var(--azul-marinho);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .contato-guia input{
+      background-color:var(--verdewatsapp);
+      color: white;
+      font-size: 2rem;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      border: none;
+       cursor: pointer;
+    }
+    .contato-guia input:hover{
+      background-color: var(--verde);
+      transition: 0.7s;
+     
+    }
+
+    
+    /* ======== DESCRIÇÃO ======== */
+   .descricao-guia h3{
+      font-size: 3rem;
+        color: var(--azul-marinho);
+        margin-bottom: 1rem;
+    }
+
+    .descricao-guia{
+      margin-top: 1rem;
+      line-height: 1.5;
+      font-size: 2rem;
+      color:var(--cinza100);
+      margin-left: 1rem;
+    }
+
+    /* ======== SEÇÕES ======== */
+    .seçao {
+      margin-top: 0.5rem;
+      
+    }
+
+    .seçao h3{
+      color: var(--azul-marinho);
+      border-left: 5px solid var(--azul-marinho);
+      padding-left: 10px;
+      font-size: 3rem;
+    }
+
+    .outras-viagens {
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: var(--cinza100);
+      margin-left: 3rem;
+    }
+
+     .secao-2 {
+      margin-top: 1rem;
+    }
+
+    .secao-2 h3 {
+      color: var(--azul-marinho);
+      border-left: 5px solid var(--azul-marinho);
+      padding-left: 10px;
+      font-size: 3rem;
+    }
+
+    /* ======== GALERIA ======== */
+    .galeria {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 15px;
+    }
+
+    .galeria img {
+      width: 32%;
+      height: 25rem;
+      border-radius: 8px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    /* ======== LIGHTBOX ======== */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+
+    .fechar-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ======== COMENTÁRIOS ======== */
+    .secao h3{
+        font-size: 3rem;
+        color: var(--azul-marinho);
+    } 
+    #comentForm {
+      margin-bottom: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #comentForm input,
+    #comentForm textarea,
+    #comentForm button {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 2rem;
+    }
+
+    #comentForm button {
+      background: var(--azul-c-3);
+      color: white;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+
+    .estrelas-input {
+      display: flex;
+      gap: 5px;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+
+    .estrelas-input .estrela {
+      color: #ccc;
+      transition: color 0.2s;
+    }
+
+    .estrelas-input .estrela.ativa {
+      color: gold;
+    }
+
+    .comentarios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .comentario-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .coment-topo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .coment-topo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .coment-stars {
+      color: gold;
+      margin-bottom: 5px;
+    }
+
+    #verMais {
+      background: var(--azul-c-3);
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 1.5rem;
+      padding: 1rem 1rem;
+      border-radius: 1rem;
+    }
+    #verMais:hover {
+      background: var(--azul-c);
+      transition: 0.7s;
+    }
+
+
+
 
 /* Rodapé */
 
@@ -2379,6 +2679,7 @@ body.dark-mode .formContato .formRodape input:hover {
     .social-icons a:first-child {
         margin-left: 0;
     }
+    .galeria img { height:140px; }
 
 }
 
