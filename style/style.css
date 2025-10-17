@@ -1474,20 +1474,30 @@ body.dark-mode .formContato .formRodape input:hover {
     border-radius: 6px;
 }
 
-.info {
-    height: 10%;
-    margin-top: 14px;
-    padding: 12px;
+.info-destino {
+    height: 15%;
+    margin-top: 1rem;
+    padding: 1.5rem;
     background: var(--card);
-    border-radius: 6px;
+    border-radius: 1rem;
+}
+
+.info-destino h2 {
+    font-size: 2.5rem;
+}
+
+.info-destino p {
+    margin-top: 1rem;
+    font-size: 2rem;
 }
 
 .details-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin-top: 8px;
+    gap: 1rem;
+    margin-top: 1.5rem;
     color: var(--muted);
+    font-size: 2rem;
 }
 
 .additional {
@@ -1940,6 +1950,18 @@ body.dark-mode .formContato .formRodape input:hover {
         width: 100px;
         height: 60px
     }
+
+    .info-destino h2 {
+        font-size: 2rem;
+    }
+
+    .info-destino p {
+        font-size: 1.5rem;
+    }
+
+    .details-grid {
+        font-size: 1.5rem;
+    }
 }
 
 @media screen and (max-width: 855px) {
@@ -1953,7 +1975,6 @@ body.dark-mode .formContato .formRodape input:hover {
     .social-icons a:first-child {
         margin-left: 0;
     }
-
 }
 
 @media screen and (max-width: 810px) {
@@ -2077,10 +2098,7 @@ body.dark-mode .formContato .formRodape input:hover {
     .social-icons a:first-child {
         margin-left: 0;
     }
-
-
 }
-
 
 @media screen and (max-width: 600px) {
 

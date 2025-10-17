@@ -748,7 +748,6 @@ if (window.location.pathname.endsWith("agendar.html")) {
         // Atualiza automaticamente ao carregar
         updatePrice();
 
-        // === MAPA DE ASSENTOS DO ÔNIBUS ===
         (function createBusLayout() {
             busMap.innerHTML = ''; // Limpa o mapa antes de gerar
 
@@ -817,8 +816,8 @@ if (window.location.pathname.endsWith("agendar.html")) {
             // Função que define quantos assentos podem ser escolhidos
             function maxSeatsAllowed() {
                 const people = Number(peopleEl.value) || 1;
-                // A cada 2 pessoas, 1 assento adicional (ex: 1-2→1, 3-4→2, 5-6→3, etc.)
-                return Math.ceil(people / 2);
+                // Agora: 1 pessoa = 1 assento, 2 pessoas = 2 assentos, etc.
+                return people;
             }
 
             // Atualiza o texto de assentos selecionados
@@ -851,7 +850,7 @@ if (window.location.pathname.endsWith("agendar.html")) {
                         selectedSeats.push(seatLabel);
                         el.classList.add('selected');
                     } else {
-                        alert(`Você pode selecionar no máximo ${maxSeats} assento(s) para ${peopleEl.value} pessoa(s).`);
+                        alert(`Você pode selecionar no máximo ${maxSeats} assento(s) para ${peopleEl.value} passagem(ns).`);
                     }
                 }
 
