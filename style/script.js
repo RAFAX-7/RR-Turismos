@@ -204,13 +204,8 @@ if (window.location.pathname.endsWith("guia.html")) {
 
     // Inicialização
     atualizarMediaAvaliacoes();
-    exibirComentarios();
+    exibirComentarios()
 }
-    
-
-
-
-
 
 //----------------Dark Mode----------------
 

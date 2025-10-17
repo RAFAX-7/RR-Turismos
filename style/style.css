@@ -26,9 +26,8 @@
     --rosainsta: #ff0084;
     --verdewatsapp: #09ff00;
     --azuldark: #02053c;
-    --fundo-dark: #2a2a2a;
-    --card-dark: rgb(58, 58, 58);
-
+    --predo-dark-mode: #0b0f14;
+    --preto-dark-mode-card: #0f1720;
 }
 
 /* Isola o VLibras de estilos globais */
@@ -1621,6 +1620,25 @@ canvas#background-canvas {
 }
 
 
+.social-icons-perfil a {
+    color: var(--cinza50);
+    text-decoration: none;
+    font-size: 4rem;
+    transition: color 0.3s;
+}
+.letra-rd-social{
+    font-size: 3rem;
+    margin-left: 0.5rem;
+}
+
+.social-icons-perfil a:first-child {
+    margin-left: 1rem;
+}
+
+.social-icons-perfil a:nth-child(1):hover {
+    color: var(--verdewatsapp);
+}
+
 .social-icons a {
     color: var(--cinza-c);
     margin-left: 8px;
@@ -1830,12 +1848,12 @@ canvas#background-canvas {
 
 /*Index dark mode*/
 body.dark-mode {
-    background-color: var(--fundo-dark);
+    background-color: var(--predo-dark-mode);
     color: white;
 }
 
 body.dark-mode header {
-    background-image: linear-gradient(var(--azul-e), var(--azul-e-2));
+    background-image: linear-gradient(var(--azul-e-2), var(--azul-e-2));
 }
 
 body.dark-mode footer {
@@ -1848,7 +1866,7 @@ body.dark-mode .accessibility-panel {
 }
 
 body.dark-mode .containerViagens .card {
-    background-color: var(--card-dark);
+    background-color: var(--preto-dark-mode-card);
 }
 
 body.dark-mode .containerViagens .card .tituloViagem {
@@ -1856,7 +1874,7 @@ body.dark-mode .containerViagens .card .tituloViagem {
 }
 
 body.dark-mode .card span {
-    color: var(--cinza200);
+    color: white;
 }
 
 body.dark-mode .containerViagens .card .preco {
@@ -1864,7 +1882,7 @@ body.dark-mode .containerViagens .card .preco {
 }
 
 body.dark-mode .Local {
-    background-color: var(--azul-c);
+    background-color: var(--azul-c-3);
 }
 
 body.dark-mode .slogan {
@@ -1877,7 +1895,7 @@ body.dark-mode .containerViagens .card .informacao {
 }
 
 body.dark-mode .card a {
-    color: var(--cinza200)
+    color: white;
 }
 
 /*quem somos dark*/
@@ -1894,10 +1912,139 @@ body.dark-mode .ladoEsquerdo h1 {
     color: var(--cinza300);
 }
 
+/*Guia dark mode*/
+
+    body.dark-mode .container-guia {
+    
+      background: var(--preto-dark-mode-card);
+      box-shadow: 0 4px 12px rgba(171, 168, 168, 0.1);
+    }
+    body.dark-mode .container-guia:hover {
+      box-shadow: 0 10px 20px rgb(216, 201, 201);
+      transition: 0.7s;
+    }
+
+    /* ======== PERFIL ======== */
+    
+
+    .perfil img {
+      border: 4px solid var(--azul-c);
+    }
+
+    .infor h2 {
+      color:var(--azul-c-3);
+    }
+
+    .cargo {
+      color:var(--cinza200);
+    }
+
+    .dados strong{
+        color: var(--azul-c-3);
+    }
+
+
+    body.dark-mode .media-avaliacoes {
+      color: var(--azul-c-3);
+    }
+
+
+    .contato-guia h3{
+      color: var(--azul-c-3);
+    }
+    
+    .contato-guia input:hover{
+      background-color: var(--verde);
+      transition: 0.7s;
+     
+    }
+
+    
+
+   body.dark-mode .descricao-guia h3{
+        color: var(--azul-c-3);
+    }
+
+    body.dark-mode .descricao-guia{
+      color:var(--cinza200);
+      
+    }
+     
+    body.dark-mode .seçao h3{
+      color: var(--azul-c-3);
+      border-left: 5px solid var(--azul-c);
+    
+    }
+
+    body.dark-mode .outras-viagens {
+      color: var(--cinza200);
+   
+    }
+
+    body.dark-mode .secao-2 h3 {
+      color: var(--azul-c-3);
+      border-left: 5px solid var(--azul-c);
+    }
+   
+
+   
+    body.dark-mode .secao h3{
+        color: var(--azul-c-3);
+    }
+
+
+   
+
+    body.dark-mode .comentario-card {
+      background: var(--preto-2);
+     
+    }
+
+    .coment-topo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .coment-topo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .coment-stars {
+      color: gold;
+      margin-bottom: 5px;
+    }
+
+    #verMais {
+      background: var(--azul-c-3);
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 1.5rem;
+      padding: 1rem 1rem;
+      border-radius: 1rem;
+    }
+    #verMais:hover {
+      background: var(--azul-c);
+      transition: 0.7s;
+    }
+
+
+
+
 /*cadastro*/
 body.dark-mode .cardCadastro {
-    background-color: rgb(193, 192, 192);
-    color: var(--preto-2);
+    background-color: var(--preto-dark-mode-card);
+    color: white;
+}
+body.dark-mode .card {
+    background-color: var(--preto-dark-mode-card);
+    color: white;
 }
 
 body.dark-mode .ja-tem-conta {
