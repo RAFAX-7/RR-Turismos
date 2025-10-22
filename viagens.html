@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Viagens — Filtros Avançados</title>
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --accent: #0b84ff;
+            --light-accent: #cfe9ff;
+            --muted: #6b6f76;
+            --success: #1b8a3e;
+            --shadow: 0 6px 18px rgba(17, 24, 39, 0.12);
+            --radius: 14px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        div.top {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            margin: 2rem 2rem 2rem 2rem;
+            flex-wrap: wrap;
+        }
+
+        .title {
+            display: flex;
+            gap: 2rem;
+            align-items: baseline;
+        }
+
+        .title h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 1.5rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: var(cinza100);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: none;
+            transition: all .14s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn.primary {
+            background: linear-gradient(180deg, var(--accent), #0a6fe6);
+            color: white;
+            border: none;
+            padding: 9px 14px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            padding: 8px 0;
+            flex-wrap: wrap;
+        }
+
+        .chips {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            background: var(--card-bg);
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .chip.active {
+            background: var(--accent);
+            color: white;
+            border: none;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+            margin: 3rem 2rem 0 2rem;
+        }
+
+        .card {
+            background: rgb(221, 221, 221);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: 0 20px 25px rgba(40, 40, 40, 0.5);
+        }
+
+        .card .thumb {
+            width: 100%;
+            aspect-ratio: 10/7;
+            object-fit: cover;
+            display: block;
+
+        }
+
+        .card .title-bar {
+            background: red;
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        .card .title-bar strong {
+            display: block;
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: white;
+        }
+
+        .card .content {
+            padding: 12px;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 3rem;
+        }
+
+        .line {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            color:blue;
+            font-size: 14px;
+        }
+
+        .line .label {
+            width:1.5rem;
+            text-align: left;
+            font-size: 17px;
+        }
+
+        .line .value {
+            color: green;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.8rem;;
+        }
+
+        .price {
+            margin-top: 6px;
+            font-weight: 700;
+            color: rgb(7, 198, 7);
+            font-size: 1.8rem;
+        }
+
+        .card .cta {
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card .cta button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(180deg, var(--accent), #0a6fe6);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+      
+
+        .info {
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        @media (max-width:640px) {
+            .title h1 {
+                font-size: 18px
+            }
+
+            .controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* small form controls */
+        .input {
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            min-width: 160px;
+        }
+
+        .mini {
+            min-width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <img class="logo" src="img/Logos/branca.png" alt="Logo">
+
+        <nav id="menu">
+
+            <div class="topoMenu">
+                <h4>Menu</h4>
+                <button class="fecharMenu">[ X ]</button>
+            </div>
+
+            <a href="index.html" class="risco">Início</a>
+            <a href="quemsomos.html">Quem somos</a>
+            <a href="index.html#secaoviagens">Viagens</a>
+            <div class="menulogin">
+                <button id="cadastro" onclick="abrirdropdown()">
+                    <a id="entrar">Entrar</a>
+                </button>
+                <div class="dropdown-entrar" id="dropdownentrar">
+                    <a href="cadastro.html">Cadastre-se</a>
+                    <a href="acessar.html">Acessar</a>
+                </div>
+            </div>
+            <a href="cadastro.html" class="Cadastre-se">Cadastre-se</a>
+            <a href="acessar.html" class="Acessar">Acessar</a>
+            <a href="contato.html">Contato</a>
+
+            <p class="creditos">
+                © <span class="AnoAtual"></span> Nosso site. Todos os direitos reservados.
+            </p>
+
+        </nav>
+
+        <button class="botaoMenu">
+
+            <div class="ret1"></div>
+            <div class="ret2"></div>
+            <div class="ret3"></div>
+
+        </button>
+
+    </header>
+
+    <div class="top" role="navigation" aria-label="Filtros de viagens">
+        <div class="title">
+            <h1>Viagens</h1>
+            <div class="subtitle">Filtros: categoria, busca, data, guia e preço</div>
+        </div>
+
+        <div class="controls" aria-hidden="false">
+            <input id="searchInput" class="input" type="search"
+                placeholder="Buscar por destino ou guia (ex: Ilhabela ou Rafael)" aria-label="Buscar destino ou guia">
+            <input id="dateInput" class="input mini" type="date" aria-label="Filtrar por data (escolha uma data)">
+            <input id="priceInput" class="input mini" type="number" min="0" step="1" placeholder="Até (R$)"
+                aria-label="Preço máximo em reais">
+            <select id="categorySelect" class="input mini" aria-label="Selecionar categoria">
+                <option value="all">Todas as categorias</option>
+                <option value="praia">Praia</option>
+                <option value="montanha">Montanha</option>
+                <option value="cidade">Cidade</option>
+                <option value="cultural">Cultural</option>
+                <option value="aventura">Aventura</option>
+            </select>
+            <button class="btn primary" id="applyBtn" title="Aplicar filtros">Aplicar</button>
+            <button class="btn" id="resetBtn" title="Limpar filtros">Limpar</button>
+        </div>
+    </div>
+
+    <div class="filters" aria-label="Filtros rápidos">
+        <div class="chips" role="tablist" aria-label="Categorias rápidas">
+            <button class="chip active" data-cat="all">Todos</button>
+            <button class="chip" data-cat="praia">Praia</button>
+            <button class="chip" data-cat="montanha">Montanha</button>
+            <button class="chip" data-cat="cidade">Cidade</button>
+            <button class="chip" data-cat="cultural">Cultural</button>
+            <button class="chip" data-cat="aventura">Aventura</button>
+        </div>
+    </div>
+
+   
+
+    <main>
+        <section class="grid" id="cardsGrid" aria-live="polite">
+            <!-- cards gerados por JS -->
+        </section>
+
+        <div id="noResults" class="info hidden">Nenhuma viagem encontrada para esses filtros.</div>
+    </main>
+
+    <script>
+        /* ---------- dados (30 viagens) ---------- */
+        const tripsRaw = [
+            { id: 1, title: "Ilhabela - Brasil", guide: "Rafael", depart: "20/06/2025", return: "27/06/2025", price: "R$1.000,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 2, title: "Ubatuba - L. Norte", guide: "Mariana", depart: "05/07/2025", return: "10/07/2025", price: "R$850,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 3, title: "Paraty - Histórico", guide: "Lucas", depart: "12/09/2025", return: "15/09/2025", price: "R$680,00", img: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
+            { id: 4, title: "Campos do Jordão", guide: "Ana", depart: "22/07/2025", return: "26/07/2025", price: "R$920,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "montanha" },
+            { id: 5, title: "Florianópolis - Lagoa", guide: "Tiago", depart: "03/08/2025", return: "09/08/2025", price: "R$1.300,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 6, title: "Bonito - Ecoturismo", guide: "Marcos", depart: "10/10/2025", return: "15/10/2025", price: "R$1.450,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
+            { id: 7, title: "Ouro Preto", guide: "Helena", depart: "18/11/2025", return: "21/11/2025", price: "R$620,00", img: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
+            { id: 8, title: "Gramado - Inverno", guide: "Pedro", depart: "05/07/2025", return: "11/07/2025", price: "R$1.150,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "montanha" },
+            { id: 9, title: "Jericoacoara", guide: "Rafaela", depart: "12/09/2025", return: "19/09/2025", price: "R$1.800,00", img: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 10, title: "Manaus - Amazônia", guide: "Gustavo", depart: "20/10/2025", return: "27/10/2025", price: "R$2.100,00", img: "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
+            { id: 11, title: "Salvador - Pelourinho", guide: "Lia", depart: "02/12/2025", return: "06/12/2025", price: "R$940,00", img: "https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
+            { id: 12, title: "Chapada Diamantina", guide: "Ronaldo", depart: "08/08/2025", return: "15/08/2025", price: "R$1.600,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
+            { id: 13, title: "Ilhéus - Costa", guide: "Sofia", depart: "01/09/2025", return: "05/09/2025", price: "R$780,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 14, title: "Petrópolis", guide: "Daniel", depart: "14/07/2025", return: "17/07/2025", price: "R$710,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "montanha" },
+            { id: 15, title: "Recife - Olinda", guide: "Camila", depart: "21/10/2025", return: "25/10/2025", price: "R$890,00", img: "https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
+            { id: 16, title: "Búzios", guide: "Rui", depart: "06/11/2025", return: "10/11/2025", price: "R$1.120,00", img: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 17, title: "Serra da Canastra", guide: "Eduarda", depart: "09/08/2025", return: "13/08/2025", price: "R$980,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
+            { id: 18, title: "Trancoso", guide: "Mateus", depart: "11/12/2025", return: "16/12/2025", price: "R$1.900,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 19, title: "Fortaleza - Praia do Futuro", guide: "Larissa", depart: "01/10/2025", return: "07/10/2025", price: "R$1.050,00", img: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 20, title: "Cataratas do Iguaçu", guide: "Fabio", depart: "15/09/2025", return: "19/09/2025", price: "R$1.250,00", img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
+            { id: 21, title: "Curitiba - City Tour", guide: "Paula", depart: "20/08/2025", return: "23/08/2025", price: "R$720,00", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=60", cat: "cidade" },
+            { id: 22, title: "Belo Horizonte", guide: "Igor", depart: "28/09/2025", return: "30/09/2025", price: "R$640,00", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=60", cat: "cidade" },
+            { id: 23, title: "Lençóis Maranhenses", guide: "Nina", depart: "02/11/2025", return: "08/11/2025", price: "R$1.700,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
+            { id: 24, title: "São Paulo - Museu", guide: "Rafael", depart: "05/06/2025", return: "07/06/2025", price: "R$420,00", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=60", cat: "cidade" },
+            { id: 25, title: "Ilha do Mel", guide: "Bruna", depart: "18/08/2025", return: "21/08/2025", price: "R$730,00", img: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 26, title: "Tiradentes", guide: "Carla", depart: "13/09/2025", return: "15/09/2025", price: "R$560,00", img: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
+            { id: 27, title: "Monte Verde", guide: "Victor", depart: "26/07/2025", return: "29/07/2025", price: "R$790,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "montanha" },
+            { id: 28, title: "Ilha Grande", guide: "Luan", depart: "17/11/2025", return: "22/11/2025", price: "R$1.230,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 29, title: "Serra do Cipó", guide: "Marta", depart: "04/10/2025", return: "08/10/2025", price: "R$860,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
+            { id: 30, title: "Paranapiacaba", guide: "Ricardo", depart: "29/06/2025", return: "01/07/2025", price: "R$490,00", img: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
+        ];
+
+        /* ---------- utilitários: parse de datas e preços ---------- */
+        function parseBRDateToISO(str) {
+            const parts = str.split('/');
+            if (parts.length !== 3) return null;
+            const [d, m, y] = parts;
+            return `${y.padStart(4, '0')}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
+        }
+        function parsePriceToNumber(str) {
+            if (typeof str === 'number') return str;
+            const cleaned = String(str).replace(/[R$\s]/g, '').replace(/\./g, '').replace(',', '.');
+            const n = parseFloat(cleaned);
+            return Number.isNaN(n) ? 0 : n;
+        }
+
+        const trips = tripsRaw.map(t => {
+            const departISO = parseBRDateToISO(t.depart);
+            const returnISO = parseBRDateToISO(t.return);
+            return {
+                ...t,
+                departISO,
+                returnISO,
+                departTime: departISO ? new Date(departISO).getTime() : null,
+                returnTime: returnISO ? new Date(returnISO).getTime() : null,
+                priceNumber: parsePriceToNumber(t.price),
+                titleLower: t.title.toLowerCase(),
+                guideLower: t.guide.toLowerCase(),
+                catLower: (t.cat || '').toLowerCase()
+            };
+        });
+
+        const grid = document.getElementById('cardsGrid');
+        const countEl = document.getElementById('count');
+        const noResults = document.getElementById('noResults');
+
+        function createCard(trip) {
+            const wrap = document.createElement('article');
+            wrap.className = 'card';
+            wrap.setAttribute('data-cat', trip.catLower);
+            wrap.setAttribute('data-title', trip.titleLower);
+            wrap.setAttribute('data-guide', trip.guideLower);
+            wrap.setAttribute('data-price', trip.priceNumber);
+
+            wrap.innerHTML = `
+      <img class="thumb" src="${trip.img}" alt="${trip.title}">
+      <div class="title-bar"><strong>${trip.title}</strong></div>
+      <div class="content">
+        <div class="line"><span class="label">👤</span><span class="value">Guia: <a href="#" style="color:var(--accent);text-decoration:underline;">${trip.guide}</a></span></div>
+        <div class="line"><span class="label">🚍</span><span class="value">Ida: ${trip.depart}</span></div>
+        <div class="line"><span class="label">🔁</span><span class="value">Volta: ${trip.return}</span></div>
+        <div class="line"><span class="label">💲</span><span class="price">${trip.price}</span></div>
+      </div>
+      <div class="cta"><button aria-label="Ver mais sobre ${trip.title}">Ver Mais</button></div>
+    `;
+            return wrap;
+        }
+
+        function renderAll() {
+            grid.innerHTML = '';
+            trips.forEach(t => grid.appendChild(createCard(t)));
+            countEl.textContent = trips.length;
+        }
+        renderAll();
+
+        /* ---------- filtros e UI ---------- */
+        const chips = document.querySelectorAll('.chip');
+        const categorySelect = document.getElementById('categorySelect');
+        const searchInput = document.getElementById('searchInput');
+        const dateInput = document.getElementById('dateInput');
+        const priceInput = document.getElementById('priceInput');
+        const resetBtn = document.getElementById('resetBtn');
+        const applyBtn = document.getElementById('applyBtn');
+
+        function applyFilter() {
+            const cat = (categorySelect.value || 'all').toLowerCase();
+            const q = (searchInput.value || '').trim().toLowerCase();
+            const dateVal = dateInput.value || '';
+            const dateTime = dateVal ? new Date(dateVal).getTime() : null;
+            const maxPrice = priceInput.value ? Number(priceInput.value) : null;
+
+            const cards = Array.from(grid.children);
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-cat');
+                const title = card.getAttribute('data-title');
+                const guide = card.getAttribute('data-guide');
+                const priceNum = Number(card.getAttribute('data-price'));
+
+                let catMatch = (cat === 'all') || (cardCat === cat);
+                let textMatch = !q || title.includes(q) || guide.includes(q);
+
+                let dateMatch = true;
+                if (dateTime !== null) {
+                    const trip = trips.find(t => t.titleLower === title && t.guideLower === guide);
+                    if (!trip || trip.departTime == null || trip.returnTime == null) {
+                        dateMatch = false;
+                    } else {
+                        dateMatch = (dateTime >= trip.departTime && dateTime <= trip.returnTime);
+                    }
+                }
+
+                let priceMatch = true;
+                if (maxPrice !== null && !isNaN(maxPrice)) {
+                    priceMatch = priceNum <= maxPrice;
+                }
+
+                if (catMatch && textMatch && dateMatch && priceMatch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            countEl.textContent = visibleCount;
+            noResults.classList.toggle('hidden', visibleCount > 0);
+        }
+
+        // chips quick filter
+        chips.forEach(ch => {
+            ch.addEventListener('click', () => {
+                chips.forEach(x => x.classList.remove('active'));
+                ch.classList.add('active');
+                categorySelect.value = ch.dataset.cat;
+                applyFilter();
+            });
+        });
+
+        // filtros em tempo real
+        searchInput.addEventListener('input', applyFilter);
+        dateInput.addEventListener('input', applyFilter);
+        priceInput.addEventListener('input', applyFilter);
+
+        // eventos padrão
+        applyBtn.addEventListener('click', applyFilter);
+        searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') applyFilter(); });
+        categorySelect.addEventListener('change', () => {
+            const cat = categorySelect.value;
+            chips.forEach(c => c.classList.toggle('active', c.dataset.cat === cat));
+            applyFilter();
+        });
+
+        resetBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            dateInput.value = '';
+            priceInput.value = '';
+            categorySelect.value = 'all';
+            chips.forEach(x => x.classList.remove('active'));
+            document.querySelector('.chip[data-cat="all"]').classList.add('active');
+            applyFilter();
+        });
+
+        applyFilter();
+
+    </script>
+
+
+    <footer>
+
+        <canvas id="background-canvas"></canvas>
+
+        <div class="footer-logo">
+            <img src="img/Logos/branca.png" alt="Logo">
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>Sobre Nós</h2>
+                <p>Somos uma empresa dedicada a criar experiências incríveis no mundo das viagens e tecnologia.</p>
+                <div class="contact">
+                    <p>📞 +55 (16) 99999-9999</p>
+                    <p>📧 contato@email.com</p>
+                </div>
+                <div class="subscribe">
+                    <input type="email" placeholder="Digite seu e-mail" />
+                    <button>Enviar</button>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h2>Últimas Notícias</h2>
+                <p>✔ Novos destinos adicionados.</p>
+                <p>✔ Promoções imperdíveis.</p>
+                <p>✔ Muito mais em breve!</p>
+            </div>
+
+            <div class="footer-section">
+                <h2>Instagram</h2>
+                <div class="insta-img">
+                    <img src="img/Ilhabela, Brazil.jpg" alt="Imagem 1" />
+                    <img src="img/Rio de janeiro/Rio de Janeiro,Brazil editada.jpg" alt="Imagem 2" />
+                    <img src="img/las vegas/vegas 3 editada.jpg" alt="Imagem 3" />
+                    <img src="img/Positano/3 editada.jpg" alt="Imagem 4" />
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-left">
+                <p>© <span class="AnoAtual"></span> RR Turismos. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-menu">
+
+                <a href="index.html" class="risco">Início</a>
+                <a href="quemsomos.html">Quem somos</a>
+                <a href="index.html#secaoviagens">Viagens</a>
+                <a href="contato.html">Contato</a>
+
+            </div>
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <div class="accessibility-wrapper">
+        <div class="accessibility-panel">
+
+            <!-- Botão de dark mode -->
+            <button class="panel-button" id="darkModeBtn" aria-label="Alternar modo escuro" onclick="toggleDarkMode()">
+                <!-- Lua -->
+                <lord-icon id="iconMoon" src="https://cdn.lordicon.com/yodwgokk.json" trigger="hover"
+                    style="width:36px; height:36px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible;">
+                </lord-icon>
+
+                <!-- Sol SVG -->
+                <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFD93B" stroke="#F1C40F"
+                    stroke-width="1.5"
+                    style="width: 36px; height: 36px; position: absolute; top: 50%; left: 50%; transform-origin: center; transform: translate(-50%, -50%) rotate(0deg); visibility: hidden;"
+                    class="sun-animated">
+                    <circle cx="12" cy="12" r="5" />
+                    <g>
+                        <line x1="12" y1="1" x2="12" y2="4" />
+                        <line x1="12" y1="20" x2="12" y2="23" />
+                        <line x1="4.2" y1="4.2" x2="6.3" y2="6.3" />
+                        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
+                        <line x1="1" y1="12" x2="4" y2="12" />
+                        <line x1="20" y1="12" x2="23" y2="12" />
+                        <line x1="4.2" y1="19.8" x2="6.3" y2="17.7" />
+                        <line x1="17.7" y1="6.3" x2="19.8" y2="4.2" />
+                    </g>
+                </svg>
+            </button>
+
+            <!-- Seletor de idiomas -->
+            <div class="lang-selector" id="langSelector">
+                <button class="lang-toggle" onclick="toggleLangMenu()" aria-label="Selecionar idioma">
+                    <lord-icon src="https://cdn.lordicon.com/tyntlpjn.json" trigger="hover"
+                        style="width:36px; height:36px;">
+                    </lord-icon>
+                </button>
+                <div class="lang-menu">
+                    <button onclick="setLanguage('portuguese')"><img src="https://flagcdn.com/w40/br.png"
+                            alt="PT"></button>
+                    <button onclick="setLanguage('english')"><img src="https://flagcdn.com/w40/us.png"
+                            alt="EN"></button>
+                    <button onclick="setLanguage('spanish')"><img src="https://flagcdn.com/w40/es.png"
+                            alt="ES"></button>
+                    <button onclick="setLanguage('french')"><img src="https://flagcdn.com/w40/fr.png" alt="FR"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão de acessibilidade com ícone estilizado personalizado -->
+        <button class="accessibility-button" aria-label="Acessibilidade">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36" role="img"
+                aria-label="Ícone de acessibilidade">
+                <!-- Círculo externo mais fino -->
+                <circle cx="32" cy="32" r="30" stroke="black" stroke-width="2" fill="none" />
+
+                <!-- Cabeça preta menor e suave -->
+                <circle cx="32" cy="16" r="5" fill="black" />
+
+                <!-- Tronco preto, linha mais fina, com linhas arredondadas -->
+                <line x1="32" y1="22" x2="32" y2="42" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+
+                <!-- Braços abertos pretos, linha fina e arredondada -->
+                <line x1="32" y1="28" x2="10" y2="22" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="32" y1="28" x2="54" y2="22" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+
+                <!-- Pernas abertas pretas, linha fina e arredondada -->
+                <line x1="32" y1="42" x2="16" y2="58" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="32" y1="42" x2="48" y2="58" stroke="black" stroke-width="2.5" stroke-linecap="round" />
+
+                <!-- Pontos pretos menores nas extremidades -->
+                <circle cx="10" cy="22" r="2" fill="black" />
+                <circle cx="54" cy="22" r="2" fill="black" />
+                <circle cx="16" cy="58" r="2" fill="black" />
+                <circle cx="48" cy="58" r="2" fill="black" />
+            </svg>
+        </button>
+
+
+        <!-- Tradutor invisível -->
+        <div id="google_translate_element" style="display: none;"></div>
+        <script src="style/script.js"></script>
+        <!-- Google Translate widget -->
+        <script type="text/javascript"
+            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
