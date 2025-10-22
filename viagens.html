@@ -1,264 +1,295 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR Turismos</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Viagens — Filtros Avançados</title>
-    <style>
-        :root {
-            --bg: #f4f6f8;
-            --card-bg: #ffffff;
-            --accent: #0b84ff;
-            --light-accent: #cfe9ff;
-            --muted: #6b6f76;
-            --success: #1b8a3e;
-            --shadow: 0 6px 18px rgba(17, 24, 39, 0.12);
-            --radius: 14px;
-            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-        }
+</head>
+<style>
+    :root {
+        --bg: #f4f6f8;
+        --card-bg: #ffffff;
+        --accent: #0b84ff;
+        --light-accent: #cfe9ff;
+        --muted: #6b6f76;
+        --success: #1b8a3e;
+        --shadow: 0 6px 18px rgba(17, 24, 39, 0.12);
+        --radius: 14px;
+        --cinza-c: #ccc;
+        --cinza50: rgb(50, 50, 50);
+        --cinza90: rgb(90, 90, 90);
+        --cinza100: rgb(100, 100, 100);
+        --cinza200: rgb(200, 200, 200);
+        --cinza220: rgb(220, 220, 220);
+        --cinza228: rgb(228, 228, 228);
+        --cinza225: rgb(225, 225, 225);
+        --cinza230: rgb(230, 230, 230);
+        --cinza240: rgb(240, 240, 240);
+        --cinza245: rgb(245, 245, 245);
+        --azul-marinho: #003366;
+        --azul: rgba(3, 61, 155, 0.822);
+        --azul-c: rgb(10, 65, 231);
+        --azul-c-2: rgba(122, 173, 255, 0.822);
+        --azul-c-3: rgb(0, 110, 255);
+        --azul-c-4: rgba(148, 205, 255, 0.575);
+        --azul-e: rgb(0, 17, 70);
+        --azul-e-2: rgb(9, 15, 194);
+    }
 
-        div.top {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            justify-content: space-between;
-            margin: 2rem 2rem 2rem 2rem;
-            flex-wrap: wrap;
-        }
+    div.top {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        margin: 2rem 1rem 2rem 3rem;
+        flex-wrap: wrap;
+    }
 
-        .title {
-            display: flex;
-            gap: 2rem;
-            align-items: baseline;
-        }
+    .title {
+        display: flex;
+        gap: 2rem;
+        align-items: baseline;
+    }
 
+    .title h1 {
+        margin: 0;
+        font-size: 3rem;
+        font-weight: 600;
+        color: var(--azul-c-3);
+    }
+
+    .subtitle {
+        color: var(--cinza100);
+        font-size: 1.5rem;
+    }
+
+    .controls {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        background: var(cinza100);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        padding: 8px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        box-shadow: none;
+        transition: all .14s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+        background: linear-gradient(180deg, var(--accent), #0a6fe6);
+        color: white;
+        border: none;
+        padding: 9px 14px;
+    }
+
+    .filters {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        padding: 8px 0;
+        flex-wrap: wrap;
+    }
+
+    .chips {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding-left: 3rem;
+
+    }
+
+    .chip {
+        background: var(--cinza245);
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        cursor: pointer;
+        font-size: 13px;
+    }
+
+    .chip:hover {
+        background: var(--cinza230);
+        transition: 0.5s;
+    }
+
+    .chip.active {
+        background: var(--azul-c-3);
+        color: white;
+        border: none;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 2.5rem;
+        margin-top: 1.5rem;
+        margin: 3rem 2rem 0 2rem;
+    }
+
+    .card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card:hover {
+        transition: 0.7s;
+        box-shadow: 0 20px 25px rgba(40, 40, 40, 0.5);
+    }
+
+    .card .thumb {
+        width: 100%;
+        aspect-ratio: 10/7;
+        object-fit: cover;
+        display: block;
+
+    }
+
+    .card .title-bar {
+        background: var(--azul-c-4);
+        padding: 8px 12px;
+        text-align: center;
+    }
+
+    .card .title-bar strong {
+        display: block;
+        font-weight: 600;
+        font-size: 1.6rem;
+        color: rgb(0, 0, 0);
+    }
+
+    .card .content {
+        padding: 12px;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        font-size: 3rem;
+    }
+
+    .line {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        color: blue;
+        font-size: 14px;
+    }
+
+    .line .label {
+        width: 1.5rem;
+        text-align: left;
+        font-size: 17px;
+    }
+
+    .line .value {
+        color: var(--cinza50);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.8rem;
+        ;
+    }
+
+    .price {
+        margin-top: 6px;
+        font-weight: 700;
+        color: rgb(0, 255, 0);
+        font-size: 1.8rem;
+    }
+
+    .card .cta {
+        padding: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card .cta button {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        background: var(--azul-c-3);
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .card .cta button:hover {
+        background: var(--azul-c);
+        transition: 0.5s;
+    }
+
+    .info {
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: 14px;
+
+    }
+
+    @media (max-width:640px) {
         .title h1 {
-            margin: 0;
-            font-size: 3rem;
-            font-weight: 600;
-        }
-
-        .subtitle {
-            color: var(--muted);
-            font-size: 1.5rem;
+            font-size: 18px
         }
 
         .controls {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            background: var(cinza100);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            padding: 8px 12px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: none;
-            transition: all .14s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        .btn.primary {
-            background: linear-gradient(180deg, var(--accent), #0a6fe6);
-            color: white;
-            border: none;
-            padding: 9px 14px;
-        }
-
-        .filters {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            padding: 8px 0;
-            flex-wrap: wrap;
-        }
-
-        .chips {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .chip {
-            background: var(--card-bg);
-            padding: 8px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .chip.active {
-            background: var(--accent);
-            color: white;
-            border: none;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 2.5rem;
-            margin-top: 1.5rem;
-            margin: 3rem 2rem 0 2rem;
-        }
-
-        .card {
-            background: rgb(221, 221, 221);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            box-shadow: 0 20px 25px rgba(40, 40, 40, 0.5);
-        }
-
-        .card .thumb {
             width: 100%;
-            aspect-ratio: 10/7;
-            object-fit: cover;
-            display: block;
-
+            justify-content: space-between;
         }
+    }
 
-        .card .title-bar {
-            background: red;
-            padding: 8px 12px;
-            text-align: center;
-        }
+    .hidden {
+        display: none !important;
+    }
 
-        .card .title-bar strong {
-            display: block;
-            font-weight: 600;
-            font-size: 1.6rem;
-            color: white;
-        }
+    /* small form controls */
+    .input {
+        padding: 8px 10px;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        min-width: 160px;
+    }
 
-        .card .content {
-            padding: 12px;
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            font-size: 3rem;
-        }
-
-        .line {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            color:blue;
-            font-size: 14px;
-        }
-
-        .line .label {
-            width:1.5rem;
-            text-align: left;
-            font-size: 17px;
-        }
-
-        .line .value {
-            color: green;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.8rem;;
-        }
-
-        .price {
-            margin-top: 6px;
-            font-weight: 700;
-            color: rgb(7, 198, 7);
-            font-size: 1.8rem;
-        }
-
-        .card .cta {
-            padding: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card .cta button {
-            width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(180deg, var(--accent), #0a6fe6);
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-      
-
-        .info {
-            margin-top: 20px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        @media (max-width:640px) {
-            .title h1 {
-                font-size: 18px
-            }
-
-            .controls {
-                width: 100%;
-                justify-content: space-between;
-            }
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* small form controls */
-        .input {
-            padding: 8px 10px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            min-width: 160px;
-        }
-
-        .mini {
-            min-width: 120px;
-        }
-    </style>
+    .mini {
+        min-width: 120px;
+    }
+</style>
 </head>
 
 <body>
     <header>
-
         <img class="logo" src="img/Logos/branca.png" alt="Logo">
 
-        <nav id="menu">
-
+        <nav id="menu" aria-hidden="true">
             <div class="topoMenu">
                 <h4>Menu</h4>
-                <button class="fecharMenu">[ X ]</button>
+                <button class="fecharMenu" aria-label="Fechar menu">[ X ]</button>
             </div>
 
             <a href="index.html" class="risco">Início</a>
             <a href="quemsomos.html">Quem somos</a>
             <a href="index.html#secaoviagens">Viagens</a>
             <div class="menulogin">
-                <button id="cadastro" onclick="abrirdropdown()">
-                    <a id="entrar">Entrar</a>
+                <button id="cadastro" onclick="abrirdropdown()" aria-haspopup="true" aria-expanded="false">
+                    <span id="entrar">Entrar</span>
                 </button>
-                <div class="dropdown-entrar" id="dropdownentrar">
+                <div class="dropdown-entrar hidden" id="dropdownentrar" aria-hidden="true">
                     <a href="cadastro.html">Cadastre-se</a>
                     <a href="acessar.html">Acessar</a>
                 </div>
@@ -273,14 +304,11 @@
 
         </nav>
 
-        <button class="botaoMenu">
-
+        <button class="botaoMenu" aria-label="Abrir menu">
             <div class="ret1"></div>
             <div class="ret2"></div>
             <div class="ret3"></div>
-
         </button>
-
     </header>
 
     <div class="top" role="navigation" aria-label="Filtros de viagens">
@@ -305,6 +333,11 @@
             </select>
             <button class="btn primary" id="applyBtn" title="Aplicar filtros">Aplicar</button>
             <button class="btn" id="resetBtn" title="Limpar filtros">Limpar</button>
+
+            <!-- Contador (invisível se você não quiser mostrar) -->
+            <div style="margin-left:8px; color:#fff; font-weight:700;">
+                Resultados: <span id="count">0</span>
+            </div>
         </div>
     </div>
 
@@ -319,8 +352,6 @@
         </div>
     </div>
 
-   
-
     <main>
         <section class="grid" id="cardsGrid" aria-live="polite">
             <!-- cards gerados por JS -->
@@ -329,10 +360,12 @@
         <div id="noResults" class="info hidden">Nenhuma viagem encontrada para esses filtros.</div>
     </main>
 
+
+    <!-- ---------- SCRIPTS (tudo aqui embaixo; substitui o antigo se quiser) ---------- -->
     <script>
-        /* ---------- dados (30 viagens) ---------- */
+        // dados (30 viagens)
         const tripsRaw = [
-            { id: 1, title: "Ilhabela - Brasil", guide: "Rafael", depart: "20/06/2025", return: "27/06/2025", price: "R$1.000,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
+            { id: 1, title: "Ilhabela - Brasil", guide: "Rafael", depart: "20/06/2025", return: "27/06/2025", price: "R$1.000,00", img: "img/Barra do cunhaú/cunhaú1 editada.jpg", cat: "praia" },
             { id: 2, title: "Ubatuba - L. Norte", guide: "Mariana", depart: "05/07/2025", return: "10/07/2025", price: "R$850,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
             { id: 3, title: "Paraty - Histórico", guide: "Lucas", depart: "12/09/2025", return: "15/09/2025", price: "R$680,00", img: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
             { id: 4, title: "Campos do Jordão", guide: "Ana", depart: "22/07/2025", return: "26/07/2025", price: "R$920,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "montanha" },
@@ -364,9 +397,9 @@
             { id: 30, title: "Paranapiacaba", guide: "Ricardo", depart: "29/06/2025", return: "01/07/2025", price: "R$490,00", img: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
         ];
 
-        /* ---------- utilitários: parse de datas e preços ---------- */
+        // utilitários
         function parseBRDateToISO(str) {
-            const parts = str.split('/');
+            const parts = String(str || '').split('/');
             if (parts.length !== 3) return null;
             const [d, m, y] = parts;
             return `${y.padStart(4, '0')}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
@@ -388,15 +421,16 @@
                 departTime: departISO ? new Date(departISO).getTime() : null,
                 returnTime: returnISO ? new Date(returnISO).getTime() : null,
                 priceNumber: parsePriceToNumber(t.price),
-                titleLower: t.title.toLowerCase(),
-                guideLower: t.guide.toLowerCase(),
-                catLower: (t.cat || '').toLowerCase()
+                titleLower: String(t.title).toLowerCase(),
+                guideLower: String(t.guide).toLowerCase(),
+                catLower: String(t.cat || '').toLowerCase()
             };
         });
 
+        // elementos
         const grid = document.getElementById('cardsGrid');
-        const countEl = document.getElementById('count');
         const noResults = document.getElementById('noResults');
+        const countEl = document.getElementById('count'); // agora existe no topo
 
         function createCard(trip) {
             const wrap = document.createElement('article');
@@ -410,10 +444,10 @@
       <img class="thumb" src="${trip.img}" alt="${trip.title}">
       <div class="title-bar"><strong>${trip.title}</strong></div>
       <div class="content">
-        <div class="line"><span class="label">👤</span><span class="value">Guia: <a href="#" style="color:var(--accent);text-decoration:underline;">${trip.guide}</a></span></div>
-        <div class="line"><span class="label">🚍</span><span class="value">Ida: ${trip.depart}</span></div>
-        <div class="line"><span class="label">🔁</span><span class="value">Volta: ${trip.return}</span></div>
-        <div class="line"><span class="label">💲</span><span class="price">${trip.price}</span></div>
+        <div class="line"><span class="label">👤</span><span class="value">Guia: <a href="#" style="color:var(--cinza100);decoration:underline;">${trip.guide}</a></span></div>
+        <div class="line"><span class="label">🚍</span><span class="value">Ida: <a href="#" style="color:var(--cinza100); text-decoration: none;">${trip.depart}</a></span></div>
+        <div class="line"><span class="label">🔁</span><span class="value">Volta: <a href="#" style="color:var(--cinza100); text-decoration: none;">${trip.return}</a></span></div>
+        <div class="line"><span class="label">💲</span><span class="value">Preço: <a href="#" style="color:green; text-decoration: none;">${trip.price}</a></span></div>
       </div>
       <div class="cta"><button aria-label="Ver mais sobre ${trip.title}">Ver Mais</button></div>
     `;
@@ -423,11 +457,13 @@
         function renderAll() {
             grid.innerHTML = '';
             trips.forEach(t => grid.appendChild(createCard(t)));
-            countEl.textContent = trips.length;
+            if (countEl) countEl.textContent = trips.length;
         }
+
+        // renderiza cards
         renderAll();
 
-        /* ---------- filtros e UI ---------- */
+        // filtros e UI - elementos
         const chips = document.querySelectorAll('.chip');
         const categorySelect = document.getElementById('categorySelect');
         const searchInput = document.getElementById('searchInput');
@@ -437,23 +473,23 @@
         const applyBtn = document.getElementById('applyBtn');
 
         function applyFilter() {
-            const cat = (categorySelect.value || 'all').toLowerCase();
-            const q = (searchInput.value || '').trim().toLowerCase();
-            const dateVal = dateInput.value || '';
+            const cat = (categorySelect?.value || 'all').toLowerCase();
+            const q = (searchInput?.value || '').trim().toLowerCase();
+            const dateVal = dateInput?.value || '';
             const dateTime = dateVal ? new Date(dateVal).getTime() : null;
-            const maxPrice = priceInput.value ? Number(priceInput.value) : null;
+            const maxPrice = priceInput?.value ? Number(priceInput.value) : null;
 
             const cards = Array.from(grid.children);
             let visibleCount = 0;
 
             cards.forEach(card => {
-                const cardCat = card.getAttribute('data-cat');
-                const title = card.getAttribute('data-title');
-                const guide = card.getAttribute('data-guide');
-                const priceNum = Number(card.getAttribute('data-price'));
+                const cardCat = (card.getAttribute('data-cat') || '').toLowerCase();
+                const title = (card.getAttribute('data-title') || '').toLowerCase();
+                const guide = (card.getAttribute('data-guide') || '').toLowerCase();
+                const priceNum = Number(card.getAttribute('data-price')) || 0;
 
-                let catMatch = (cat === 'all') || (cardCat === cat);
-                let textMatch = !q || title.includes(q) || guide.includes(q);
+                const catMatch = (cat === 'all') || (cardCat === cat);
+                const textMatch = !q || title.includes(q) || guide.includes(q);
 
                 let dateMatch = true;
                 if (dateTime !== null) {
@@ -478,8 +514,8 @@
                 }
             });
 
-            countEl.textContent = visibleCount;
-            noResults.classList.toggle('hidden', visibleCount > 0);
+            if (countEl) countEl.textContent = visibleCount;
+            if (noResults) noResults.classList.toggle('hidden', visibleCount > 0);
         }
 
         // chips quick filter
@@ -487,39 +523,110 @@
             ch.addEventListener('click', () => {
                 chips.forEach(x => x.classList.remove('active'));
                 ch.classList.add('active');
-                categorySelect.value = ch.dataset.cat;
+                if (categorySelect) categorySelect.value = ch.dataset.cat;
                 applyFilter();
             });
         });
 
         // filtros em tempo real
-        searchInput.addEventListener('input', applyFilter);
-        dateInput.addEventListener('input', applyFilter);
-        priceInput.addEventListener('input', applyFilter);
+        if (searchInput) searchInput.addEventListener('input', applyFilter);
+        if (dateInput) dateInput.addEventListener('input', applyFilter);
+        if (priceInput) priceInput.addEventListener('input', applyFilter);
 
         // eventos padrão
-        applyBtn.addEventListener('click', applyFilter);
-        searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') applyFilter(); });
-        categorySelect.addEventListener('change', () => {
+        if (applyBtn) applyBtn.addEventListener('click', applyFilter);
+        if (searchInput) searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') applyFilter(); });
+        if (categorySelect) categorySelect.addEventListener('change', () => {
             const cat = categorySelect.value;
             chips.forEach(c => c.classList.toggle('active', c.dataset.cat === cat));
             applyFilter();
         });
 
-        resetBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            dateInput.value = '';
-            priceInput.value = '';
-            categorySelect.value = 'all';
+        if (resetBtn) resetBtn.addEventListener('click', () => {
+            if (searchInput) searchInput.value = '';
+            if (dateInput) dateInput.value = '';
+            if (priceInput) priceInput.value = '';
+            if (categorySelect) categorySelect.value = 'all';
             chips.forEach(x => x.classList.remove('active'));
-            document.querySelector('.chip[data-cat="all"]').classList.add('active');
+            const allChip = document.querySelector('.chip[data-cat="all"]');
+            if (allChip) allChip.classList.add('active');
             applyFilter();
         });
 
         applyFilter();
 
-    </script>
+        // === handlers adicionais: menu, dropdown, darkmode, idioma e prevenção de href="#" ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const botaoMenu = document.querySelector('.botaoMenu');
+            const menuEl = document.getElementById('menu');
+            const fecharMenuBtn = document.querySelector('.fecharMenu');
+            const dropdownEntrar = document.getElementById('dropdownentrar');
 
+            window.abrirdropdown = function () {
+                if (!dropdownEntrar) return;
+                dropdownEntrar.classList.toggle('hidden');
+                const visible = !dropdownEntrar.classList.contains('hidden');
+                dropdownEntrar.setAttribute('aria-hidden', String(!visible));
+            };
+
+            window.toggleDarkMode = function () {
+                document.body.classList.toggle('dark');
+                const iconSun = document.getElementById('iconSun');
+                const iconMoon = document.getElementById('iconMoon');
+                if (iconSun && iconMoon) {
+                    const isDark = document.body.classList.contains('dark');
+                    iconSun.style.visibility = isDark ? 'visible' : 'hidden';
+                    iconMoon.style.visibility = isDark ? 'hidden' : 'visible';
+                }
+            };
+
+            window.toggleLangMenu = function () {
+                const langSelector = document.getElementById('langSelector');
+                if (!langSelector) return;
+                langSelector.classList.toggle('open');
+            };
+
+            window.setLanguage = function (lang) {
+                document.documentElement.setAttribute('lang', lang === 'english' ? 'en' : lang === 'spanish' ? 'es' : lang === 'french' ? 'fr' : 'pt-BR');
+                const langSelector = document.getElementById('langSelector');
+                if (langSelector) langSelector.classList.remove('open');
+                console.info('Idioma selecionado:', lang);
+            };
+
+            if (botaoMenu && menuEl) {
+                botaoMenu.addEventListener('click', () => {
+                    menuEl.classList.toggle('open');
+                    const expanded = menuEl.classList.contains('open');
+                    botaoMenu.setAttribute('aria-expanded', String(expanded));
+                    menuEl.setAttribute('aria-hidden', String(!expanded));
+                });
+            }
+            if (fecharMenuBtn && menuEl) {
+                fecharMenuBtn.addEventListener('click', () => {
+                    menuEl.classList.remove('open');
+                    botaoMenu && botaoMenu.setAttribute('aria-expanded', 'false');
+                });
+            }
+
+            // Prevenir href="#" padrão dentro dos cards e tratar clicks de "Ver Mais"
+            grid.addEventListener('click', (ev) => {
+                const a = ev.target.closest('a[href="#"]');
+                if (a) {
+                    ev.preventDefault();
+                    // comportamento customizável: por enquanto só log
+                    console.log('Link de card clicado (preventDefault) =>', a.textContent.trim());
+                }
+                const btn = ev.target.closest('button[aria-label^="Ver mais sobre"]');
+                if (btn) {
+                    const article = btn.closest('.card');
+                    if (article) {
+                        const title = article.querySelector('.title-bar strong')?.textContent || 'viagem';
+                        alert('Ver mais: ' + title);
+                    }
+                }
+            });
+        });
+    </script>
 
     <footer>
 
