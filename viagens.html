@@ -284,7 +284,7 @@
 
             <a href="index.html" class="risco">Início</a>
             <a href="quemsomos.html">Quem somos</a>
-            <a href="index.html#secaoviagens">Viagens</a>
+            <a href="viagens.html">Viagens</a>
             <div class="menulogin">
                 <button id="cadastro" onclick="abrirdropdown()" aria-haspopup="true" aria-expanded="false">
                     <span id="entrar">Entrar</span>
@@ -366,36 +366,36 @@
         // dados (30 viagens)
         const tripsRaw = [
             { id: 1, title: "Ilhabela - Brasil", guide: "Rafael", depart: "20/06/2025", return: "27/06/2025", price: "R$1.000,00", img: "img/Barra do cunhaú/cunhaú1 editada.jpg", cat: "praia" },
-            { id: 2, title: "Ubatuba - L. Norte", guide: "Mariana", depart: "05/07/2025", return: "10/07/2025", price: "R$850,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
-            { id: 3, title: "Paraty - Histórico", guide: "Lucas", depart: "12/09/2025", return: "15/09/2025", price: "R$680,00", img: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
-            { id: 4, title: "Campos do Jordão", guide: "Ana", depart: "22/07/2025", return: "26/07/2025", price: "R$920,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "montanha" },
-            { id: 5, title: "Florianópolis - Lagoa", guide: "Tiago", depart: "03/08/2025", return: "09/08/2025", price: "R$1.300,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
-            { id: 6, title: "Bonito - Ecoturismo", guide: "Marcos", depart: "10/10/2025", return: "15/10/2025", price: "R$1.450,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
-            { id: 7, title: "Ouro Preto", guide: "Helena", depart: "18/11/2025", return: "21/11/2025", price: "R$620,00", img: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
-            { id: 8, title: "Gramado - Inverno", guide: "Pedro", depart: "05/07/2025", return: "11/07/2025", price: "R$1.150,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "montanha" },
-            { id: 9, title: "Jericoacoara", guide: "Rafaela", depart: "12/09/2025", return: "19/09/2025", price: "R$1.800,00", img: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=60", cat: "praia" },
-            { id: 10, title: "Manaus - Amazônia", guide: "Gustavo", depart: "20/10/2025", return: "27/10/2025", price: "R$2.100,00", img: "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
-            { id: 11, title: "Salvador - Pelourinho", guide: "Lia", depart: "02/12/2025", return: "06/12/2025", price: "R$940,00", img: "https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
-            { id: 12, title: "Chapada Diamantina", guide: "Ronaldo", depart: "08/08/2025", return: "15/08/2025", price: "R$1.600,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
-            { id: 13, title: "Ilhéus - Costa", guide: "Sofia", depart: "01/09/2025", return: "05/09/2025", price: "R$780,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
-            { id: 14, title: "Petrópolis", guide: "Daniel", depart: "14/07/2025", return: "17/07/2025", price: "R$710,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "montanha" },
-            { id: 15, title: "Recife - Olinda", guide: "Camila", depart: "21/10/2025", return: "25/10/2025", price: "R$890,00", img: "https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
-            { id: 16, title: "Búzios", guide: "Rui", depart: "06/11/2025", return: "10/11/2025", price: "R$1.120,00", img: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=60", cat: "praia" },
-            { id: 17, title: "Serra da Canastra", guide: "Eduarda", depart: "09/08/2025", return: "13/08/2025", price: "R$980,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
-            { id: 18, title: "Trancoso", guide: "Mateus", depart: "11/12/2025", return: "16/12/2025", price: "R$1.900,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
-            { id: 19, title: "Fortaleza - Praia do Futuro", guide: "Larissa", depart: "01/10/2025", return: "07/10/2025", price: "R$1.050,00", img: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=60", cat: "praia" },
-            { id: 20, title: "Cataratas do Iguaçu", guide: "Fabio", depart: "15/09/2025", return: "19/09/2025", price: "R$1.250,00", img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
-            { id: 21, title: "Curitiba - City Tour", guide: "Paula", depart: "20/08/2025", return: "23/08/2025", price: "R$720,00", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=60", cat: "cidade" },
-            { id: 22, title: "Belo Horizonte", guide: "Igor", depart: "28/09/2025", return: "30/09/2025", price: "R$640,00", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=60", cat: "cidade" },
-            { id: 23, title: "Lençóis Maranhenses", guide: "Nina", depart: "02/11/2025", return: "08/11/2025", price: "R$1.700,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
-            { id: 24, title: "São Paulo - Museu", guide: "Rafael", depart: "05/06/2025", return: "07/06/2025", price: "R$420,00", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=60", cat: "cidade" },
-            { id: 25, title: "Ilha do Mel", guide: "Bruna", depart: "18/08/2025", return: "21/08/2025", price: "R$730,00", img: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=60", cat: "praia" },
-            { id: 26, title: "Tiradentes", guide: "Carla", depart: "13/09/2025", return: "15/09/2025", price: "R$560,00", img: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
-            { id: 27, title: "Monte Verde", guide: "Victor", depart: "26/07/2025", return: "29/07/2025", price: "R$790,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "montanha" },
-            { id: 28, title: "Ilha Grande", guide: "Luan", depart: "17/11/2025", return: "22/11/2025", price: "R$1.230,00", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60", cat: "praia" },
-            { id: 29, title: "Serra do Cipó", guide: "Marta", depart: "04/10/2025", return: "08/10/2025", price: "R$860,00", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60", cat: "aventura" },
-            { id: 30, title: "Paranapiacaba", guide: "Ricardo", depart: "29/06/2025", return: "01/07/2025", price: "R$490,00", img: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=60", cat: "cultural" },
-        ];
+            { id: 2, title: "Rio de Janeiro", guide: "Mariana", depart: "05/07/2025", return: "10/07/2025", price: "R$850,00", img: "img/Rio de janeiro,Brazil.jpg", cat: "praia" },
+            { id: 3, title: "Singapura - Asia", guide: "Lucas", depart: "12/09/2025", return: "15/09/2025", price: "R$680,00", img: "img/Singapura asia/singapura2 editada.jpg", cat: "cultural" },
+            { id: 4, title: "Gray rocky mountain", guide: "Ana", depart: "22/07/2025", return: "26/07/2025", price: "R$920,00", img: "img/Gray rocky mountain, italy/Gray Rocky Mountain, ITALY editada.jpg", cat: "montanha" },
+            { id: 5, title: "ilhabela-brasil", guide: "Tiago", depart: "03/08/2025", return: "09/08/2025", price: "R$1.300,00", img: "img/ilhabela/bela4.jpg", cat: "praia" },
+            { id: 6, title: "Las vegas", guide: "Marcos", depart: "10/10/2025", return: "15/10/2025", price: "R$1.450,00", img: "img/las vegas/vegas 3 editada.jpg", cat: "aventura" },
+            { id: 7, title: "Portugal", guide: "Helena", depart: "18/11/2025", return: "21/11/2025", price: "R$620,00", img: "img/Lagos portugal/Lagos, Portugal editada.jpg", cat: "cultural" },
+            { id: 8, title: "Positano", guide: "Pedro", depart: "05/07/2025", return: "11/07/2025", price: "R$1.150,00", img: "img/Positano,Italy.jpg", cat: "montanha" },
+            { id: 9, title: "Rio de janeiro", guide: "Rafaela", depart: "12/09/2025", return: "19/09/2025", price: "R$1.800,00", img: "img/Rio de janeiro/rio3 editada.jpg", cat: "praia" },
+            { id: 10, title: "Roma", guide: "Gustavo", depart: "20/10/2025", return: "27/10/2025", price: "R$2.100,00", img: "img/Gray rocky mountain, italy/Roma, Lácio, Itália editada.jpg", cat: "aventura" },
+            { id: 11, title: "Singa pura", guide: "Lia", depart: "02/12/2025", return: "06/12/2025", price: "R$940,00", img: "img/Singapura asia/singapura ediytada.jpg", cat: "cultural" },
+            { id: 12, title: "Barra do cunhau", guide: "Ronaldo", depart: "08/08/2025", return: "15/08/2025", price: "R$1.600,00", img: "img/Barra do cunhaú/cunhaú3 editada.jpg", cat: "praia" },
+            { id: 13, title: "Moorea,French Polynesia", guide: "Sofia", depart: "01/09/2025", return: "05/09/2025", price: "R$780,00", img: "img/Moorea,French Polynesia.jpg", cat: "praia" },
+            { id: 14, title: "Gray rocky mountain", guide: "Daniel", depart: "14/07/2025", return: "17/07/2025", price: "R$710,00", img: "img/Gray rocky mountain, italy/Prati di Tivo, Abruzzo, Italia editada.jpg", cat: "montanha" },
+            { id: 15, title: "estresa,italy", guide: "Camila", depart: "21/10/2025", return: "25/10/2025", price: "R$890,00", img: "img/stresa, italy/editada 3.jpg", cat: "cultural" },
+            { id: 16, title: "Honolulu, US", guide: "Rui", depart: "06/11/2025", return: "10/11/2025", price: "R$1.120,00", img: "img/Honolulu/lulu3 editada.jpg", cat: "praia" },
+            { id: 17, title: "Las vegas", guide: "Eduarda", depart: "09/08/2025", return: "13/08/2025", price: "R$980,00", img: "img/las vegas/Las Vegas,USA editada.jpg", cat: "aventura" },
+            { id: 18, title: "Morea", guide: "Mateus", depart: "11/12/2025", return: "16/12/2025", price: "R$1.900,00", img: "img/Moorea,French Polynesia/1 editada.jpg", cat: "praia" },
+            { id: 19, title: "Morea", guide: "Larissa", depart: "01/10/2025", return: "07/10/2025", price: "R$1.050,00", img: "img/Moorea,French Polynesia/3 editada.jpg", cat: "praia" },
+            { id: 20, title: "Singapura", guide: "Fabio", depart: "15/09/2025", return: "19/09/2025", price: "R$1.250,00", img: "img/Singapura asia/singapura3 editada.jpg", cat: "aventura" },
+            { id: 21, title: "Las vegas", guide: "Paula", depart: "20/08/2025", return: "23/08/2025", price: "R$720,00", img: "img/las vegas/vegas1 editada.jpg", cat: "cidade" },
+            { id: 22, title: "ilhabella", guide: "Igor", depart: "28/09/2025", return: "30/09/2025", price: "R$640,00", img: "img/ilhabela/bela editada.jpg", cat: "Praia" },
+            { id: 23, title: "Ilhabela - Brasil", guide: "Antonio", depart: "14/02/2025", return: "27/06/2025", price: "R$1.000,00", img: "img/Barra do cunhaú/cunhaú1 editada.jpg", cat: "praia" },
+            { id: 24, title: "Rio de Janeiro", guide: "Marielena", depart: "05/07/2026", return: "10/07/2025", price: "R$850,00", img: "img/Rio de janeiro,Brazil.jpg", cat: "praia" },
+            { id: 25, title: "Singapura - Asia", guide: "Luander", depart: "11/02/2025", return: "15/09/2025", price: "R$680,00", img: "img/Singapura asia/singapura2 editada.jpg", cat: "cultural" },
+            { id: 26, title: "Gray rocky mountain", guide: "isa", depart: "02/07/2026", return: "26/07/2025", price: "R$920,00", img: "img/Gray rocky mountain, italy/Gray Rocky Mountain, ITALY editada.jpg", cat: "montanha" },
+            { id: 27, title: "ilhabela-brasil", guide: "ygor", depart: "03/09/2025", return: "09/08/2025", price: "R$1.300,00", img: "img/ilhabela/bela4.jpg", cat: "praia" },
+            { id: 28, title: "Las vegas", guide: "Rodolfo", depart: "10/10/2026", return: "15/10/2025", price: "R$1.450,00", img: "img/las vegas/vegas 3 editada.jpg", cat: "aventura" },
+            { id: 29, title: "Portugal", guide: "karol", depart: "20/01/2025", return: "21/11/2025", price: "R$620,00", img: "img/Lagos portugal/Lagos, Portugal editada.jpg", cat: "cultural" },
+            { id: 30, title: "Positano", guide: "Pedro", depart: "09/07/2026", return: "11/07/2025", price: "R$1.150,00", img: "img/Positano,Italy.jpg", cat: "montanha" },
+    ]
 
         // utilitários
         function parseBRDateToISO(str) {
@@ -676,7 +676,7 @@
 
                 <a href="index.html" class="risco">Início</a>
                 <a href="quemsomos.html">Quem somos</a>
-                <a href="index.html#secaoviagens">Viagens</a>
+                <a href="viagens.html">Viagens</a>
                 <a href="contato.html">Contato</a>
 
             </div>
