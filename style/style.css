@@ -26,22 +26,15 @@
     --rosainsta: #ff0084;
     --verdewatsapp: #09ff00;
     --azuldark: #02053c;
-    --fundo-dark: #2a2a2a;
-    --card-dark: rgb(58, 58, 58);
-    --bg: #ffffff;
-    --fg: #0f172a;
-    --muted: #64748b;
-    --card: #f8fafc;
-    --success: #10b981;
     --predo-dark-mode: #0b0f14;
     --preto-dark-mode-card: #0f1720;
-    
 }
 
 /* Isola o VLibras de estilos globais */
 
 
 * {
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -517,7 +510,7 @@ header .botaoMenu:hover .ret3 {
 }
 
 .card a {
-    color: var(--cinza50);
+    color: var(--azul-c-3);
     text-decoration: underline;
 }
 
@@ -547,6 +540,230 @@ header .botaoMenu:hover .ret3 {
     background-color: var(--azul-c);
     transition: 0.7s;
 }
+
+/* Carrega página de agendamento */
+
+
+.titulo {
+    border-bottom: 1px solid gray;
+    margin: 1rem;
+    text-align: center;
+    height: 3rem;
+    padding: 2%;
+    color: var(--azul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 150%;
+}
+
+.galeriaViagem,
+.galeriaInfo {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    justify-content: space-between;
+}
+
+.cardimg {
+    display: flex;
+    gap: 1rem;
+    max-width: 100%;
+    flex: 1;
+}
+
+.miniaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    max-width: 9.5rem;
+}
+
+.miniatura {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: border 0.3s;
+    flex-shrink: 0;
+}
+
+.miniatura:hover,
+.miniatura.ativa {
+    border: 1px solid #333;
+}
+
+.principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.descricao {
+    text-align: center;
+    padding: 1.5rem;
+    flex: 1;
+    font-size: 3rem;
+    line-height: 1.6;
+    color: var(--cinza50);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: var(--cinza200);
+}
+
+.info {
+    display: flex;
+    font-size: 2rem;
+    flex-direction: column;
+    margin: 0 2rem;
+    padding: 2rem;
+    gap: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: var(--cinza200);
+}
+
+.info h3 {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.info a {
+    color: var(--cinza50);
+    text-decoration: underline;
+}
+
+.info span {
+    color: var(--cinza50);
+}
+
+.reservas {
+    width: 50%;
+    margin: 0 1rem;
+}
+
+.reserva {
+    background-color: var(--cinza200);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(40, 40, 40, 0.5);
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+.reserva h5.precoPorDia {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: baseline;
+}
+
+.reserva h5.precoPorDia span {
+    font-size: 1.6rem;
+    font-weight: normal;
+    color: var(--cinza50);
+    margin-left: 5px;
+}
+
+.box-reserva {
+    width: 100%;
+    border: 1px solid var(--cinza100);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.datas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--cinza100);
+}
+
+.check {
+    padding: 1rem;
+    border-right: 1px solid var(--cinza100);
+}
+
+.check:last-child {
+    border-right: none;
+}
+
+.check label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--cinza50);
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.check p {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.hospedes {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.hospedes label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--cinza50);
+}
+
+.hospedes p {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+#seta {
+    font-size: 2.5rem;
+    background-color: transparent;
+    color: var(--cinza50);
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 123%;
+    width: 48%;
+    background-color: var(--cinza200);
+    border-radius: 5px;
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown ul li {
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dropdown ul li:hover {
+    background-color: var(--cinza225);
+}
+
 
 /* Quem Somos */
 
@@ -925,311 +1142,299 @@ form input:focus {
 
 /*pagina Guia */
 
-.container-guia {
-    max-width: 120rem;
-    margin: 40px auto;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-}
-
-.container-guia:hover {
-    box-shadow: 0 10px 20px rgb(0, 0, 0);
-    transition: 0.7s;
-}
-
-/* ======== PERFIL ======== */
-.perfil {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 5rem;
-}
-
-.perfil img {
-    width: 25rem;
-    height: 25rem;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--azul-marinho);
-}
-
-.infor h2 {
-    margin: 0;
-    color: var(--azul-marinho);
-    font-size: 3rem;
-}
-
-.cargo {
-    color: var(--cinza200);
-    margin-top: 5px;
-    font-style: italic;
-    font-size: 1.5rem;
-}
-
-.dados {
-    margin-top: 1.5rem;
-    line-height: 2;
-    font-size: 2rem;
-}
-
-.dados strong {
-    color: var(--azul-marinho);
-}
-
-.dados p {
-    margin: 6px 0;
-}
-
-/* ======== AVALIAÇÃO GERAL ======== */
-.avaliacao {
-    margin-top: 1rem;
-}
-
-.estrelas {
-    display: flex;
-    gap: 5px;
-    font-size: 2.5rem;
-}
-
-.estrela {
-    color: #ccc;
-}
-
-.estrela.ativa {
-    color: gold;
-}
-
-.media-avaliacoes {
-    font-size: 2rem;
-    color: #003366;
-    margin-top: 5px;
-}
-
-/*Contato guia*/
-.contato-guia h3 {
-    margin-top: 2rem;
-    color: var(--azul-marinho);
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.contato-guia input {
-    background-color: var(--verdewatsapp);
-    color: white;
-    font-size: 2rem;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-}
-
-.contato-guia input:hover {
-    background-color: var(--verde);
-    transition: 0.7s;
-
-}
-
-
-/* ======== DESCRIÇÃO ======== */
-.descricao-guia h3 {
-    font-size: 3rem;
-    color: var(--azul-marinho);
-    margin-bottom: 1rem;
-}
-
-.descricao-guia {
-    margin-top: 1rem;
-    line-height: 1.5;
-    font-size: 2rem;
-    color: var(--cinza100);
-    margin-left: 1rem;
-}
-
-/* ======== SEÇÕES ======== */
-.seçao {
-    margin-top: 0.5rem;
-
-}
-
-.seçao h3 {
-    color: var(--azul-marinho);
-    border-left: 5px solid var(--azul-marinho);
-    padding-left: 10px;
-    font-size: 3rem;
-}
-
-.outras-viagens {
-    margin-top: 2rem;
-    font-size: 2rem;
-    color: var(--cinza100);
-    margin-left: 3rem;
-}
-
-.secao-2 {
-    margin-top: 1rem;
-}
-
-.secao-2 h3 {
-    color: var(--azul-marinho);
-    border-left: 5px solid var(--azul-marinho);
-    padding-left: 10px;
-    font-size: 3rem;
-}
-
-/* ======== GALERIA ======== */
-.galeria {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    gap: 15px;
-}
-
-.galeria img {
-    width: 32%;
-    height: 25rem;
-    border-radius: 8px;
-    object-fit: cover;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-/* ======== LIGHTBOX ======== */
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    animation: fadeIn 0.3s ease;
-}
-
-.lightbox img {
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 10px;
-}
-
-.fechar-lightbox {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 2rem;
-    color: white;
-    cursor: pointer;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
+    .container-guia {
+      max-width:120rem;
+      margin: 40px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+    .container-guia:hover {
+      box-shadow: 0 10px 20px rgb(0, 0, 0);
+      transition: 0.7s;
     }
 
-    to {
-        opacity: 1;
-        transform: scale(1);
+    /* ======== PERFIL ======== */
+    .perfil {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap:5rem;
     }
-}
 
-/* ======== COMENTÁRIOS ======== */
-.secao h3 {
-    font-size: 3rem;
-    color: var(--azul-marinho);
-}
+    .perfil img {
+      width: 25rem;
+      height: 25rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--azul-marinho);
+    }
 
-#comentForm {
-    margin-bottom: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+    .infor h2 {
+      margin: 0;
+      color:var(--azul-marinho);
+      font-size: 3rem;
+    }
 
-#comentForm input,
-#comentForm textarea,
-#comentForm button {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-family: inherit;
-    font-size: 2rem;
-}
+    .cargo {
+      color:var(--cinza200);
+      margin-top: 5px;
+      font-style: italic;
+      font-size: 1.5rem;
+    }
 
-#comentForm button {
-    background: var(--azul-c-3);
-    color: white;
-    cursor: pointer;
-    font-size: 2rem;
-}
+    .dados {
+      margin-top: 1.5rem;
+      line-height: 2;
+      font-size: 2rem;
+    }
+    .dados strong{
+        color: var(--azul-marinho);
+    }
 
-.estrelas-input {
-    display: flex;
-    gap: 5px;
-    font-size: 2.5rem;
-    cursor: pointer;
-}
+    .dados p {
+      margin: 6px 0;
+    }
 
-.estrelas-input .estrela {
-    color: #ccc;
-    transition: color 0.2s;
-}
+    /* ======== AVALIAÇÃO GERAL ======== */
+    .avaliacao {
+      margin-top: 1rem;
+    }
 
-.estrelas-input .estrela.ativa {
-    color: gold;
-}
+    .estrelas {
+      display: flex;
+      gap: 5px;
+      font-size: 2.5rem;
+    }
 
-.comentarios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-}
+    .estrela {
+      color: #ccc;
+    }
 
-.comentario-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
+    .estrela.ativa {
+      color: gold;
+    }
 
-.coment-topo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
+    .media-avaliacoes {
+      font-size: 2rem;
+      color: #003366;
+      margin-top: 5px;
+    }
 
-.coment-topo img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+    /*Contato guia*/
+    .contato-guia h3{
+      margin-top: 2rem;
+      color: var(--azul-marinho);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .contato-guia input{
+      background-color:var(--verdewatsapp);
+      color: white;
+      font-size: 2rem;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      border: none;
+       cursor: pointer;
+    }
+    .contato-guia input:hover{
+      background-color: var(--verde);
+      transition: 0.7s;
+     
+    }
 
-.coment-stars {
-    color: gold;
-    margin-bottom: 5px;
-}
+    
+    /* ======== DESCRIÇÃO ======== */
+   .descricao-guia h3{
+      font-size: 3rem;
+        color: var(--azul-marinho);
+        margin-bottom: 1rem;
+    }
 
-#verMais {
-    background: var(--azul-c-3);
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
-    font-size: 1.5rem;
-    padding: 1rem 1rem;
-    border-radius: 1rem;
-}
+    .descricao-guia{
+      margin-top: 1rem;
+      line-height: 1.5;
+      font-size: 2rem;
+      color:var(--cinza100);
+      margin-left: 1rem;
+    }
 
-#verMais:hover {
-    background: var(--azul-c);
-    transition: 0.7s;
-}
+    /* ======== SEÇÕES ======== */
+    .seçao {
+      margin-top: 0.5rem;
+      
+    }
+
+    .seçao h3{
+      color: var(--azul-marinho);
+      border-left: 5px solid var(--azul-marinho);
+      padding-left: 10px;
+      font-size: 3rem;
+    }
+
+    .outras-viagens {
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: var(--cinza100);
+      margin-left: 3rem;
+    }
+
+     .secao-2 {
+      margin-top: 1rem;
+    }
+
+    .secao-2 h3 {
+      color: var(--azul-marinho);
+      border-left: 5px solid var(--azul-marinho);
+      padding-left: 10px;
+      font-size: 3rem;
+    }
+
+    /* ======== GALERIA ======== */
+    .galeria {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 15px;
+    }
+
+    .galeria img {
+      width: 32%;
+      height: 25rem;
+      border-radius: 8px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    /* ======== LIGHTBOX ======== */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+
+    .fechar-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ======== COMENTÁRIOS ======== */
+    .secao h3{
+        font-size: 3rem;
+        color: var(--azul-marinho);
+    } 
+    #comentForm {
+      margin-bottom: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #comentForm input,
+    #comentForm textarea,
+    #comentForm button {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 2rem;
+    }
+
+    #comentForm button {
+      background: var(--azul-c-3);
+      color: white;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+
+    .estrelas-input {
+      display: flex;
+      gap: 5px;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+
+    .estrelas-input .estrela {
+      color: #ccc;
+      transition: color 0.2s;
+    }
+
+    .estrelas-input .estrela.ativa {
+      color: gold;
+    }
+
+    .comentarios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .comentario-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .coment-topo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .coment-topo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .coment-stars {
+      color: gold;
+      margin-bottom: 5px;
+    }
+
+    #verMais {
+      background: var(--azul-c-3);
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 1.5rem;
+      padding: 1rem 1rem;
+      border-radius: 1rem;
+    }
+    #verMais:hover {
+      background: var(--azul-c);
+      transition: 0.7s;
+    }
 
 
 
@@ -1421,8 +1626,7 @@ canvas#background-canvas {
     font-size: 4rem;
     transition: color 0.3s;
 }
-
-.letra-rd-social {
+.letra-rd-social{
     font-size: 3rem;
     margin-left: 0.5rem;
 }
@@ -1459,6 +1663,10 @@ canvas#background-canvas {
     color: var(--azul-c-3);
 }
 
+
+
+
+
 /* Acessibilidade*/
 
 [vw-access-button] {
@@ -1473,6 +1681,7 @@ canvas#background-canvas {
     box-shadow: 0 0 0 var(--preto-2) !important;
     transition: 1.1s;
 }
+
 
 /*Dark-mode*/
 
@@ -1705,114 +1914,125 @@ body.dark-mode .ladoEsquerdo h1 {
 
 /*Guia dark mode*/
 
-body.dark-mode .container-guia {
+    body.dark-mode .container-guia {
+    
+      background: var(--preto-dark-mode-card);
+      box-shadow: 0 4px 12px rgba(171, 168, 168, 0.1);
+    }
+    body.dark-mode .container-guia:hover {
+      box-shadow: 0 10px 20px rgb(216, 201, 201);
+      transition: 0.7s;
+    }
 
-    background: var(--preto-dark-mode-card);
-    box-shadow: 0 4px 12px rgba(171, 168, 168, 0.1);
-}
+    /* ======== PERFIL ======== */
+    
 
-body.dark-mode .container-guia:hover {
-    box-shadow: 0 10px 20px rgb(216, 201, 201);
-    transition: 0.7s;
-}
+    .perfil img {
+      border: 4px solid var(--azul-c);
+    }
 
-body.dark-mode .perfil img {
-    border: 4px solid var(--azul-c);
-}
+    .infor h2 {
+      color:var(--azul-c-3);
+    }
 
-body.dark-mode .infor h2 {
-    color: var(--azul-c-3);
-}
+    .cargo {
+      color:var(--cinza200);
+    }
 
-body.dark-mode .dados strong {
-    color: var(--azul-c-3);
-}
-
-body.dark-mode .media-avaliacoes {
-    color: var(--azul-c-3);
-}
-
-body.dark-mode .contato-guia h3 {
-    color: var(--azul-c-3);
-}
-
-body.dark-mode .social-icons-perfil a {
-    color: white;
-}
-
-body.dark-mode .descricao-guia h3 {
-    color: var(--azul-c-3);
-}
-
-body.dark-mode .descricao-guia {
-    color: var(--cinza200);
-
-}
-
-body.dark-mode .seçao h3 {
-    color: var(--azul-c-3);
-    border-left: 5px solid var(--azul-c);
-
-}
-
-body.dark-mode .outras-viagens {
-    color: var(--cinza200);
-
-}
-
-body.dark-mode .secao-2 h3 {
-    color: var(--azul-c-3);
-    border-left: 5px solid var(--azul-c);
-}
+    .dados strong{
+        color: var(--azul-c-3);
+    }
 
 
-
-body.dark-mode .secao h3 {
-    color: var(--azul-c-3);
-}
-
+    body.dark-mode .media-avaliacoes {
+      color: var(--azul-c-3);
+    }
 
 
+    .contato-guia h3{
+      color: var(--azul-c-3);
+    }
+    
+    .contato-guia input:hover{
+      background-color: var(--verde);
+      transition: 0.7s;
+     
+    }
 
-body.dark-mode .comentario-card {
-    background: var(--preto-2);
+    
 
-}
+   body.dark-mode .descricao-guia h3{
+        color: var(--azul-c-3);
+    }
 
-.coment-topo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
+    body.dark-mode .descricao-guia{
+      color:var(--cinza200);
+      
+    }
+     
+    body.dark-mode .seçao h3{
+      color: var(--azul-c-3);
+      border-left: 5px solid var(--azul-c);
+    
+    }
 
-.coment-topo img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+    body.dark-mode .outras-viagens {
+      color: var(--cinza200);
+   
+    }
 
-.coment-stars {
-    color: gold;
-    margin-bottom: 5px;
-}
+    body.dark-mode .secao-2 h3 {
+      color: var(--azul-c-3);
+      border-left: 5px solid var(--azul-c);
+    }
+   
 
-#verMais {
-    background: var(--azul-c-3);
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
-    font-size: 1.5rem;
-    padding: 1rem 1rem;
-    border-radius: 1rem;
-}
+   
+    body.dark-mode .secao h3{
+        color: var(--azul-c-3);
+    }
 
-#verMais:hover {
-    background: var(--azul-c);
-    transition: 0.7s;
-}
+
+   
+
+    body.dark-mode .comentario-card {
+      background: var(--preto-2);
+     
+    }
+
+    .coment-topo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .coment-topo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .coment-stars {
+      color: gold;
+      margin-bottom: 5px;
+    }
+
+    #verMais {
+      background: var(--azul-c-3);
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 1.5rem;
+      padding: 1rem 1rem;
+      border-radius: 1rem;
+    }
+    #verMais:hover {
+      background: var(--azul-c);
+      transition: 0.7s;
+    }
 
 
 
@@ -1822,7 +2042,6 @@ body.dark-mode .cardCadastro {
     background-color: var(--preto-dark-mode-card);
     color: white;
 }
-
 body.dark-mode .card {
     background-color: var(--preto-dark-mode-card);
     color: white;
@@ -1859,305 +2078,7 @@ body.dark-mode .formContato .formRodape input:hover {
 
 }
 
-/* Agendar */
 
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), transparent)
-}
-
-.container {
-    display: flex;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 16px
-}
-
-.left {
-    flex: 1
-}
-
-.right {
-    width: 360px
-}
-
-.gallery {
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--card);
-    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
-    padding: 12px
-}
-
-.main-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px
-}
-
-.thumbs {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px
-}
-
-.thumb {
-    background: transparent;
-    border: 1px solid transparent;
-    padding: 2px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.thumb img {
-    width: 160px;
-    height: 90px;
-    object-fit: cover;
-    display: block;
-    border-radius: 6px;
-}
-
-.info-destino {
-    height: 15%;
-    margin-top: 1rem;
-    padding: 1.5rem;
-    background: var(--card);
-    border-radius: 1rem;
-}
-
-.info-destino h2 {
-    font-size: 2.5rem;
-}
-
-.info-destino p {
-    margin-top: 1rem;
-    font-size: 2rem;
-}
-
-.details-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 1.5rem;
-    color: var(--muted);
-    font-size: 2rem;
-}
-
-.additional {
-    margin-top: 16px;
-    padding: 12px;
-    background: var(--card);
-    border-radius: 10px;
-}
-
-.guide-card {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-.guide-card img {
-    width: 72px;
-    height: 72px;
-    border-radius: 8px;
-}
-
-.guide-card a {
-    font-weight: 700;
-    color: var(--accent);
-    text-decoration: none;
-}
-
-.right .booking {
-    background: var(--card);
-    padding: 14px;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.05);
-    margin-bottom: 2rem;
-}
-
-.right label {
-    display: block;
-    margin: 8px 0;
-    font-size: 14px;
-}
-
-.right input[type="number"],
-.right input[type="date"] {
-    width: 100%;
-    padding: 8px;
-    border-radius: 10px;
-    border: 1px solid rgba(2, 6, 23, 0.06)
-}
-
-.price-summary {
-    margin: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.price-summary div {
-    font-size: 1.5rem;
-}
-
-#bookBtn {
-    color: white;
-    background-color: var(--azul-c-3);
-    border: none;
-    cursor: pointer;
-    width: 80%;
-    padding: 1rem;
-    margin: auto;
-    display: block;
-    border-radius: 1rem;
-    font-size: 1.5rem;
-}
-
-.seatmap h1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    background-color: var(--azul-c-4);
-    box-shadow: 0 2px 6px rgba(2, 6, 23, 0.04);
-}
-
-.assentos {
-    font-size: 1.5rem;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    background-color: var(--azul-c-4);
-}
-
-.bus-map {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    padding: 10px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
-    border-radius: 8px
-}
-
-.seat {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(2, 6, 23, 0.06);
-    text-align: center;
-    cursor: pointer;
-    user-select: none
-}
-
-.seat.selected {
-    background: var(--accent);
-    color: white;
-    border-color: transparent
-}
-
-.map-placeholder {
-    margin-top: 1rem;
-    background: var(--card);
-    padding: 1rem;
-    border-radius: 1rem
-}
-
-.map-placeholder h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-}
-
-.coords {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1rem;
-    font-size: 1.5rem;
-}
-
-.foot {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 16px;
-    color: var(--muted)
-}
-
-.bus-map {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr) 48px repeat(2, 1fr);
-    gap: 10px 14px;
-    padding: 16px;
-    align-items: center;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent);
-    border-radius: 8px;
-}
-
-.driver {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    background-color: var(--azul-c-4);
-    border-radius: 1rem;
-    font-size: 1.4rem;
-    box-shadow: 0 2px 6px rgba(2, 6, 23, 0.04);
-}
-
-.seat {
-    background: var(--card);
-    border: 1px solid rgba(2, 6, 23, 0.06);
-    padding: 1rem;
-    border-radius: 1rem;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
-    box-shadow: 0 2px 6px rgba(2, 6, 23, 0.04);
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.seat.window {
-    border-radius: 12px;
-}
-
-.seat.aisle {
-    border-radius: 8px;
-}
-
-.seat.occupied {
-    opacity: 0.45;
-    cursor: not-allowed;
-}
-
-.seat.selected {
-    background: var(--azul-c-3);
-    color: white;
-    border-color: transparent;
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.18);
-}
-
-.leg-row {
-    grid-column: 1 / -1;
-    height: 8px;
-}
-
-.bus-map .col-label {
-    font-size: 12px;
-    text-align: center;
-    color: var(--muted)
-}
 
 /* Index Principal */
 
@@ -2386,33 +2307,6 @@ body.dark-mode .formContato .formRodape input:hover {
     }
 }
 
-@media screen and (max-width: 900px) {
-    .container {
-        flex-direction: column
-    }
-
-    .right {
-        width: 100%
-    }
-
-    .thumb img {
-        width: 100px;
-        height: 60px
-    }
-
-    .info-destino h2 {
-        font-size: 2rem;
-    }
-
-    .info-destino p {
-        font-size: 1.5rem;
-    }
-
-    .details-grid {
-        font-size: 1.5rem;
-    }
-}
-
 @media screen and (max-width: 855px) {
 
     /* Card escolher tipo cadastro */
@@ -2424,6 +2318,7 @@ body.dark-mode .formContato .formRodape input:hover {
     .social-icons a:first-child {
         margin-left: 0;
     }
+
 }
 
 @media screen and (max-width: 810px) {
@@ -2547,7 +2442,10 @@ body.dark-mode .formContato .formRodape input:hover {
     .social-icons a:first-child {
         margin-left: 0;
     }
+
+
 }
+
 
 @media screen and (max-width: 600px) {
 
@@ -2928,10 +2826,7 @@ body.dark-mode .formContato .formRodape input:hover {
     .social-icons a:first-child {
         margin-left: 0;
     }
-
-    .galeria img {
-        height: 140px;
-    }
+    .galeria img { height:140px; }
 
 }
 

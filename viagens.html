@@ -10,286 +10,294 @@
 </head>
 <style>
     :root {
-        --bg: #f4f6f8;
-        --card-bg: #ffffff;
-        --accent: #0b84ff;
-        --light-accent: #cfe9ff;
-        --muted: #6b6f76;
-        --success: #1b8a3e;
-        --shadow: 0 6px 18px rgba(17, 24, 39, 0.12);
-        --radius: 14px;
-        --cinza-c: #ccc;
-        --cinza50: rgb(50, 50, 50);
-        --cinza90: rgb(90, 90, 90);
-        --cinza100: rgb(100, 100, 100);
-        --cinza200: rgb(200, 200, 200);
-        --cinza220: rgb(220, 220, 220);
-        --cinza228: rgb(228, 228, 228);
-        --cinza225: rgb(225, 225, 225);
-        --cinza230: rgb(230, 230, 230);
-        --cinza240: rgb(240, 240, 240);
-        --cinza245: rgb(245, 245, 245);
-        --azul-marinho: #003366;
-        --azul: rgba(3, 61, 155, 0.822);
-        --azul-c: rgb(10, 65, 231);
-        --azul-c-2: rgba(122, 173, 255, 0.822);
-        --azul-c-3: rgb(0, 110, 255);
-        --azul-c-4: rgba(148, 205, 255, 0.575);
-        --azul-e: rgb(0, 17, 70);
-        --azul-e-2: rgb(9, 15, 194);
+        --prim: #1976d2;
+        --prim-dark: #125a9c;
+        --verde: #28a745;
+        --bg: #f4f4f4;
+        --card-bg: #fff;
+        --text: #222;
+        --radius: 0.75rem;
     }
 
-    div.top {
+
+
+    /* FILTROS - layout responsivo organizado */
+    .viagem-filtro-box {
         display: flex;
-        gap: 12px;
-        align-items: center;
-        justify-content: space-between;
-        margin: 2rem 1rem 2rem 3rem;
         flex-wrap: wrap;
-    }
-
-    .title {
-        display: flex;
         gap: 2rem;
-        align-items: baseline;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 4rem;
+        border-radius: var(--radius);
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.06);
     }
 
-    .title h1 {
-        margin: 0;
-        font-size: 3rem;
-        font-weight: 600;
-        color: var(--azul-c-3);
-    }
-
-    .subtitle {
-        color: var(--cinza100);
+    .viagem-filtro-box input[type="text"],
+    .viagem-filtro-box input[type="number"],
+    .viagem-filtro-box input[type="date"],
+    .viagem-filtro-box select {
+        padding: 1rem 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid #001eff;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         font-size: 1.5rem;
+        min-width: 10rem;
     }
 
-    .controls {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        background: var(cinza100);
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        padding: 8px 12px;
-        border-radius: 10px;
-        cursor: pointer;
-        font-weight: 600;
-        box-shadow: none;
-        transition: all .14s ease;
-    }
-
-    .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow);
-    }
-
-    .btn.primary {
-        background: linear-gradient(180deg, var(--accent), #0a6fe6);
-        color: white;
+    /* filtros menores (ações) */
+    .viagem-filtro-box .viagem-btn {
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
         border: none;
-        padding: 9px 14px;
+        background: var(--prim);
+        color: #fff;
+        cursor: pointer;
+        font-size: 1.2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+
     }
 
-    .filters {
+    .viagem-filtro-box .viagem-btn:hover {
+        background: var(--prim-dark);
+        transform: translateY(-3px);
+    }
+
+    /* categorias (segunda linha) */
+    .viagem-cats {
         display: flex;
-        gap: 2rem;
-        align-items: center;
-        padding: 8px 0;
         flex-wrap: wrap;
-    }
-
-    .chips {
-        display: flex;
         gap: 1rem;
-        flex-wrap: wrap;
-        padding-left: 3rem;
+        justify-content: left;
+        margin: 0 0 1rem 2rem;
+        margin-bottom: -1rem;
+
 
     }
 
-    .chip {
-        background: var(--cinza245);
-        padding: 8px 12px;
-        border-radius: 999px;
-        border: 1px solid rgba(0, 0, 0, 0.06);
+    .viagem-cat-btn {
+        background: #efefef;
+        border: 1px solid #e0e0e0;
+        padding: 0.5rem 1rem;
+        border-radius: 0.6rem;
         cursor: pointer;
-        font-size: 13px;
-    }
-
-    .chip:hover {
-        background: var(--cinza230);
-        transition: 0.5s;
-    }
-
-    .chip.active {
-        background: var(--azul-c-3);
-        color: white;
-        border: none;
-    }
-
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 2.5rem;
-        margin-top: 1.5rem;
-        margin: 3rem 2rem 0 2rem;
-    }
-
-    .card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
+        font-size: 1.5rem;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease;
+
+    }
+
+    .viagem-cat-btn:hover {
+        transform: translateY(-4px);
+    }
+
+    .viagem-cat-btn.viagem-cat-active {
+        background: var(--prim);
+        color: #fff;
+        border-color: var(--prim-dark);
+    }
+
+    /* GRID - cards maiores estilo catálogo */
+    .viagem-container {
+        display: grid;
+        gap: 4rem;
+        /* 16px */
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        /* maioria medidas em rem */
+        justify-content: center;
+        /* centraliza quando sobra espaço */
+    }
+
+    .viagem-card {
+        width: 100%;
+        background-color: white;
+        border-radius: 20px;
+        border: 1px solid #e6e6e6;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: box-Shadow 0.5s, transform 0.3s, z-index;
+        margin: 0 auto;
+        /* centraliza card dentro da célula */
     }
 
-    .card:hover {
-        transition: 0.7s;
+    .viagem-card:hover {
+        transform: translateY(-6px);
         box-shadow: 0 20px 25px rgba(40, 40, 40, 0.5);
     }
 
-    .card .thumb {
+    .viagem-card img {
         width: 100%;
-        aspect-ratio: 10/7;
+        height: 25rem;
         object-fit: cover;
         display: block;
+    }
+
+    .viagem-card-body {
+        flex: 1;
 
     }
 
-    .card .title-bar {
-        background: var(--azul-c-4);
-        padding: 8px 12px;
-        text-align: center;
-    }
-
-    .card .title-bar strong {
-        display: block;
-        font-weight: 600;
-        font-size: 1.6rem;
-        color: rgb(0, 0, 0);
-    }
-
-    .card .content {
-        padding: 12px;
-        flex: 1 1 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        font-size: 3rem;
-    }
-
-    .line {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        color: blue;
-        font-size: 14px;
-    }
-
-    .line .label {
-        width: 1.5rem;
-        text-align: left;
-        font-size: 17px;
-    }
-
-    .line .value {
-        color: var(--cinza50);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.8rem;
-        ;
-    }
-
-    .price {
-        margin-top: 6px;
-        font-weight: 700;
-        color: rgb(0, 255, 0);
-        font-size: 1.8rem;
-    }
-
-    .card .cta {
-        padding: 12px;
+    .viagem-card-body h3 {
         display: flex;
         justify-content: center;
+        margin-bottom: 1rem;
+        background-color: var(--azul-c-4);
+        height: 3rem;
         align-items: center;
     }
 
-    .card .cta button {
-        width: 100%;
-        padding: 10px;
-        border-radius: 10px;
-        border: none;
-        background: var(--azul-c-3);
-        color: white;
-        font-weight: 700;
-        cursor: pointer;
+    .viagem-card-body h3 {
+        font-size: 1.6rem;
+        color: black;
     }
 
-    .card .cta button:hover {
-        background: var(--azul-c);
+    .viagem-card-body p {
+        padding: 0.5rem;
+        color: black;
+        font-size: 1.6rem;
+        gap: 0.5rem;
+    }
+
+    .viagem-card-body a {
+        color: var(--azul-c-3);
+        text-decoration: underline;
+        transition: 0.2s;
+    }
+
+    .viagem-card-body a:hover {
+        color: var(--azul-c);
+    }
+
+    .viagem-card-body strong {
+        color: black;
+    }
+
+    .viagem-card-body p {
+        color: var(--cinza50);
+    }
+    .viagem-card-body b {
+        color: var(--verde);
+    }
+
+
+    .viagem-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        border-top: 1px solid var(--cinza200);
+    }
+
+    .viagem-btn-agendar {
+        color: white;
+        background-color: var(--azul-c-3);
+        border: none;
+        cursor: pointer;
+        width: 80%;
+        padding: 1rem;
+        display: block;
+        border-radius: 10px;
+        font-size: 1.5rem;
+        text-align: center;
         transition: 0.5s;
     }
 
-    .info {
-        margin-top: 20px;
-        color: var(--muted);
-        font-size: 14px;
-
+    .viagem-btn-agendar:hover {
+        background-color: var(--azul-c);
     }
 
-    @media (max-width:640px) {
-        .title h1 {
-            font-size: 18px
-        }
-
-        .controls {
-            width: 100%;
-            justify-content: space-between;
-        }
-    }
-
-    .hidden {
+    .viagem-hidden {
         display: none !important;
     }
 
-    /* small form controls */
-    .input {
-        padding: 8px 10px;
-        border-radius: 10px;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        min-width: 160px;
+    /* Prevent single card from stretching: grid auto-fit + max-width + justify-content center keeps it normal size */
+    /* Responsividade: filtros empilham ao diminuir - até 300px */
+    @media (max-width: 37.5rem) {
+
+        /* 600px */
+        .viagem-card img {
+            height: 11rem;
+        }
+
+        /* 176px */
     }
 
-    .mini {
-        min-width: 120px;
+    @media (max-width: 18.75rem) {
+
+        /* 300px */
+        .viagem-filtro-box {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        .viagem-filtro-box input[type="text"],
+        .viagem-filtro-box input[type="number"],
+        .viagem-filtro-box input[type="date"],
+        .viagem-filtro-box select {
+            min-width: auto;
+            width: 100%;
+        }
+
+        .viagem-cats {
+            gap: 0.4rem;
+        }
+
+        .viagem-card {
+            max-width: 20rem;
+        }
+
+        /* reduce slightly on tiny screens */
+        .viagem-card img {
+            height: 10.5rem;
+        }
+
+        /* 168px */
+    }
+
+    /* dark mode compatibility (does not override user's dark mode variables) */
+    body.dark-mode .viagem-card {
+        background: #2b2b2b;
+        border-color: #444;
+        box-shadow: none;
+    }
+
+    body.dark-mode .viagem-card-body h3 {
+        color: #fff;
+    }
+
+    body.dark-mode .viagem-card-body p,
+    body.dark-mode .viagem-card-body a {
+        color: #ddd;
     }
 </style>
-</head>
 
-<body>
+<body class="corFundo">
+
     <header>
+
         <img class="logo" src="img/Logos/branca.png" alt="Logo">
 
-        <nav id="menu" aria-hidden="true">
+        <nav id="menu">
+
             <div class="topoMenu">
                 <h4>Menu</h4>
-                <button class="fecharMenu" aria-label="Fechar menu">[ X ]</button>
+                <button class="fecharMenu">[ X ]</button>
             </div>
 
             <a href="index.html" class="risco">Início</a>
             <a href="quemsomos.html">Quem somos</a>
             <a href="viagens.html">Viagens</a>
             <div class="menulogin">
-                <button id="cadastro" onclick="abrirdropdown()" aria-haspopup="true" aria-expanded="false">
-                    <span id="entrar">Entrar</span>
+                <button id="cadastro" onclick="abrirdropdown()">
+                    <a id="entrar">Entrar</a>
                 </button>
-                <div class="dropdown-entrar hidden" id="dropdownentrar" aria-hidden="true">
+                <div class="dropdown-entrar" id="dropdownentrar">
                     <a href="cadastro.html">Cadastre-se</a>
                     <a href="acessar.html">Acessar</a>
                 </div>
@@ -304,330 +312,503 @@
 
         </nav>
 
-        <button class="botaoMenu" aria-label="Abrir menu">
+        <button class="botaoMenu">
+
             <div class="ret1"></div>
             <div class="ret2"></div>
             <div class="ret3"></div>
+
         </button>
+
     </header>
+    <!----------- fim do header-------------->
 
-    <div class="top" role="navigation" aria-label="Filtros de viagens">
-        <div class="title">
-            <h1>Viagens</h1>
-            <div class="subtitle">Filtros: categoria, busca, data, guia e preço</div>
-        </div>
 
-        <div class="controls" aria-hidden="false">
-            <input id="searchInput" class="input" type="search"
-                placeholder="Buscar por destino ou guia (ex: Ilhabela ou Rafael)" aria-label="Buscar destino ou guia">
-            <input id="dateInput" class="input mini" type="date" aria-label="Filtrar por data (escolha uma data)">
-            <input id="priceInput" class="input mini" type="number" min="0" step="1" placeholder="Até (R$)"
-                aria-label="Preço máximo em reais">
-            <select id="categorySelect" class="input mini" aria-label="Selecionar categoria">
-                <option value="all">Todas as categorias</option>
-                <option value="praia">Praia</option>
-                <option value="montanha">Montanha</option>
-                <option value="cidade">Cidade</option>
-                <option value="cultural">Cultural</option>
-                <option value="aventura">Aventura</option>
-            </select>
-            <button class="btn primary" id="applyBtn" title="Aplicar filtros">Aplicar</button>
-            <button class="btn" id="resetBtn" title="Limpar filtros">Limpar</button>
+    <p class="slogan">O mundo é seu próximo destino!</p>
 
-            <!-- Contador (invisível se você não quiser mostrar) -->
-            <div style="margin-left:8px; color:#fff; font-weight:700;">
-                Resultados: <span id="count">0</span>
+    <!-- FILTROS -->
+    <div class="viagem-filtro-box" role="region" aria-label="Filtros de viagens">
+        <input id="viagem-busca" type="text" placeholder="Pesquisar por destino ou guia (busca em tempo real)">
+        <input id="viagem-preco-min" type="number" min="0" placeholder="Preço mín. (R$)">
+        <input id="viagem-preco-max" type="number" min="0" placeholder="Preço máx. (R$)">
+        <input id="viagem-data-ida" type="date" aria-label="Data de ida">
+        <select id="viagem-categoria">
+            <option value="">Todas categorias</option>
+            <option value="praia">Praia</option>
+            <option value="montanha">Montanha</option>
+            <option value="aventura">Aventura</option>
+            <option value="cultural">Cultural</option>
+            <option value="chale">Chalé</option>
+            <option value="internacional">Internacional</option>
+        </select>
+        <button class="viagem-btn viagem-btn-filtrar" type="button">Aplicar</button>
+        <button class="viagem-btn viagem-btn-limpar" type="button">Limpar</button>
+    </div>
+
+    <!-- CATEGORIAS (botões adicionais opcionalmente visíveis) -->
+    <div class="viagem-cats" role="tablist" aria-label="Categorias rápidas">
+        <button class="viagem-cat-btn viagem-cat-active" data-viagem-cat="todas" type="button">Todas</button>
+        <button class="viagem-cat-btn" data-viagem-cat="praia" type="button">Praia</button>
+        <button class="viagem-cat-btn" data-viagem-cat="montanha" type="button">Montanha</button>
+        <button class="viagem-cat-btn" data-viagem-cat="aventura" type="button">Aventura</button>
+        <button class="viagem-cat-btn" data-viagem-cat="cultural" type="button">Cultural</button>
+        <button class="viagem-cat-btn" data-viagem-cat="chale" type="button">Chalé</button>
+        <button class="viagem-cat-btn" data-viagem-cat="internacional" type="button">Internacional</button>
+    </div>
+
+    <!-- GRID DE CARDS (30) -->
+    <main class="viagem-container" id="viagemContainer" aria-live="polite">
+        <!-- 1 -->
+        <article class="viagem-card" data-viagem-categoria="praia" data-viagem-preco="1200"
+            data-viagem-data="2025-12-10">
+            <img src="img/Rio de janeiro/Rio2 editada.jpg" alt="Rio de Janeiro">
+            <div class="viagem-card-body">
+                <h3>Rio de Janeiro</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">João Silva</a></p>
+                <p><strong>Ida:</strong> 10/12/2025</p>
+                <p><strong>Volta:</strong> 15/12/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 1.900</b></p>
             </div>
-        </div>
-    </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
 
-    <div class="filters" aria-label="Filtros rápidos">
-        <div class="chips" role="tablist" aria-label="Categorias rápidas">
-            <button class="chip active" data-cat="all">Todos</button>
-            <button class="chip" data-cat="praia">Praia</button>
-            <button class="chip" data-cat="montanha">Montanha</button>
-            <button class="chip" data-cat="cidade">Cidade</button>
-            <button class="chip" data-cat="cultural">Cultural</button>
-            <button class="chip" data-cat="aventura">Aventura</button>
-        </div>
-    </div>
+        <!-- 2 -->
+        <article class="viagem-card" data-viagem-categoria="praia" data-viagem-preco="1000"
+            data-viagem-data="2025-11-20">
+            <img src="img/Barra do Cunhaú, Rio Grande do Norte, Brasil.jpg" alt="Búzios">
+            <div class="viagem-card-body">
+                <h3>Búzios</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Lucas Pereira</a></p>
+                <p><strong>Ida:</strong> 20/11/2025</p>
+                <p><strong>Volta:</strong> 25/11/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 1.000</b> </p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
 
-    <main>
-        <section class="grid" id="cardsGrid" aria-live="polite">
-            <!-- cards gerados por JS -->
-        </section>
+        <!-- 3 -->
+        <article class="viagem-card" data-viagem-categoria="praia" data-viagem-preco="1400"
+            data-viagem-data="2025-12-20">
+            <img src="img/Barra do cunhaú/cunhaú3 editada.jpg" alt="Florianópolis">
+            <div class="viagem-card-body">
+                <h3>Florianópolis</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Marina Castro</a></p>
+                <p><strong>Ida:</strong> 20/12/2025</p>
+                <p><strong>Volta:</strong> 26/12/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 1.400</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
 
-        <div id="noResults" class="info hidden">Nenhuma viagem encontrada para esses filtros.</div>
+        <!-- 4 -->
+        <article class="viagem-card" data-viagem-categoria="montanha" data-viagem-preco="900"
+            data-viagem-data="2025-07-01">
+            <img src="img/Gray rocky mountain, italy/Prati di Tivo, Abruzzo, Italia editada.jpg" alt="Campos do Jordão">
+            <div class="viagem-card-body">
+                <h3>Campos do Jordão</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Paulo Ramos</a></p>
+                <p><strong>Ida:</strong> 01/07/2025</p>
+                <p><strong>Volta:</strong> 05/07/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 900</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 5 -->
+        <article class="viagem-card" data-viagem-categoria="internacional" data-viagem-preco="4500"
+            data-viagem-data="2026-01-15">
+            <img src="img/las vegas/vegas 3 editada.jpg" alt="Paris">
+            <div class="viagem-card-body">
+                <h3>Paris</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Lucas Andrade</a></p>
+                <p><strong>Ida:</strong> 15/01/2026</p>
+                <p><strong>Volta:</strong> 22/01/2026</p>
+                <p><strong>Preço:</strong> <b>R$ 6.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="viagem-card" data-viagem-categoria="internacional" data-viagem-preco="3800"
+            data-viagem-data="2026-02-10">
+            <img src="img/Lagos portugal/lago3 editada.jpg" alt="New York">
+            <div class="viagem-card-body">
+                <h3>New York</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Camila Rocha</a></p>
+                <p><strong>Ida:</strong> 10/02/2026</p>
+                <p><strong>Volta:</strong> 17/02/2026</p>
+                <p><strong>Preço:</strong> <b>R$ 4.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 7 -->
+        <article class="viagem-card" data-viagem-categoria="aventura" data-viagem-preco="2200"
+            data-viagem-data="2025-09-05">
+            <img src="img/Positano/3 editada.jpg" alt="Foz do Iguaçu">
+            <div class="viagem-card-body">
+                <h3>Foz do Iguaçu</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Renato Lima</a></p>
+                <p><strong>Ida:</strong> 05/09/2025</p>
+                <p><strong>Volta:</strong> 09/09/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 1.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 8 -->
+        <article class="viagem-card" data-viagem-categoria="aventura" data-viagem-preco="3000"
+            data-viagem-data="2025-10-12">
+            <img src="img/Singapura asia/singapura ediytada.jpg" alt="Bonito">
+            <div class="viagem-card-body">
+                <h3>Bonito</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Ana Beatriz</a></p>
+                <p><strong>Ida:</strong> 12/10/2025</p>
+                <p><strong>Volta:</strong> 16/10/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 7.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 9 -->
+        <article class="viagem-card" data-viagem-categoria="cultural" data-viagem-preco="700"
+            data-viagem-data="2025-08-18">
+            <img src="img/ilhabela/bela4.jpg" alt="Ouro Preto">
+            <div class="viagem-card-body">
+                <h3>Ouro Preto (Histórica)</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">José Donizet</a></p>
+                <p><strong>Ida:</strong> 18/08/2025</p>
+                <p><strong>Volta:</strong> 20/08/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 500</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 10 -->
+        <article class="viagem-card" data-viagem-categoria="chale" data-viagem-preco="850"
+            data-viagem-data="2025-07-12">
+            <img src="img/Gray rocky mountain, italy/Manarola, Ligúria, Itália editada.jpg" alt="Chalé Serra">
+            <div class="viagem-card-body">
+                <h3>Chalé Serra</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Marcos Vinicius</a></p>
+                <p><strong>Ida:</strong> 12/07/2025</p>
+                <p><strong>Volta:</strong> 15/07/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 700</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 11 -->
+        <article class="viagem-card" data-viagem-categoria="praia" data-viagem-preco="1100"
+            data-viagem-data="2025-11-05">
+            <img src="img/Honolulu/lulu2 editada.jpg" alt="Porto Seguro">
+            <div class="viagem-card-body">
+                <h3>Porto Seguro</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Gabriela Nunes</a></p>
+                <p><strong>Ida:</strong> 05/11/2025</p>
+                <p><strong>Volta:</strong> 10/11/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 1.200</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 12 -->
+        <article class="viagem-card" data-viagem-categoria="cultural" data-viagem-preco="950"
+            data-viagem-data="2025-09-22">
+            <img src="img/Moorea,French Polynesia.jpg" alt="Salvador">
+            <div class="viagem-card-body">
+                <h33>Salvador (Cultural)</h33>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Lívia Moraes</a></p>
+                <p><strong>Ida:</strong> 22/09/2025</p>
+                <p><strong>Volta:</strong> 27/09/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 1.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 13 -->
+        <article class="viagem-card" data-viagem-categoria="montanha" data-viagem-preco="1300"
+            data-viagem-data="2025-08-01">
+            <img src="img/Gray rocky mountain, italy/Roma, Lácio, Itália editada.jpg" alt="Gramado">
+            <div class="viagem-card-body">
+                <h3>Gramado</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Fabiano Costa</a></p>
+                <p><strong>Ida:</strong> 01/08/2025</p>
+                <p><strong>Volta:</strong> 05/08/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 1.800</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 14 -->
+        <article class="viagem-card" data-viagem-categoria="aventura" data-viagem-preco="2600"
+            data-viagem-data="2025-10-02">
+            <img src="img/Moorea,French Polynesia/2 editada.jpg" alt="Chapada Diamantina">
+            <div class="viagem-card-body">
+                <h3>Chapada Diamantina</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Rafael Torres</a></p>
+                <p><strong>Ida:</strong> 02/10/2025</p>
+                <p><strong>Volta:</strong> 08/10/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 3.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 15 -->
+        <article class="viagem-card" data-viagem-categoria="internacional" data-viagem-preco="7200"
+            data-viagem-data="2026-03-10">
+            <img src="img/las vegas/vegas 2 editada.jpg" alt="Bariloche">
+            <div class="viagem-card-body">
+                <h3>Bariloche</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Fernanda Silva</a></p>
+                <p><strong>Ida:</strong> 10/03/2026</p>
+                <p><strong>Volta:</strong> 17/03/2026</p>
+                <p><strong>Preço:</strong> <b>R$ 10.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 16 -->
+        <article class="viagem-card" data-viagem-categoria="chale" data-viagem-preco="950"
+            data-viagem-data="2025-06-20">
+            <img src="img/Positano/2 editada.jpg" alt="Chalé Monte Verde">
+            <div class="viagem-card-body">
+                <h3>Chalé Monte Verde</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Tatiana Alves</a></p>
+                <p><strong>Ida:</strong> 20/06/2025</p>
+                <p><strong>Volta:</strong> 24/06/2025</p>
+                <p><strong>Preço:</strong> R$ <b>R$ 9.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 17 -->
+        <article class="viagem-card" data-viagem-categoria="praia" data-viagem-preco="1250"
+            data-viagem-data="2025-12-05">
+            <img src="img/Barra do cunhaú/cunhaú3 editada.jpg" alt="Ilhabela">
+            <div class="viagem-card-body">
+                <h3>Ilhabela</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Sérgio Mendes</a></p>
+                <p><strong>Ida:</strong> 05/12/2025</p>
+                <p><strong>Volta:</strong> 09/12/2025</p>
+                <p><strong>Preço:</strong> R$ <b>R$ 9.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 18 -->
+        <article class="viagem-card" data-viagem-categoria="cultural" data-viagem-preco="600"
+            data-viagem-data="2025-09-10">
+            <img src="img/Giza,Giza Governorate,Egypt.jpg" alt="Paraty">
+            <div class="viagem-card-body">
+                <h3>Paraty (Cultural)</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Helena Costa</a></p>
+                <p><strong>Ida:</strong> 10/09/2025</p>
+                <p><strong>Volta:</strong> 13/09/2025</p>
+                <p><strong>Preço:</strong> R$ <b>R$ 100</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 19 -->
+        <article class="viagem-card" data-viagem-categoria="aventura" data-viagem-preco="3200"
+            data-viagem-data="2025-11-01">
+            <img src="img/Singapura asia/singapura2 editada.jpg" alt="Machu Picchu">
+            <div class="viagem-card-body">
+                <h3>Machu Picchu</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Gustavo Lima</a></p>
+                <p><strong>Ida:</strong> 01/11/2025</p>
+                <p><strong>Volta:</strong> 10/11/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 4.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 20 -->
+        <article class="viagem-card" data-viagem-categoria="praia" data-viagem-preco="900"
+            data-viagem-data="2025-10-20">
+            <img src="img/Barra do cunhaú/Barra do Cunhaú, Rio Grande do Norte, Brasil editada.jpg" alt="Ubatuba">
+            <div class="viagem-card-body">
+                <h3>Ubatuba</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Breno Rocha</a></p>
+                <p><strong>Ida:</strong> 20/10/2025</p>
+                <p><strong>Volta:</strong> 24/10/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 600</b> </p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 21 -->
+        <article class="viagem-card" data-viagem-categoria="montanha" data-viagem-preco="1050"
+            data-viagem-data="2025-12-01">
+            <img src="img/stresa, italy/Stresa, Piedmont, Italy editada.jpg" alt="Petrópolis">
+            <div class="viagem-card-body">
+                <h3>Petrópolis</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Renata Faria</a></p>
+                <p><strong>Ida:</strong> 01/12/2025</p>
+                <p><strong>Volta:</strong> 04/12/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 6.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+        <!-- 22 -->
+        <article class="viagem-card" data-viagem-categoria="cultural" data-viagem-preco="550"
+            data-viagem-data="2025-08-30">
+            <img src="img/Lagos portugal/lago2 EDITADA.jpg" alt="Olinda">
+            <div class="viagem-card-body">
+                <h3>Olinda (Cultural)</h3>
+                <p><strong>Guia:</strong> <a class="viagem-guia" href="guia.html">Paula Gomes</a></p>
+                <p><strong>Ida:</strong> 30/08/2025</p>
+                <p><strong>Volta:</strong> 02/09/2025</p>
+                <p><strong>Preço:</strong> <b>R$ 8.000</b></p>
+            </div>
+            <div class="viagem-card-footer"><button class="viagem-btn-agendar">Agendar</button>
+            </div>
+        </article>
+
+
     </main>
 
-
-    <!-- ---------- SCRIPTS (tudo aqui embaixo; substitui o antigo se quiser) ---------- -->
     <script>
-        // dados (30 viagens)
-        const tripsRaw = [
-            { id: 1, title: "Ilhabela - Brasil", guide: "Rafael", depart: "20/06/2025", return: "27/06/2025", price: "R$1.000,00", img: "img/Barra do cunhaú/cunhaú1 editada.jpg", cat: "praia" },
-            { id: 2, title: "Rio de Janeiro", guide: "Mariana", depart: "05/07/2025", return: "10/07/2025", price: "R$850,00", img: "img/Rio de janeiro,Brazil.jpg", cat: "praia" },
-            { id: 3, title: "Singapura - Asia", guide: "Lucas", depart: "12/09/2025", return: "15/09/2025", price: "R$680,00", img: "img/Singapura asia/singapura2 editada.jpg", cat: "cultural" },
-            { id: 4, title: "Gray rocky mountain", guide: "Ana", depart: "22/07/2025", return: "26/07/2025", price: "R$920,00", img: "img/Gray rocky mountain, italy/Gray Rocky Mountain, ITALY editada.jpg", cat: "montanha" },
-            { id: 5, title: "ilhabela-brasil", guide: "Tiago", depart: "03/08/2025", return: "09/08/2025", price: "R$1.300,00", img: "img/ilhabela/bela4.jpg", cat: "praia" },
-            { id: 6, title: "Las vegas", guide: "Marcos", depart: "10/10/2025", return: "15/10/2025", price: "R$1.450,00", img: "img/las vegas/vegas 3 editada.jpg", cat: "aventura" },
-            { id: 7, title: "Portugal", guide: "Helena", depart: "18/11/2025", return: "21/11/2025", price: "R$620,00", img: "img/Lagos portugal/Lagos, Portugal editada.jpg", cat: "cultural" },
-            { id: 8, title: "Positano", guide: "Pedro", depart: "05/07/2025", return: "11/07/2025", price: "R$1.150,00", img: "img/Positano,Italy.jpg", cat: "montanha" },
-            { id: 9, title: "Rio de janeiro", guide: "Rafaela", depart: "12/09/2025", return: "19/09/2025", price: "R$1.800,00", img: "img/Rio de janeiro/rio3 editada.jpg", cat: "praia" },
-            { id: 10, title: "Roma", guide: "Gustavo", depart: "20/10/2025", return: "27/10/2025", price: "R$2.100,00", img: "img/Gray rocky mountain, italy/Roma, Lácio, Itália editada.jpg", cat: "aventura" },
-            { id: 11, title: "Singa pura", guide: "Lia", depart: "02/12/2025", return: "06/12/2025", price: "R$940,00", img: "img/Singapura asia/singapura ediytada.jpg", cat: "cultural" },
-            { id: 12, title: "Barra do cunhau", guide: "Ronaldo", depart: "08/08/2025", return: "15/08/2025", price: "R$1.600,00", img: "img/Barra do cunhaú/cunhaú3 editada.jpg", cat: "praia" },
-            { id: 13, title: "Moorea,French Polynesia", guide: "Sofia", depart: "01/09/2025", return: "05/09/2025", price: "R$780,00", img: "img/Moorea,French Polynesia.jpg", cat: "praia" },
-            { id: 14, title: "Gray rocky mountain", guide: "Daniel", depart: "14/07/2025", return: "17/07/2025", price: "R$710,00", img: "img/Gray rocky mountain, italy/Prati di Tivo, Abruzzo, Italia editada.jpg", cat: "montanha" },
-            { id: 15, title: "estresa,italy", guide: "Camila", depart: "21/10/2025", return: "25/10/2025", price: "R$890,00", img: "img/stresa, italy/editada 3.jpg", cat: "cultural" },
-            { id: 16, title: "Honolulu, US", guide: "Rui", depart: "06/11/2025", return: "10/11/2025", price: "R$1.120,00", img: "img/Honolulu/lulu3 editada.jpg", cat: "praia" },
-            { id: 17, title: "Las vegas", guide: "Eduarda", depart: "09/08/2025", return: "13/08/2025", price: "R$980,00", img: "img/las vegas/Las Vegas,USA editada.jpg", cat: "aventura" },
-            { id: 18, title: "Morea", guide: "Mateus", depart: "11/12/2025", return: "16/12/2025", price: "R$1.900,00", img: "img/Moorea,French Polynesia/1 editada.jpg", cat: "praia" },
-            { id: 19, title: "Morea", guide: "Larissa", depart: "01/10/2025", return: "07/10/2025", price: "R$1.050,00", img: "img/Moorea,French Polynesia/3 editada.jpg", cat: "praia" },
-            { id: 20, title: "Singapura", guide: "Fabio", depart: "15/09/2025", return: "19/09/2025", price: "R$1.250,00", img: "img/Singapura asia/singapura3 editada.jpg", cat: "aventura" },
-            { id: 21, title: "Las vegas", guide: "Paula", depart: "20/08/2025", return: "23/08/2025", price: "R$720,00", img: "img/las vegas/vegas1 editada.jpg", cat: "cidade" },
-            { id: 22, title: "ilhabella", guide: "Igor", depart: "28/09/2025", return: "30/09/2025", price: "R$640,00", img: "img/ilhabela/bela editada.jpg", cat: "Praia" },
-            { id: 23, title: "Ilhabela - Brasil", guide: "Antonio", depart: "14/02/2025", return: "27/06/2025", price: "R$1.000,00", img: "img/Barra do cunhaú/cunhaú1 editada.jpg", cat: "praia" },
-            { id: 24, title: "Rio de Janeiro", guide: "Marielena", depart: "05/07/2026", return: "10/07/2025", price: "R$850,00", img: "img/Rio de janeiro,Brazil.jpg", cat: "praia" },
-            { id: 25, title: "Singapura - Asia", guide: "Luander", depart: "11/02/2025", return: "15/09/2025", price: "R$680,00", img: "img/Singapura asia/singapura2 editada.jpg", cat: "cultural" },
-            { id: 26, title: "Gray rocky mountain", guide: "isa", depart: "02/07/2026", return: "26/07/2025", price: "R$920,00", img: "img/Gray rocky mountain, italy/Gray Rocky Mountain, ITALY editada.jpg", cat: "montanha" },
-            { id: 27, title: "ilhabela-brasil", guide: "ygor", depart: "03/09/2025", return: "09/08/2025", price: "R$1.300,00", img: "img/ilhabela/bela4.jpg", cat: "praia" },
-            { id: 28, title: "Las vegas", guide: "Rodolfo", depart: "10/10/2026", return: "15/10/2025", price: "R$1.450,00", img: "img/las vegas/vegas 3 editada.jpg", cat: "aventura" },
-            { id: 29, title: "Portugal", guide: "karol", depart: "20/01/2025", return: "21/11/2025", price: "R$620,00", img: "img/Lagos portugal/Lagos, Portugal editada.jpg", cat: "cultural" },
-            { id: 30, title: "Positano", guide: "Pedro", depart: "09/07/2026", return: "11/07/2025", price: "R$1.150,00", img: "img/Positano,Italy.jpg", cat: "montanha" },
-    ]
+        (function () {
+            const container = document.getElementById('viagemContainer');
+            const cards = Array.from(container.querySelectorAll('.viagem-card'));
+            const inputBusca = document.getElementById('viagem-busca');
+            const inputPrecoMin = document.getElementById('viagem-preco-min');
+            const inputPrecoMax = document.getElementById('viagem-preco-max');
+            const inputDataIda = document.getElementById('viagem-data-ida');
+            const selectCat = document.getElementById('viagem-categoria');
+            const btnAplicar = document.querySelector('.viagem-btn-filtrar');
+            const btnLimpar = document.querySelector('.viagem-btn-limpar');
+            const catBtns = Array.from(document.querySelectorAll('.viagem-cat-btn'));
 
-        // utilitários
-        function parseBRDateToISO(str) {
-            const parts = String(str || '').split('/');
-            if (parts.length !== 3) return null;
-            const [d, m, y] = parts;
-            return `${y.padStart(4, '0')}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
-        }
-        function parsePriceToNumber(str) {
-            if (typeof str === 'number') return str;
-            const cleaned = String(str).replace(/[R$\s]/g, '').replace(/\./g, '').replace(',', '.');
-            const n = parseFloat(cleaned);
-            return Number.isNaN(n) ? 0 : n;
-        }
+            let categoriaSelecionada = 'todas';
 
-        const trips = tripsRaw.map(t => {
-            const departISO = parseBRDateToISO(t.depart);
-            const returnISO = parseBRDateToISO(t.return);
-            return {
-                ...t,
-                departISO,
-                returnISO,
-                departTime: departISO ? new Date(departISO).getTime() : null,
-                returnTime: returnISO ? new Date(returnISO).getTime() : null,
-                priceNumber: parsePriceToNumber(t.price),
-                titleLower: String(t.title).toLowerCase(),
-                guideLower: String(t.guide).toLowerCase(),
-                catLower: String(t.cat || '').toLowerCase()
-            };
-        });
-
-        // elementos
-        const grid = document.getElementById('cardsGrid');
-        const noResults = document.getElementById('noResults');
-        const countEl = document.getElementById('count'); // agora existe no topo
-
-        function createCard(trip) {
-            const wrap = document.createElement('article');
-            wrap.className = 'card';
-            wrap.setAttribute('data-cat', trip.catLower);
-            wrap.setAttribute('data-title', trip.titleLower);
-            wrap.setAttribute('data-guide', trip.guideLower);
-            wrap.setAttribute('data-price', trip.priceNumber);
-
-            wrap.innerHTML = `
-      <img class="thumb" src="${trip.img}" alt="${trip.title}">
-      <div class="title-bar"><strong>${trip.title}</strong></div>
-      <div class="content">
-        <div class="line"><span class="label">👤</span><span class="value">Guia: <a href="#" style="color:var(--cinza100);decoration:underline;">${trip.guide}</a></span></div>
-        <div class="line"><span class="label">🚍</span><span class="value">Ida: <a href="#" style="color:var(--cinza100); text-decoration: none;">${trip.depart}</a></span></div>
-        <div class="line"><span class="label">🔁</span><span class="value">Volta: <a href="#" style="color:var(--cinza100); text-decoration: none;">${trip.return}</a></span></div>
-        <div class="line"><span class="label">💲</span><span class="value">Preço: <a href="#" style="color:green; text-decoration: none;">${trip.price}</a></span></div>
-      </div>
-      <div class="cta"><button aria-label="Ver mais sobre ${trip.title}">Ver Mais</button></div>
-    `;
-            return wrap;
-        }
-
-        function renderAll() {
-            grid.innerHTML = '';
-            trips.forEach(t => grid.appendChild(createCard(t)));
-            if (countEl) countEl.textContent = trips.length;
-        }
-
-        // renderiza cards
-        renderAll();
-
-        // filtros e UI - elementos
-        const chips = document.querySelectorAll('.chip');
-        const categorySelect = document.getElementById('categorySelect');
-        const searchInput = document.getElementById('searchInput');
-        const dateInput = document.getElementById('dateInput');
-        const priceInput = document.getElementById('priceInput');
-        const resetBtn = document.getElementById('resetBtn');
-        const applyBtn = document.getElementById('applyBtn');
-
-        function applyFilter() {
-            const cat = (categorySelect?.value || 'all').toLowerCase();
-            const q = (searchInput?.value || '').trim().toLowerCase();
-            const dateVal = dateInput?.value || '';
-            const dateTime = dateVal ? new Date(dateVal).getTime() : null;
-            const maxPrice = priceInput?.value ? Number(priceInput.value) : null;
-
-            const cards = Array.from(grid.children);
-            let visibleCount = 0;
-
-            cards.forEach(card => {
-                const cardCat = (card.getAttribute('data-cat') || '').toLowerCase();
-                const title = (card.getAttribute('data-title') || '').toLowerCase();
-                const guide = (card.getAttribute('data-guide') || '').toLowerCase();
-                const priceNum = Number(card.getAttribute('data-price')) || 0;
-
-                const catMatch = (cat === 'all') || (cardCat === cat);
-                const textMatch = !q || title.includes(q) || guide.includes(q);
-
-                let dateMatch = true;
-                if (dateTime !== null) {
-                    const trip = trips.find(t => t.titleLower === title && t.guideLower === guide);
-                    if (!trip || trip.departTime == null || trip.returnTime == null) {
-                        dateMatch = false;
-                    } else {
-                        dateMatch = (dateTime >= trip.departTime && dateTime <= trip.returnTime);
-                    }
-                }
-
-                let priceMatch = true;
-                if (maxPrice !== null && !isNaN(maxPrice)) {
-                    priceMatch = priceNum <= maxPrice;
-                }
-
-                if (catMatch && textMatch && dateMatch && priceMatch) {
-                    card.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-
-            if (countEl) countEl.textContent = visibleCount;
-            if (noResults) noResults.classList.toggle('hidden', visibleCount > 0);
-        }
-
-        // chips quick filter
-        chips.forEach(ch => {
-            ch.addEventListener('click', () => {
-                chips.forEach(x => x.classList.remove('active'));
-                ch.classList.add('active');
-                if (categorySelect) categorySelect.value = ch.dataset.cat;
-                applyFilter();
-            });
-        });
-
-        // filtros em tempo real
-        if (searchInput) searchInput.addEventListener('input', applyFilter);
-        if (dateInput) dateInput.addEventListener('input', applyFilter);
-        if (priceInput) priceInput.addEventListener('input', applyFilter);
-
-        // eventos padrão
-        if (applyBtn) applyBtn.addEventListener('click', applyFilter);
-        if (searchInput) searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') applyFilter(); });
-        if (categorySelect) categorySelect.addEventListener('change', () => {
-            const cat = categorySelect.value;
-            chips.forEach(c => c.classList.toggle('active', c.dataset.cat === cat));
-            applyFilter();
-        });
-
-        if (resetBtn) resetBtn.addEventListener('click', () => {
-            if (searchInput) searchInput.value = '';
-            if (dateInput) dateInput.value = '';
-            if (priceInput) priceInput.value = '';
-            if (categorySelect) categorySelect.value = 'all';
-            chips.forEach(x => x.classList.remove('active'));
-            const allChip = document.querySelector('.chip[data-cat="all"]');
-            if (allChip) allChip.classList.add('active');
-            applyFilter();
-        });
-
-        applyFilter();
-
-        // === handlers adicionais: menu, dropdown, darkmode, idioma e prevenção de href="#" ===
-        document.addEventListener('DOMContentLoaded', () => {
-            const botaoMenu = document.querySelector('.botaoMenu');
-            const menuEl = document.getElementById('menu');
-            const fecharMenuBtn = document.querySelector('.fecharMenu');
-            const dropdownEntrar = document.getElementById('dropdownentrar');
-
-            window.abrirdropdown = function () {
-                if (!dropdownEntrar) return;
-                dropdownEntrar.classList.toggle('hidden');
-                const visible = !dropdownEntrar.classList.contains('hidden');
-                dropdownEntrar.setAttribute('aria-hidden', String(!visible));
-            };
-
-            window.toggleDarkMode = function () {
-                document.body.classList.toggle('dark');
-                const iconSun = document.getElementById('iconSun');
-                const iconMoon = document.getElementById('iconMoon');
-                if (iconSun && iconMoon) {
-                    const isDark = document.body.classList.contains('dark');
-                    iconSun.style.visibility = isDark ? 'visible' : 'hidden';
-                    iconMoon.style.visibility = isDark ? 'hidden' : 'visible';
-                }
-            };
-
-            window.toggleLangMenu = function () {
-                const langSelector = document.getElementById('langSelector');
-                if (!langSelector) return;
-                langSelector.classList.toggle('open');
-            };
-
-            window.setLanguage = function (lang) {
-                document.documentElement.setAttribute('lang', lang === 'english' ? 'en' : lang === 'spanish' ? 'es' : lang === 'french' ? 'fr' : 'pt-BR');
-                const langSelector = document.getElementById('langSelector');
-                if (langSelector) langSelector.classList.remove('open');
-                console.info('Idioma selecionado:', lang);
-            };
-
-            if (botaoMenu && menuEl) {
-                botaoMenu.addEventListener('click', () => {
-                    menuEl.classList.toggle('open');
-                    const expanded = menuEl.classList.contains('open');
-                    botaoMenu.setAttribute('aria-expanded', String(expanded));
-                    menuEl.setAttribute('aria-hidden', String(!expanded));
-                });
-            }
-            if (fecharMenuBtn && menuEl) {
-                fecharMenuBtn.addEventListener('click', () => {
-                    menuEl.classList.remove('open');
-                    botaoMenu && botaoMenu.setAttribute('aria-expanded', 'false');
+            function setCategoriaAtiva(nome) {
+                catBtns.forEach(b => {
+                    if (b.dataset.viagemCat === nome) b.classList.add('viagem-cat-active');
+                    else b.classList.remove('viagem-cat-active');
                 });
             }
 
-            // Prevenir href="#" padrão dentro dos cards e tratar clicks de "Ver Mais"
-            grid.addEventListener('click', (ev) => {
-                const a = ev.target.closest('a[href="#"]');
-                if (a) {
-                    ev.preventDefault();
-                    // comportamento customizável: por enquanto só log
-                    console.log('Link de card clicado (preventDefault) =>', a.textContent.trim());
-                }
-                const btn = ev.target.closest('button[aria-label^="Ver mais sobre"]');
-                if (btn) {
-                    const article = btn.closest('.card');
-                    if (article) {
-                        const title = article.querySelector('.title-bar strong')?.textContent || 'viagem';
-                        alert('Ver mais: ' + title);
-                    }
-                }
+            // categoria rápida (botões)
+            catBtns.forEach(b => {
+                b.addEventListener('click', () => {
+                    categoriaSelecionada = b.dataset.viagemCat;
+                    // sincroniza select
+                    selectCat.value = categoriaSelecionada === 'todas' ? '' : categoriaSelecionada;
+                    setCategoriaAtiva(categoriaSelecionada);
+                    aplicarFiltro();
+                });
             });
-        });
+
+            // eventos em tempo real
+            [inputBusca, inputPrecoMin, inputPrecoMax, inputDataIda, selectCat].forEach(el => {
+                el.addEventListener('input', aplicarFiltro);
+            });
+            btnAplicar.addEventListener('click', aplicarFiltro);
+            btnLimpar.addEventListener('click', limparFiltros);
+
+            function aplicarFiltro() {
+                const termo = (inputBusca.value || '').trim().toLowerCase();
+                const min = inputPrecoMin.value ? parseFloat(inputPrecoMin.value) : 0;
+                const max = inputPrecoMax.value ? parseFloat(inputPrecoMax.value) : Infinity;
+                const dataFiltro = inputDataIda.value;
+                const catSelect = selectCat.value;
+
+                let visiveis = 0;
+
+                cards.forEach(card => {
+                    const cat = (card.dataset.viagemCategoria || '').toLowerCase();
+                    const preco = parseFloat(card.dataset.viagemPreco || '0');
+                    const dataCard = (card.dataset.viagemData || '');
+                    const titulo = (card.querySelector('h3')?.textContent || '').toLowerCase();
+                    const guia = (card.querySelector('.viagem-guia')?.textContent || '').toLowerCase();
+
+                    let visivel = true;
+
+                    // categoria (select ou botão rápido)
+                    const categoriaFiltro = catSelect || (categoriaSelecionada === 'todas' ? '' : categoriaSelecionada);
+                    if (categoriaFiltro && categoriaFiltro !== 'todas' && cat !== categoriaFiltro) visivel = false;
+
+                    // busca por substring em titulo ou guia
+                    if (termo) {
+                        if (!titulo.includes(termo) && !guia.includes(termo)) visivel = false;
+                    }
+
+                    // preço
+                    if (!isNaN(min) && preco < min) visivel = false;
+                    if (!isNaN(max) && preco > max) visivel = false;
+
+                    // data (comparação exata)
+                    if (dataFiltro) {
+                        if (!dataCard || dataCard !== dataFiltro) visivel = false;
+                    }
+
+                    card.classList.toggle('viagem-hidden', !visivel);
+                    if (visivel) visiveis++;
+                });
+
+                // centraliza resultados e mantém card tamanho normal quando só 1
+                container.style.justifyContent = visiveis === 1 ? 'center' : 'center';
+
+                // opcional: se quiser mostrar mensagem de "nenhum resultado", poderia adicionar aqui
+            }
+
+            function limparFiltros() {
+                inputBusca.value = '';
+                inputPrecoMin.value = '';
+                inputPrecoMax.value = '';
+                inputDataIda.value = '';
+                selectCat.value = '';
+                categoriaSelecionada = 'todas';
+                setCategoriaAtiva('todas');
+                cards.forEach(c => c.classList.remove('viagem-hidden'));
+                container.style.justifyContent = 'center';
+            }
+
+            // iniciar
+            setCategoriaAtiva('todas');
+            aplicarFiltro();
+
+            // botão agendar: exemplo simples (alert) - substitua por sua lógica de navegação
+            document.querySelectorAll('.viagem-btn-agendar').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const card = e.currentTarget.closest('.viagem-card');
+                    const nome = card?.querySelector('h3')?.textContent || 'viagem';
+                    alert('Agendar: ' + nome);
+                });
+            });
+
+            // Enter no campo busca aplica filtro (acessibilidade)
+            inputBusca.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Enter') { ev.preventDefault(); aplicarFiltro(); }
+            });
+
+        })();
     </script>
-
     <footer>
 
         <canvas id="background-canvas"></canvas>
