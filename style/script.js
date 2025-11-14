@@ -1,3 +1,123 @@
+//--------------------pagina viagens---------------------
+if (window.location.pathname.endsWith("viagens.html")) {
+(function () {
+            const container = document.getElementById('viagemContainer');
+            const cards = Array.from(container.querySelectorAll('.viagem-card'));
+            const inputBusca = document.getElementById('viagem-busca');
+            const inputPrecoMin = document.getElementById('viagem-preco-min');
+            const inputPrecoMax = document.getElementById('viagem-preco-max');
+            const inputDataIda = document.getElementById('viagem-data-ida');
+            const selectCat = document.getElementById('viagem-categoria');
+            const btnAplicar = document.querySelector('.viagem-btn-filtrar');
+            const btnLimpar = document.querySelector('.viagem-btn-limpar');
+            const catBtns = Array.from(document.querySelectorAll('.viagem-cat-btn'));
+
+            let categoriaSelecionada = 'todas';
+
+            function setCategoriaAtiva(nome) {
+                catBtns.forEach(b => {
+                    if (b.dataset.viagemCat === nome) b.classList.add('viagem-cat-active');
+                    else b.classList.remove('viagem-cat-active');
+                });
+            }
+
+            // categoria rápida (botões)
+            catBtns.forEach(b => {
+                b.addEventListener('click', () => {
+                    categoriaSelecionada = b.dataset.viagemCat;
+                    // sincroniza select
+                    selectCat.value = categoriaSelecionada === 'todas' ? '' : categoriaSelecionada;
+                    setCategoriaAtiva(categoriaSelecionada);
+                    aplicarFiltro();
+                });
+            });
+
+            // eventos em tempo real
+            [inputBusca, inputPrecoMin, inputPrecoMax, inputDataIda, selectCat].forEach(el => {
+                el.addEventListener('input', aplicarFiltro);
+            });
+            btnAplicar.addEventListener('click', aplicarFiltro);
+            btnLimpar.addEventListener('click', limparFiltros);
+
+            function aplicarFiltro() {
+                const termo = (inputBusca.value || '').trim().toLowerCase();
+                const min = inputPrecoMin.value ? parseFloat(inputPrecoMin.value) : 0;
+                const max = inputPrecoMax.value ? parseFloat(inputPrecoMax.value) : Infinity;
+                const dataFiltro = inputDataIda.value;
+                const catSelect = selectCat.value;
+
+                let visiveis = 0;
+
+                cards.forEach(card => {
+                    const cat = (card.dataset.viagemCategoria || '').toLowerCase();
+                    const preco = parseFloat(card.dataset.viagemPreco || '0');
+                    const dataCard = (card.dataset.viagemData || '');
+                    const titulo = (card.querySelector('h3')?.textContent || '').toLowerCase();
+                    const guia = (card.querySelector('.viagem-guia')?.textContent || '').toLowerCase();
+
+                    let visivel = true;
+
+                    // categoria (select ou botão rápido)
+                    const categoriaFiltro = catSelect || (categoriaSelecionada === 'todas' ? '' : categoriaSelecionada);
+                    if (categoriaFiltro && categoriaFiltro !== 'todas' && cat !== categoriaFiltro) visivel = false;
+
+                    // busca por substring em titulo ou guia
+                    if (termo) {
+                        if (!titulo.includes(termo) && !guia.includes(termo)) visivel = false;
+                    }
+
+                    // preço
+                    if (!isNaN(min) && preco < min) visivel = false;
+                    if (!isNaN(max) && preco > max) visivel = false;
+
+                    // data (comparação exata)
+                    if (dataFiltro) {
+                        if (!dataCard || dataCard !== dataFiltro) visivel = false;
+                    }
+
+                    card.classList.toggle('viagem-hidden', !visivel);
+                    if (visivel) visiveis++;
+                });
+
+                // centraliza resultados e mantém card tamanho normal quando só 1
+                container.style.justifyContent = visiveis === 1 ? 'center' : 'center';
+
+                // opcional: se quiser mostrar mensagem de "nenhum resultado", poderia adicionar aqui
+            }
+
+            function limparFiltros() {
+                inputBusca.value = '';
+                inputPrecoMin.value = '';
+                inputPrecoMax.value = '';
+                inputDataIda.value = '';
+                selectCat.value = '';
+                categoriaSelecionada = 'todas';
+                setCategoriaAtiva('todas');
+                cards.forEach(c => c.classList.remove('viagem-hidden'));
+                container.style.justifyContent = 'center';
+            }
+
+            // iniciar
+            setCategoriaAtiva('todas');
+            aplicarFiltro();
+
+            // botão agendar: exemplo simples (alert) - substitua por sua lógica de navegação
+            document.querySelectorAll('.viagem-btn-agendar').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const card = e.currentTarget.closest('.viagem-card');
+                    const nome = card?.querySelector('h3')?.textContent || 'viagem';
+                    alert('Agendar: ' + nome);
+                });
+            });
+
+            // Enter no campo busca aplica filtro (acessibilidade)
+            inputBusca.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Enter') { ev.preventDefault(); aplicarFiltro(); }
+            });
+
+        })();
+    }
+
 //-----------------------pagina do guia---------
 if (window.location.pathname.endsWith("guia.html")) {
      // ====== GALERIA LIGHTBOX ======
@@ -505,37 +625,14 @@ function abrirdropdown() {
     menu.classList.toggle('show');
 
     document.addEventListener('click', function (event) {
-        const menuContainer = document.querySelector('.menulogin');
+    const menuContainer = document.querySelector('.menulogin');
         if (!menulogin.contains(event.target)) {
             menu.classList.remove('show');
         }
     });
 }
 
-// Dropdown Passagens
 
-// const valorUnitario = 500;
-// let qtd = 1;
-
-// // Abrir ou fechar o dropdown
-// function dropdownpassagem() {
-//     const dropdown = document.getElementById('dropdown');
-//     dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-// }
-
-// // Seleciona a quantidade e atualiza texto e preço
-// function selecionaPassagem(quantidade) {
-//     qtd = quantidade;
-
-//     const texto = quantidade === 1 ? '1 passagem' : `${quantidade} passagens`;
-//     document.getElementById('qtdPassagem').innerText = texto;
-
-//     const valorTotal = valorUnitario * quantidade;
-//     document.getElementById('preco').innerHTML = `R$ ${valorTotal},00 <span>Por Dia</span>`;
-
-//     // Fecha o dropdown após selecionar
-//     dropdownpassagem();
-// }
 
 // Menu hamburguer
 
