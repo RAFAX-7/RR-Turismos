@@ -1,0 +1,32 @@
+### Variaveis
+@apiurl = http://localhost:3500/api
+@tableName = pessoajuridica
+
+# Seleciona todos os dados
+GET {{apiurl}}/{{tableName}} HTTP/1.1
+
+### Seleciona informações com o id = 1
+GET {{apiurl}}/{{tableName}}/1
+
+### Insere dados na tabela
+POST {{apiurl}}/{{tableName}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "nome_comercial": "RR Tutu",
+    "cpf_cnpj": 48180632823,
+    "senha": 123
+}
+
+### Deleta dados da tabela com o id = 1
+DELETE {{apiurl}}/{{tableName}}/1
+
+### Atualiza os campos do id = 1
+PUT {{apiurl}}/{{tableName}}/1
+Content-Type: application/json; charset=utf-8
+
+{
+   "nome_comercial": "RR Tutu",
+    "cpf_cnpj": 48180632823,
+    "senha": 123
+}
