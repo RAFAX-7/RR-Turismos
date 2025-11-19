@@ -577,7 +577,7 @@ header .botaoMenu:hover .ret3 {
     cursor: pointer;
     font-size: 1.2rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s , transform 0.3s ease;
+    transition: background 0.3s, transform 0.3s ease;
 
 }
 
@@ -599,7 +599,7 @@ header .botaoMenu:hover .ret3 {
 }
 
 .viagem-cat-btn {
-    background:white;
+    background: white;
     border: 1px solid var(--cinza-100);
     padding: 0.5rem 1rem;
     border-radius: 0.6rem;
@@ -2298,9 +2298,9 @@ body.dark-mode .formContato .formRodape input:hover {
 /*Tela viagens dark mode*/
 
 body.dark-mode .viagem-card {
-  
+
     border: 1px solid white;
-    
+
 }
 
 
@@ -2390,20 +2390,30 @@ body.dark-mode .viagem-card-body a {
     border-radius: 6px;
 }
 
-.info {
-    height: 10%;
-    margin-top: 14px;
-    padding: 12px;
+.info-destino {
+    height: 15%;
+    margin-top: 1rem;
+    padding: 1.5rem;
     background: var(--card);
-    border-radius: 6px;
+    border-radius: 1rem;
+}
+
+.info-destino h2 {
+    font-size: 2.5rem;
+}
+
+.info-destino p {
+    margin-top: 1rem;
+    font-size: 2rem;
 }
 
 .details-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin-top: 8px;
+    gap: 1rem;
+    margin-top: 1.5rem;
     color: var(--muted);
+    font-size: 2rem;
 }
 
 .additional {
@@ -2613,7 +2623,7 @@ body.dark-mode .viagem-card-body a {
 .bus-map .col-label {
     font-size: 12px;
     text-align: center;
-    color: var(--muted)
+    color: var(--muted);
 }
 
 /* Index Principal */
@@ -2840,6 +2850,36 @@ body.dark-mode .viagem-card-body a {
 
     .social-icons a:first-child {
         margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    /* Agendar */
+
+    .container {
+        flex-direction: column
+    }
+
+    .right {
+        width: 100%
+    }
+
+    .thumb img {
+        width: 100px;
+        height: 60px
+    }
+
+    .info-destino h2 {
+        font-size: 2rem;
+    }
+
+    .info-destino p {
+        font-size: 1.5rem;
+    }
+
+    .details-grid {
+        font-size: 1.5rem;
     }
 }
 
@@ -3070,7 +3110,7 @@ body.dark-mode .viagem-card-body a {
         margin-left: 0;
     }
 
-     /* 600px */
+    /* 600px */
     .viagem-card img {
         height: 11rem;
     }
@@ -3375,7 +3415,7 @@ body.dark-mode .viagem-card-body a {
 }
 
 @media screen and (max-width: 350px) {
-    
+
     /* 300px */
     .viagem-filtro-box {
         flex-direction: column;
@@ -3404,7 +3444,7 @@ body.dark-mode .viagem-card-body a {
     .viagem-card img {
         height: 10.5rem;
     }
-    
+
     footer {
         padding: 60px 1rem 30px;
     }
