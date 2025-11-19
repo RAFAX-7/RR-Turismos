@@ -38,12 +38,12 @@ const getByid = async (req, res) => {
 // 3. POST - Inserir Novo
 const post = async (req, res) => {
     const dataPayload = req.body;
-    const campo = Object.keys(dataPayload);
+    const campos = Object.keys(dataPayload);
     const valores = Object.values(dataPayload);
     const connection = await conectar();
 
     try {
-        const placeholders = campo.map(() => '?').join(', ');
+        const placeholders = campos.map(() => '?').join(', ');
         const sql = `INSERT INTO ${tableName} (${campos.join(', ')}) VALUES (${placeholders})`;
         const [result] = await connection.execute(sql, valores);
 
