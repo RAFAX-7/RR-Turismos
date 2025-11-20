@@ -1,5 +1,5 @@
 ### Variables 
-@apiurl = http://localhost:3500/api
+@apiurl = http://localhost:3000/api
 @tableName = pessoafisica
 
 GET {{apiurl}}/{{tableName}} HTTP/1.1
@@ -12,9 +12,9 @@ POST {{apiurl}}/{{tableName}}
 Content-Type: application/json; charset=utf-8
 
 {
-    "nome": "RR Tutu",
-    "email": "rafael@teste.com",
-    "senha": 123
+    "nome": "teste",
+    "email": "rafael@teste2.com",
+    "senha": 12345
 }
 
 ###

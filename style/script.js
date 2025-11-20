@@ -714,16 +714,172 @@ function fecharmenu() {
     menu.style.right = "-100%";
 }
 
+// API Para cadastro pessoa física
+
+if (window.location.pathname.endsWith("cadastro-fisica.html")) {
+
+    const API_URL_FISICA = "http://localhost:3000/api/pessoafisica";
+
+    document.getElementById("formCadastro").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome")?.value.trim() || "";
+        const email = document.getElementById("email")?.value.trim() || "";
+        const senha = document.getElementById("senha")?.value || "";
+        const confirmarsenha = document.getElementById("confirmarsenha")?.value || "";
+        const mensagensErro = document.getElementById("mensagensErro");
+
+        let erros = [];
+
+        // --- VALIDAÇÕES ---
+        if (nome.length < 3)
+            erros.push("O nome deve ter mais de 3 caracteres.");
+
+        if (email && !email.includes("@"))
+            erros.push("O e-mail deve conter '@'.");
+
+        if (senha.length < 6)
+            erros.push("A senha deve ter no mínimo 6 caracteres.");
+
+        if (senha !== confirmarsenha)
+            erros.push("As senhas não coincidem.");
+
+        mensagensErro.style.display = "block";
+
+        if (erros.length > 0) {
+            mensagensErro.className = "mensagem erro";
+            mensagensErro.innerHTML = "<ul><li>" + erros.join("</li><li>") + "</li></ul>";
+            return;
+        }
+
+        mensagensErro.className = "mensagem sucesso";
+        mensagensErro.textContent = "Enviando...";
+
+        // --- PAYLOAD ---
+        const payload = {
+            nome: nome,
+            email: email,
+            senha: senha
+        };
+
+        console.log("Payload enviado:", payload);
+
+        // --- POST PARA API ---
+        try {
+            const response = await fetch(API_URL_FISICA, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                mensagensErro.className = "mensagem erro";
+                mensagensErro.textContent = "Erro ao cadastrar no banco.";
+                return;
+            }
+
+            mensagensErro.className = "mensagem sucesso";
+            mensagensErro.textContent = "Cadastro realizado com sucesso!";
+            this.reset();
+
+        } catch (error) {
+            mensagensErro.className = "mensagem erro";
+            mensagensErro.textContent = "Erro de conexão com o servidor.";
+            console.error(error);
+        }
+    });
+}
+
+// API Para cadastro pessoa jurídica
+
+if (window.location.pathname.endsWith("cadastro-juridica.html")) {
+
+    const API_URL_JURIDICA = "http://localhost:3000/api/pessoajuridica";
+
+    document.getElementById("formCadastro").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome")?.value.trim() || "";
+        const cpfcnpj = document.getElementById("cpfcnpj")?.value.trim() || "";
+        const senha = document.getElementById("senha")?.value || "";
+        const confirmarsenha = document.getElementById("confirmarsenha")?.value || "";
+        const mensagensErro = document.getElementById("mensagensErro");
+
+        let erros = [];
+
+        // --- VALIDAR NOME ---
+        if (nome.length < 3)
+            erros.push("O nome comercial deve ter mais de 3 caracteres.");
+
+        // --- VALIDAR CPF/CNPJ ---
+        if (cpfcnpj) {
+            const apenasNumeros = cpfcnpj.replace(/\D/g, "");
+            if (apenasNumeros.length !== 11 && apenasNumeros.length !== 14) {
+                erros.push("Informe um CPF (11 dígitos) ou CNPJ (14 dígitos) válido.");
+            }
+        }
+
+        // --- VALIDAR SENHA ---
+        if (senha.length < 6)
+            erros.push("A senha deve ter no mínimo 6 caracteres.");
+
+        if (senha !== confirmarsenha)
+            erros.push("As senhas não coincidem.");
+
+        mensagensErro.style.display = "block";
+
+        if (erros.length > 0) {
+            mensagensErro.className = "mensagem erro";
+            mensagensErro.innerHTML = "<ul><li>" + erros.join("</li><li>") + "</li></ul>";
+            return;
+        }
+
+        mensagensErro.className = "mensagem sucesso";
+        mensagensErro.textContent = "Enviando...";
+
+        // --- PAYLOAD ---
+        const payload = {
+            nome_comercial: nome,
+            cpf_cnpj: cpfcnpj.replace(/\D/g, ""),
+            senha: senha
+        };
+
+        console.log("Payload enviado:", payload);
+
+        // --- POST API ---
+        try {
+            const response = await fetch(API_URL_JURIDICA, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                mensagensErro.className = "mensagem erro";
+                mensagensErro.textContent = "Erro ao cadastrar no banco.";
+                return;
+            }
+
+            mensagensErro.className = "mensagem sucesso";
+            mensagensErro.textContent = "Cadastro realizado com sucesso!";
+            this.reset();
+
+        } catch (error) {
+            console.error("Erro:", error);
+            mensagensErro.className = "mensagem erro";
+            mensagensErro.textContent = "Erro de conexão com o servidor.";
+        }
+    });
+}
+
 // Verificação cadastro 
 
-if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location.pathname.endsWith("cadastro-juridica.html") || window.location.pathname.endsWith("acessar.html") || window.location.pathname.endsWith("contato.html")) {
+// ========================= PÁGINA: CADASTRO PESSOA FÍSICA =========================
+if (window.location.pathname.endsWith("cadastro-fisica.html")) {
 
-
-
-    // ---------------------------- icones animados -----------------------------------
-
+    // Ícones animados
     document.addEventListener('DOMContentLoaded', function () {
-        // Nome
+
         const inputNome = document.getElementById('nome');
         const iconNome = document.getElementById('icon-nome');
         if (inputNome && iconNome) {
@@ -733,7 +889,6 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
             });
         }
 
-        // Email (CPF ou CNPJ)
         const inputEmail = document.getElementById('email');
         const iconEmail = document.getElementById('icon-email');
         if (inputEmail && iconEmail) {
@@ -742,17 +897,7 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
                 setTimeout(() => iconEmail.removeAttribute('trigger'), 900);
             });
         }
-        // CPF ou CNPJ
-        const inputCpfCnpj = document.getElementById('cpfcnpj');
-        const iconCpfCnpj = document.getElementById('icon-cpfcnpj');
-        if (inputCpfCnpj && iconCpfCnpj) {
-            inputCpfCnpj.addEventListener('focus', () => {
-                iconCpfCnpj.setAttribute('trigger', 'loop');
-                setTimeout(() => iconCpfCnpj.removeAttribute('trigger'), 1000); // aumente aqui!
-            });
-        }
 
-        // Senha
         const inputSenha = document.getElementById('senha');
         const iconSenha = document.getElementById('icon-senha');
         if (inputSenha && iconSenha) {
@@ -762,7 +907,6 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
             });
         }
 
-        // Confirmar Senha
         const inputConfirmar = document.getElementById('confirmarsenha');
         const iconConfirmar = document.getElementById('icon-confirmarsenha');
         if (inputConfirmar && iconConfirmar) {
@@ -773,165 +917,9 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
         }
     });
 
-    /* ======= appended gallery setup ======= */
-
-    /* ====== Gallery thumbnail click -> replace principal image ====== */
-    function setupGaleria() {
-        // On agendar.html the thumbnails have ids img1..img4 and main img has id imgPrincipal.
-        try {
-            const mainImg = document.getElementById('imgPrincipal');
-            const thumbs = [];
-            // collect known thumbnail ids
-            ['img1', 'img2', 'img3', 'img4'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) thumbs.push(el);
-            });
-            // Also allow elements with class 'miniatura' (in case of different structure)
-            document.querySelectorAll('.miniatura').forEach(el => {
-                if (!thumbs.includes(el)) thumbs.push(el);
-            });
-
-            thumbs.forEach(thumb => {
-                thumb.style.cursor = 'pointer';
-                thumb.addEventListener('click', function (e) {
-                    const src = thumb.src || thumb.getAttribute('data-src') || thumb.getAttribute('srcset') || null;
-                    if (src && mainImg) {
-                        mainImg.src = src;
-                        // small visual feedback - briefly add a class if defined
-                        mainImg.classList.add('fade-replace-temp');
-                        setTimeout(() => mainImg.classList.remove('fade-replace-temp'), 250);
-                    }
-                });
-            });
-        } catch (err) {
-            console.warn('setupGaleria error:', err);
-        }
-    }
-
-    //------------------------------mascara telefone-----------------------------------
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const input = document.getElementById('telefone');
-
-        const mascara = '(__) _____-____';
-
-        function aplicarMascara(valor) {
-            const numeros = valor.replace(/\D/g, '');
-            let resultado = '';
-            let i = 0;
-
-            for (const char of mascara) {
-                if (char === '_') {
-                    resultado += i < numeros.length ? numeros[i++] : '_';
-                } else {
-                    resultado += char;
-                }
-            }
-
-            return resultado;
-        }
-
-        function getProximaPosicao(texto) {
-            const pos = texto.indexOf('_');
-            return pos === -1 ? texto.length : pos;
-        }
-
-        input.value = mascara;
-
-        input.addEventListener('focus', () => {
-            setTimeout(() => {
-                const pos = getProximaPosicao(input.value);
-                input.setSelectionRange(pos, pos);
-            }, 0);
-        });
-
-        input.addEventListener('input', () => {
-            const numeros = input.value.replace(/\D/g, '');
-            input.value = aplicarMascara(numeros);
-
-            const pos = getProximaPosicao(input.value);
-            input.setSelectionRange(pos, pos);
-        });
-
-        input.addEventListener('keydown', (e) => {
-            const cursor = input.selectionStart;
-
-            if (e.key === 'Backspace') {
-                // Permite apagar número anterior, pulando caracteres fixos
-                e.preventDefault();
-
-                let valor = input.value;
-                let numeros = valor.replace(/\D/g, '');
-
-                // Descobre quantos números estão preenchidos
-                const preenchidos = mascara.split('').filter((c, i) => c === '_' && valor[i] !== '_').length;
-
-                // Remove o último número
-                numeros = numeros.slice(0, preenchidos - 1);
-
-                // Reaplica a máscara
-                input.value = aplicarMascara(numeros);
-
-                const novaPos = getProximaPosicao(input.value);
-                input.setSelectionRange(novaPos, novaPos);
-            }
-        });
-    });
-
-
-    //-----------------------------mascara CPF/CNPJ-----------------------------------
-    function aplicarMascaraCpfCnpj(valor) {
-        // Remove tudo que não é número
-        valor = valor.replace(/\D/g, '');
-
-        // Aplica máscara de CPF se até 11 dígitos
-        if (valor.length <= 11) {
-            valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-            valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-            valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-        } else {
-            // Aplica máscara de CNPJ
-            valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
-            valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
-            valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
-            valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
-        }
-
-        return valor;
-    }
-
-    const inputCpfCnpj = document.getElementById('cpfcnpj');
-    if (inputCpfCnpj) {
-        inputCpfCnpj.addEventListener('input', function (e) {
-            let somenteNumeros = e.target.value.replace(/\D/g, ''); // Mantém só números
-            e.target.value = aplicarMascaraCpfCnpj(somenteNumeros);
-        });
-    }
-
-    //-----------------------------mascara nome-----------------------------------
-    document.addEventListener('DOMContentLoaded', function () {
-        const nomeInput = document.getElementById('nome');
-
-        nomeInput.addEventListener('input', function () {
-            let valor = nomeInput.value;
-
-            // Remove tudo que não seja letra, espaço ou hífen (permite acentos)
-            valor = valor.replace(/[^a-zA-ZÀ-ú\s\-]/g, '');
-
-            // Substitui múltiplos espaços por apenas um
-            valor = valor.replace(/\s{2,}/g, ' ');
-
-            // Capitaliza a primeira letra de cada palavra
-            valor = valor.toLowerCase().replace(/(^|\s)\S/g, function (letra) {
-                return letra.toUpperCase();
-            });
-
-            nomeInput.value = valor;
-        });
-
-
-    });
+    // Validação do formulário pessoa física
     document.getElementById('formCadastro').addEventListener('submit', function (event) {
+
         event.preventDefault();
 
         const nome = document.getElementById('nome').value.trim();
@@ -942,21 +930,10 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
 
         let erros = [];
 
-        if (nome.length <= 3) {
-            erros.push("O nome deve ter mais de 3 caracteres.");
-        }
-
-        if (!email.includes('@')) {
-            erros.push("O email deve conter '@'.");
-        }
-
-        if (senha.length < 6) {
-            erros.push("A senha deve ter no mínimo 6 caracteres.");
-        }
-
-        if (senha !== confirmarsenha) {
-            erros.push("A confirmação de senha não corresponde à senha anterior.");
-        }
+        if (nome.length <= 3) erros.push("O nome deve ter mais de 3 caracteres.");
+        if (!email.includes('@')) erros.push("O email deve conter '@'.");
+        if (senha.length < 6) erros.push("A senha deve ter no mínimo 6 caracteres.");
+        if (senha !== confirmarsenha) erros.push("A confirmação de senha não corresponde.");
 
         mensagensErro.style.display = "block";
 
@@ -966,55 +943,59 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
         } else {
             mensagensErro.className = "mensagem sucesso";
             mensagensErro.textContent = "Cadastro realizado com sucesso!";
-
-            // Opcional: limpar os campos
-            document.getElementById('formCadastro').reset();
-        }
-    });
-    //-----------------------------mensagem erro fisica-----------------------------------
-    document.getElementById('formCadastro').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const nome = document.getElementById('nome').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const senha = document.getElementById('senha').value;
-        const confirmarsenha = document.getElementById('confirmarsenha').value;
-        const mensagensErro = document.getElementById('mensagensErro');
-
-        let erros = [];
-
-        if (nome.length <= 3) {
-            erros.push("O nome deve ter mais de 3 caracteres.");
-        }
-
-        if (!email.includes('@')) {
-            erros.push("O email deve conter '@'.");
-        }
-
-        if (senha.length < 6) {
-            erros.push("A senha deve ter no mínimo 6 caracteres.");
-        }
-
-        if (senha !== confirmarsenha) {
-            erros.push("A confirmação de senha não corresponde à senha anterior.");
-        }
-
-        mensagensErro.style.display = "block";
-
-        if (erros.length > 0) {
-            mensagensErro.className = "mensagem erro";
-            mensagensErro.innerHTML = "<ul><li>" + erros.join("</li><li>") + "</li></ul>";
-        } else {
-            mensagensErro.className = "mensagem sucesso";
-            mensagensErro.textContent = "Cadastro realizado com sucesso!";
-
-            // Opcional: limpar os campos
-            document.getElementById('formCadastro').reset();
+            this.reset();
         }
     });
 
-    //-----------------------------mensagem erro juridica-----------------------------------
+}
+
+
+// ========================= PÁGINA: CADASTRO PESSOA JURÍDICA =========================
+if (window.location.pathname.endsWith("cadastro-juridica.html")) {
+
+    // Ícones animados
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const inputNome = document.getElementById('nome');
+        const iconNome = document.getElementById('icon-nome');
+        if (inputNome && iconNome) {
+            inputNome.addEventListener('focus', () => {
+                iconNome.setAttribute('trigger', 'loop');
+                setTimeout(() => iconNome.removeAttribute('trigger'), 1000);
+            });
+        }
+
+        const inputCpfCnpj = document.getElementById('cpfcnpj');
+        const iconCpfCnpj = document.getElementById('icon-cpfcnpj');
+        if (inputCpfCnpj && iconCpfCnpj) {
+            inputCpfCnpj.addEventListener('focus', () => {
+                iconCpfCnpj.setAttribute('trigger', 'loop');
+                setTimeout(() => iconCpfCnpj.removeAttribute('trigger'), 1000);
+            });
+        }
+
+        const inputSenha = document.getElementById('senha');
+        const iconSenha = document.getElementById('icon-senha');
+        if (inputSenha && iconSenha) {
+            inputSenha.addEventListener('focus', () => {
+                iconSenha.setAttribute('trigger', 'loop');
+                setTimeout(() => iconSenha.removeAttribute('trigger'), 900);
+            });
+        }
+
+        const inputConfirmar = document.getElementById('confirmarsenha');
+        const iconConfirmar = document.getElementById('icon-confirmarsenha');
+        if (inputConfirmar && iconConfirmar) {
+            inputConfirmar.addEventListener('focus', () => {
+                iconConfirmar.setAttribute('trigger', 'loop');
+                setTimeout(() => iconConfirmar.removeAttribute('trigger'), 900);
+            });
+        }
+    });
+
+    // Validação do formulário pessoa jurídica
     document.getElementById('formCadastro').addEventListener('submit', function (event) {
+
         event.preventDefault();
 
         const nome = document.getElementById('nome').value.trim();
@@ -1025,25 +1006,10 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
 
         let erros = [];
 
-        // Validação nome: mais que 3 caracteres
-        if (nome.length <= 3) {
-            erros.push("O nome deve ter mais de 3 caracteres.");
-        }
-
-        // Validação CPF ou CNPJ: mínimo 11 caracteres (CPF) e máximo 18 (com máscara)
-        if (cpfcnpj.length < 11 || cpfcnpj.length > 18) {
-            erros.push("Informe um CPF ou CNPJ válido.");
-        }
-
-        // Validação senha: mínimo 6 caracteres
-        if (senha.length < 6) {
-            erros.push("A senha deve ter no mínimo 6 caracteres.");
-        }
-
-        // Confirmação de senha igual a senha
-        if (senha !== confirmarsenha) {
-            erros.push("A confirmação de senha não corresponde à senha.");
-        }
+        if (nome.length <= 3) erros.push("O nome deve ter mais de 3 caracteres.");
+        if (cpfcnpj.length < 11 || cpfcnpj.length > 18) erros.push("Informe um CPF ou CNPJ válido.");
+        if (senha.length < 6) erros.push("A senha deve ter no mínimo 6 caracteres.");
+        if (senha !== confirmarsenha) erros.push("A confirmação de senha não corresponde.");
 
         mensagensErro.style.display = "block";
 
@@ -1053,8 +1019,75 @@ if (window.location.pathname.endsWith("cadastro-fisica.html") || window.location
         } else {
             mensagensErro.className = "mensagem sucesso";
             mensagensErro.textContent = "Cadastro realizado com sucesso!";
+            this.reset();
+        }
+    });
 
-            // Limpar formulário após sucesso
+}
+
+
+// ========================= PÁGINA: ACESSAR LOGIN =========================
+if (window.location.pathname.endsWith("acessar.html")) {
+
+    document.getElementById("formLogin").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome").value.trim();
+        const senha = document.getElementById("senha").value.trim();
+        const mensagensErro = document.getElementById("mensagensErro");
+
+        let erros = [];
+
+        if (nome.length < 3) erros.push("O nome deve ter pelo menos 3 caracteres.");
+        if (senha.length < 6) erros.push("A senha deve ter pelo menos 6 caracteres.");
+
+        mensagensErro.style.display = "block";
+
+        if (erros.length > 0) {
+            mensagensErro.className = "mensagem erro";
+            mensagensErro.innerHTML = "<ul><li>" + erros.join("</li><li>") + "</li></ul>";
+        } else {
+            mensagensErro.className = "mensagem sucesso";
+            mensagensErro.textContent = "Acessando...";
+            this.reset();
+        }
+    });
+}
+
+
+// ========================= PÁGINA: CONTATO =========================
+if (window.location.pathname.endsWith("contato.html")) {
+
+    document.getElementById("formContato").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome").value.trim();
+        const empresa = document.getElementById("empresa").value.trim();
+        const cidade = document.getElementById("cidade").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const telefone = document.getElementById("telefone").value.trim();
+        const assunto = document.getElementById("assunto").value.trim();
+        const mensagem = document.getElementById("mensagem").value.trim();
+        const mensagensErro = document.getElementById("mensagensErro");
+
+        let erros = [];
+
+        if (nome.length < 3) erros.push("O nome deve ter pelo menos 3 caracteres.");
+        if (empresa.length < 2) erros.push("Informe o nome da empresa.");
+        if (cidade.length < 2) erros.push("Informe a cidade.");
+        if (!email.includes("@")) erros.push("Informe um email válido.");
+        if (telefone.length < 8) erros.push("Informe um telefone válido.");
+        if (assunto.length < 3) erros.push("Informe o assunto.");
+        if (mensagem.length < 10) erros.push("A mensagem deve ter no mínimo 10 caracteres.");
+
+        mensagensErro.style.display = "block";
+
+        if (erros.length > 0) {
+            mensagensErro.className = "mensagem erro";
+            mensagensErro.innerHTML = "<ul><li>" + erros.join("</li><li>") + "</li></ul>";
+        } else {
+            mensagensErro.className = "mensagem sucesso";
+            mensagensErro.textContent = "Mensagem enviada com sucesso!";
             this.reset();
         }
     });
@@ -1147,11 +1180,13 @@ if (window.location.pathname === "/" || window.location.pathname.endsWith("index
     startAutoSlide();
 }
 
-// add a small CSS class to style.css to animate replacement (if class absent it's harmless)
+// Verificação cadastro 
 
-// ensure gallery sets up when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupGaleria);
-} else {
-    try { setupGaleria(); } catch (e) { }
+if (window.location.pathname.endsWith("agendar.html")) {
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupGaleria);
+    } else {
+        try { setupGaleria(); } catch (e) { }
+    }
 }

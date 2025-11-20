@@ -1,5 +1,5 @@
 ### Variaveis
-@apiurl = http://localhost:3500/api
+@apiurl = http://localhost:3000/api
 @tableName = pessoajuridica
 
 # Seleciona todos os dados
@@ -19,7 +19,7 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### Deleta dados da tabela com o id = 1
-DELETE {{apiurl}}/{{tableName}}/1
+DELETE {{apiurl}}/{{tableName}}
 
 ### Atualiza os campos do id = 1
 PUT {{apiurl}}/{{tableName}}/1
